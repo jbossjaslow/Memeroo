@@ -13,8 +13,9 @@ struct MemerooApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+			ImageSelectionView()
+//            ContentView()
+//                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }

@@ -15,6 +15,7 @@
 		39B9298525313E8500DFC401 /* Memeroo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 39B9298325313E8500DFC401 /* Memeroo.xcdatamodeld */; };
 		39B9299025313E8500DFC401 /* MemerooTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B9298F25313E8500DFC401 /* MemerooTests.swift */; };
 		39B9299B25313E8500DFC401 /* MemerooUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B9299A25313E8500DFC401 /* MemerooUITests.swift */; };
+		39B929AD25313F6F00DFC401 /* ImageSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B929AC25313F6F00DFC401 /* ImageSelectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		39B9299625313E8500DFC401 /* MemerooUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MemerooUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		39B9299A25313E8500DFC401 /* MemerooUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemerooUITests.swift; sourceTree = "<group>"; };
 		39B9299C25313E8500DFC401 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		39B929AC25313F6F00DFC401 /* ImageSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,12 +102,12 @@
 			isa = PBXGroup;
 			children = (
 				39B9297825313E8300DFC401 /* MemerooApp.swift */,
-				39B9297A25313E8300DFC401 /* ContentView.swift */,
+				39B929AB25313EBF00DFC401 /* Core Data */,
 				39B9297C25313E8500DFC401 /* Assets.xcassets */,
-				39B9298125313E8500DFC401 /* Persistence.swift */,
 				39B9298625313E8500DFC401 /* Info.plist */,
 				39B9298325313E8500DFC401 /* Memeroo.xcdatamodeld */,
 				39B9297E25313E8500DFC401 /* Preview Content */,
+				39B929AC25313F6F00DFC401 /* ImageSelectionView.swift */,
 			);
 			path = Memeroo;
 			sourceTree = "<group>";
@@ -134,6 +136,15 @@
 				39B9299C25313E8500DFC401 /* Info.plist */,
 			);
 			path = MemerooUITests;
+			sourceTree = "<group>";
+		};
+		39B929AB25313EBF00DFC401 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				39B9297A25313E8300DFC401 /* ContentView.swift */,
+				39B9298125313E8500DFC401 /* Persistence.swift */,
+			);
+			path = "Core Data";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,6 +276,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39B929AD25313F6F00DFC401 /* ImageSelectionView.swift in Sources */,
 				39B9298525313E8500DFC401 /* Memeroo.xcdatamodeld in Sources */,
 				39B9298225313E8500DFC401 /* Persistence.swift in Sources */,
 				39B9297B25313E8300DFC401 /* ContentView.swift in Sources */,

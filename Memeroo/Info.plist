@@ -46,5 +46,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Would you like to grant Memeroo access to your photos?</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Would you like to grant Memeroo access to your photos?</string>
 </dict>
 </plist>

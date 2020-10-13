@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import TOCropViewController
 
 struct ImageSelectionView: View {
 	
@@ -37,9 +38,20 @@ struct ImageSelectionView: View {
 	}
 }
 
+enum ActiveSheet: Identifiable {
+	case picker, cropper
+	
+	var id: Int {
+		hashValue
+	}
+}
+
 struct MemeView: View {
 	@State private var image: Image? = nil
-	@State private var showingImagePicker: Bool = false
+//	@State private var showingImagePicker: Bool = false
+//	@State private var showingCropVC: Bool = false
+	
+	@State var activeSheet: ActiveSheet?
 	
 	@Binding var inputImage: UIImage?
 	@Binding var captionText: String
@@ -71,17 +83,36 @@ struct MemeView: View {
 			}
 			.onTapGesture {
 				print("Tapped")
-				self.showingImagePicker = true
+//				self.showingImagePicker = true
+				self.activeSheet = .picker
 			}
 		}
-		.sheet(isPresented: $showingImagePicker, onDismiss: {
-			loadImage()
-		}) {
-			ImagePicker(image: self.$inputImage)
+		.sheet(item: $activeSheet) { sheet in
+			switch sheet {
+				case .picker:
+					ImagePicker(dismissFuncShouldShowCropper: dismiss(showCropperView:),
+								image: $inputImage)
+				case .cropper:
+					ImageCropper(dismissFuncShouldShowCropper: dismiss(showCropperView:),
+								 image: $inputImage)
+			}
 		}
 	}
 	
-	func loadImage() {
+	private func dismiss(showCropperView: Bool) {
+		guard inputImage != nil else {
+			activeSheet = nil
+			return
+		}
+		if showCropperView {
+			activeSheet = .cropper
+		} else {
+			activeSheet = nil
+			loadImage()
+		}
+	}
+	
+	private func loadImage() {
 		guard let inputImage = inputImage else { return }
 		image = Image(uiImage: inputImage)
 	}
@@ -146,8 +177,47 @@ extension UIView {
 	}
 }
 
+struct ImageCropper: UIViewControllerRepresentable {
+	let dismissFuncShouldShowCropper: (Bool) -> Void
+	@Binding var image: UIImage?
+	
+	func makeCoordinator() -> Coordinator {
+		Coordinator(self)
+	}
+	
+	func makeUIViewController(context: UIViewControllerRepresentableContext<ImageCropper>) -> TOCropViewController {
+		let vc = TOCropViewController(image: image ?? UIImage())
+		vc.delegate = context.coordinator
+		return vc
+	}
+	
+	func updateUIViewController(_ uiViewController: TOCropViewController, context: UIViewControllerRepresentableContext<ImageCropper>) {}
+	
+	class Coordinator: NSObject,
+					   TOCropViewControllerDelegate {
+		let parent: ImageCropper
+		
+		init(_ parent: ImageCropper) {
+			self.parent = parent
+		}
+		
+		func cropViewController(_ cropViewController: TOCropViewController,
+								didFinishCancelled cancelled: Bool) {
+			parent.dismissFuncShouldShowCropper(false)
+		}
+		
+		func cropViewController(_ cropViewController: TOCropViewController,
+								didCropTo image: UIImage,
+								with cropRect: CGRect,
+								angle: Int) {
+			parent.image = image
+			parent.dismissFuncShouldShowCropper(false)
+		}
+	}
+}
+
 struct ImagePicker: UIViewControllerRepresentable {
-	@Environment(\.presentationMode) var presentationMode
+	let dismissFuncShouldShowCropper: (Bool) -> Void
 	@Binding var image: UIImage?
 	
 	func makeCoordinator() -> Coordinator {
@@ -157,8 +227,6 @@ struct ImagePicker: UIViewControllerRepresentable {
 	func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> UIImagePickerController {
 		let picker = UIImagePickerController()
 		picker.delegate = context.coordinator
-		picker.allowsEditing = true
-//		picker.mediaTypes = [(kUTTypeImage as String)] //this is default
 		return picker
 	}
 	
@@ -175,15 +243,16 @@ struct ImagePicker: UIViewControllerRepresentable {
 		
 		func imagePickerController(_ picker: UIImagePickerController,
 								   didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-			if let uiImage = info[.editedImage] as? UIImage {
+			if let uiImage = info[.originalImage] as? UIImage {
 				parent.image = uiImage
+				parent.dismissFuncShouldShowCropper(true)
+			} else {
+				parent.dismissFuncShouldShowCropper(false)
 			}
-			
-			else if let uiImage = info[.originalImage] as? UIImage {
-				parent.image = uiImage
-			}
-			
-			parent.presentationMode.wrappedValue.dismiss()
+		}
+		
+		func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+			parent.dismissFuncShouldShowCropper(false)
 		}
 	}
 }

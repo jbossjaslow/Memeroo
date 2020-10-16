@@ -9,16 +9,16 @@ import SwiftUI
 import TOCropViewController
 
 struct ImageCropper: UIViewControllerRepresentable {
+	@EnvironmentObject var meme: Meme
 	
 	let dismissFuncShouldShowCropper: (Bool) -> Void
-	@Binding var image: UIImage?
 	
 	func makeCoordinator() -> Coordinator {
 		Coordinator(self)
 	}
 	
 	func makeUIViewController(context: UIViewControllerRepresentableContext<ImageCropper>) -> TOCropViewController {
-		let vc = TOCropViewController(image: image ?? UIImage())
+		let vc = TOCropViewController(image: meme.image ?? UIImage())
 		vc.delegate = context.coordinator
 		return vc
 	}
@@ -42,17 +42,16 @@ struct ImageCropper: UIViewControllerRepresentable {
 								didCropTo image: UIImage,
 								with cropRect: CGRect,
 								angle: Int) {
-			parent.image = image
+			parent.meme.image = image
 			parent.dismissFuncShouldShowCropper(false)
 		}
 	}
 }
 
 struct ImageCropper_Previews: PreviewProvider {
-	@State static var image: UIImage?
 	static var previews: some View {
-		ImageCropper(dismissFuncShouldShowCropper: test(param:),
-					 image: $image)
+		ImageCropper(dismissFuncShouldShowCropper: test(param:))
+			.environmentObject(Meme())
 	}
 	
 	static func test(param: Bool) {

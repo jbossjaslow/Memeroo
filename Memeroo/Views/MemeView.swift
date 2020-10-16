@@ -16,17 +16,14 @@ fileprivate enum ActiveSheet: Identifiable {
 }
 
 struct MemeView: View {
-	@State private var image: Image? = nil
+	@EnvironmentObject var meme: Meme
 	
 	@State fileprivate var activeSheet: ActiveSheet?
-	
-	@Binding var inputImage: UIImage?
-	@Binding var captionText: String
 	
 	var body: some View {
 		VStack {
 			TextField("Type caption here",
-					  text: $captionText)
+					  text: $meme.caption)
 				.font(.system(size: 14))
 				.frame(minHeight: 30)
 				.padding(.horizontal,
@@ -35,8 +32,8 @@ struct MemeView: View {
 						width: 2)
 			
 			ZStack {
-				if image != nil {
-					image?
+				if let memeImage = meme.image {
+					Image(uiImage: memeImage)
 						.resizable()
 						.scaledToFit()
 				} else {
@@ -49,39 +46,21 @@ struct MemeView: View {
 				}
 			}
 			.onTapGesture {
-				print("Tapped")
-//				self.showingImagePicker = true
 				self.activeSheet = .picker
 			}
 		}
 		.sheet(item: $activeSheet) { sheet in
 			switch sheet {
 				case .picker:
-					ImagePicker(dismissFuncShouldShowCropper: dismiss(showCropperView:),
-								image: $inputImage)
+					ImagePicker(dismissFuncShouldShowCropper: dismiss(showCropperView:))
 				case .cropper:
-					ImageCropper(dismissFuncShouldShowCropper: dismiss(showCropperView:),
-								 image: $inputImage)
+					ImageCropper(dismissFuncShouldShowCropper: dismiss(showCropperView:))
 			}
 		}
 	}
 	
 	private func dismiss(showCropperView: Bool) {
-		guard inputImage != nil else {
-			activeSheet = nil
-			return
-		}
-		if showCropperView {
-			activeSheet = .cropper
-		} else {
-			activeSheet = nil
-			loadImage()
-		}
-	}
-	
-	private func loadImage() {
-		guard let inputImage = inputImage else { return }
-		image = Image(uiImage: inputImage)
+		activeSheet = showCropperView ? .cropper : nil
 	}
 	
 	static func renderMemeView(caption: String,
@@ -109,11 +88,9 @@ struct MemeView: View {
 }
 
 struct MemeView_Previews: PreviewProvider {
-	@State static var inputImage: UIImage?
-	@State static var captionText: String = "Caption"
 	
     static var previews: some View {
-		MemeView(inputImage: $inputImage,
-				 captionText: $captionText)
+		MemeView()
+			.environmentObject(Meme())
     }
 }

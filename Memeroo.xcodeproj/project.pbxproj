@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		39882C79253922480072C2A5 /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39882C78253922480072C2A5 /* Meme.swift */; };
 		399ED91D2538E8E90089BD95 /* CaptureViewContextExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399ED91C2538E8E90089BD95 /* CaptureViewContextExtension.swift */; };
 		399ED9272538E9C30089BD95 /* ImageCropper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399ED9262538E9C30089BD95 /* ImageCropper.swift */; };
 		399ED92F2538EAA30089BD95 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399ED92E2538EAA30089BD95 /* ImagePicker.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		39882C78253922480072C2A5 /* Meme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
 		399ED91C2538E8E90089BD95 /* CaptureViewContextExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureViewContextExtension.swift; sourceTree = "<group>"; };
 		399ED9262538E9C30089BD95 /* ImageCropper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCropper.swift; sourceTree = "<group>"; };
 		399ED92E2538EAA30089BD95 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -90,6 +92,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		39882C77253922220072C2A5 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				39882C78253922480072C2A5 /* Meme.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		399ED9132538E86B0089BD95 /* Important FIles */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,10 +169,11 @@
 		39B9297725313E8300DFC401 /* Memeroo */ = {
 			isa = PBXGroup;
 			children = (
-				399ED91B2538E8C50089BD95 /* Extensions */,
 				399ED9142538E88C0089BD95 /* Assets */,
 				399ED9132538E86B0089BD95 /* Important FIles */,
 				39B929AB25313EBF00DFC401 /* Core Data */,
+				399ED91B2538E8C50089BD95 /* Extensions */,
+				39882C77253922220072C2A5 /* Classes */,
 				399ED9242538E93B0089BD95 /* Views */,
 			);
 			path = Memeroo;
@@ -348,6 +359,7 @@
 				399ED92F2538EAA30089BD95 /* ImagePicker.swift in Sources */,
 				399ED9272538E9C30089BD95 /* ImageCropper.swift in Sources */,
 				39B9297925313E8300DFC401 /* MemerooApp.swift in Sources */,
+				39882C79253922480072C2A5 /* Meme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,14 +8,11 @@
 import SwiftUI
 
 struct ImageSelectionView: View {
-	
-	@State private var inputImage: UIImage?
-	@State private var captionText: String = ""
+	@EnvironmentObject var meme: Meme
 	
     var body: some View {
 		VStack {
-			MemeView(inputImage: $inputImage,
-					 captionText: $captionText)
+			MemeView()
 			
 			Button(action: showShareSheet) {
 				Text("Share meme")
@@ -25,15 +22,23 @@ struct ImageSelectionView: View {
 	}
 	
 	func showShareSheet() {
-		guard let image = inputImage else { return }
-		let imageToSend = MemeView.renderMemeView(caption: captionText,
+		guard let image = meme.image else { return }
+		let imageToSend = MemeView.renderMemeView(caption: meme.caption,
 												  image: image)
 		let av = UIActivityViewController(activityItems: [imageToSend],
 										  applicationActivities: nil)
 		let root = UIApplication.shared.windows.first?.rootViewController
 		root?.present(av,
-					  animated: true,
-					  completion: nil)
+					  animated: true)
+	}
+}
+
+struct ActionsPageView: View {
+	var body: some View {
+//		TabView {
+//
+//		}
+		Text("Hello World")
 	}
 }
 

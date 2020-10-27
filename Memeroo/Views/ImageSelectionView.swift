@@ -7,43 +7,85 @@
 
 import SwiftUI
 
-struct ImageSelectionView: View {
-	@EnvironmentObject var meme: Meme
+enum ActiveSheet: Identifiable {
+	case picker, cropper
 	
-    var body: some View {
-		VStack {
-			MemeView()
-			
-			Button(action: showShareSheet) {
-				Text("Share meme")
-			}
-		}
-		.padding(.horizontal)
-	}
-	
-	func showShareSheet() {
-		guard let image = meme.image else { return }
-		let imageToSend = MemeView.renderMemeView(caption: meme.caption,
-												  image: image)
-		let av = UIActivityViewController(activityItems: [imageToSend],
-										  applicationActivities: nil)
-		let root = UIApplication.shared.windows.first?.rootViewController
-		root?.present(av,
-					  animated: true)
+	var id: Int {
+		hashValue
 	}
 }
 
-struct ActionsPageView: View {
+struct ImageSelectionView: View {
+	@EnvironmentObject var meme: Meme
+	
+	@State fileprivate var activeSheet: ActiveSheet?
+	
 	var body: some View {
-//		TabView {
-//
-//		}
-		Text("Hello World")
+		VStack(spacing: 0) {
+			Spacer()
+			
+			TextField(Constants.defaultCaptionText,
+					  text: $meme.caption)
+				.font(.system(size: 14))
+				.foregroundColor(.gray)
+				.frame(height: 50)
+				.padding(.horizontal, 10)
+				.background(Color.white)
+				.disabled(true)
+			
+			if let memeImage = meme.image {
+				Image(uiImage: memeImage)
+					.resizable()
+					.scaledToFit()
+					.onTapGesture {
+						self.activeSheet = .picker
+					}
+			} else {
+				Button {
+					self.activeSheet = .picker
+				} label: {
+					ZStack {
+						Rectangle()
+							.fill(Color.clear)
+						
+						Text("Tap to select a picture")
+							.foregroundColor(.white)
+							.font(.headline)
+					}
+				}
+			}
+			
+			Spacer()
+		}
+		.sheet(item: $activeSheet) { sheet in
+			switch sheet {
+				case .picker:
+					ImagePicker(dismissFuncShouldShowCropper: dismiss(showCropperView:))
+				case .cropper:
+					ImageCropper(dismissFuncShouldShowCropper: dismiss(showCropperView:))
+			}
+		}
+		//		.padding(.horizontal)
+		.modifier(SingleColorBackground(color: Color.myPink))
+	}
+	
+	private func dismiss(showCropperView: Bool) {
+		activeSheet = showCropperView ? .cropper : nil
+	}
+}
+
+struct SingleColorBackground: ViewModifier {
+	let color: Color
+	
+	func body(content: Content) -> some View {
+		content
+			.background(color.edgesIgnoringSafeArea(.all))
 	}
 }
 
 struct ImageSelectionView_Previews: PreviewProvider {
-    static var previews: some View {
-        ImageSelectionView()
-    }
+	static var previews: some View {
+		ImageSelectionView()
+			.environmentObject(Meme().TestMeme())
+	}
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3935781A256972FB00743E71 /* NormalToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39357819256972FB00743E71 /* NormalToggleStyle.swift */; };
 		39882C79253922480072C2A5 /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39882C78253922480072C2A5 /* Meme.swift */; };
 		399ED91D2538E8E90089BD95 /* CaptureViewContextExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399ED91C2538E8E90089BD95 /* CaptureViewContextExtension.swift */; };
 		399ED9272538E9C30089BD95 /* ImageCropper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399ED9262538E9C30089BD95 /* ImageCropper.swift */; };
@@ -58,6 +59,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		39357819256972FB00743E71 /* NormalToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalToggleStyle.swift; sourceTree = "<group>"; };
 		39882C78253922480072C2A5 /* Meme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
 		399ED91C2538E8E90089BD95 /* CaptureViewContextExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureViewContextExtension.swift; sourceTree = "<group>"; };
 		399ED9262538E9C30089BD95 /* ImageCropper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCropper.swift; sourceTree = "<group>"; };
@@ -122,6 +124,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		39357818256972E200743E71 /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				39357819256972FB00743E71 /* NormalToggleStyle.swift */,
+			);
+			path = Modifiers;
+			sourceTree = "<group>";
+		};
 		39882C77253922220072C2A5 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -251,6 +261,7 @@
 				399ED91B2538E8C50089BD95 /* Extensions */,
 				39882C77253922220072C2A5 /* Classes */,
 				39B75163254639AB0016714B /* Structs */,
+				39357818256972E200743E71 /* Modifiers */,
 				399ED9242538E93B0089BD95 /* Views */,
 			);
 			path = Memeroo;
@@ -433,6 +444,7 @@
 				39B7515F25462FA60016714B /* EditCaptionView.swift in Sources */,
 				39B751922548B71E0016714B /* TabIcon.swift in Sources */,
 				39B751AF2548CFCC0016714B /* UIColorChannelSplitExtension.swift in Sources */,
+				3935781A256972FB00743E71 /* NormalToggleStyle.swift in Sources */,
 				399ED9342538EB360089BD95 /* MemeView.swift in Sources */,
 				39B9298525313E8500DFC401 /* Memeroo.xcdatamodeld in Sources */,
 				39B751832548B67E0016714B /* ColorfulShareSheetStyle.swift in Sources */,

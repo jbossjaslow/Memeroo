@@ -10,7 +10,7 @@ import SwiftUI
 struct ShareButton: View {
 	@EnvironmentObject var meme: Meme
 	
-	@State private var circleSize: CGFloat = 70
+	@State private var circleSize: CGFloat = 50
 	@State private var buttonSize: CGFloat = 25
 	
 	var body: some View {
@@ -26,8 +26,8 @@ struct ShareButton: View {
 					.foregroundColor(.myPink)
 					.frame(width: buttonSize, height: buttonSize)
 			}
-			.buttonStyle(ColorfulShareSheetStyle(shape: Circle(),
-												 colorTheme: .offWhite))
+//			.buttonStyle(ColorfulShareSheetStyle(shape: Circle(),
+//												 colorTheme: .offWhite))
 		}
 	}
 	

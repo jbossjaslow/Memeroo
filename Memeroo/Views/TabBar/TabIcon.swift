@@ -18,6 +18,9 @@ struct TabIcon: View {
 	@State var tabType: TabType
 	var geometry: GeometryProxy
 	
+	@State private var normalToggleStyle = true
+	@State private var togge: Bool = false
+	
 	private var imageName: String {
 		switch tabType {
 			case .background: return "photo"
@@ -31,26 +34,40 @@ struct TabIcon: View {
 			case .caption: return "Caption"
 		}
 	}
-	@State private var togge: Bool = false
+	
 	var body: some View {
-		Toggle(isOn: $togge) {
-			VStack(spacing: 5) {
-				Image(systemName: imageName)
-					.resizable()
-					.aspectRatio(contentMode: .fit)
-					.foregroundColor(viewRouter.currentView == tabType ? .myPink : .gray)
-				
-				Text(labelName)
-					.font(.system(size: 12))
-					.bold()
-					.foregroundColor(viewRouter.currentView == tabType ? .myPink : .gray)
+		if normalToggleStyle {
+			Toggle(isOn: $togge) {
+				toggleBody
 			}
-			.frame(width: geometry.size.width/5, height: 40)
+			.animation(.easeOut)
+			.toggleStyle(NormalToggleStyle(colorTheme: .offWhite,
+										   shape: RoundedRectangle(cornerRadius: 10),
+										   tabType: tabType))
+		} else {
+			Toggle(isOn: $togge) {
+				toggleBody
+			}
+			.animation(.easeOut)
+			.toggleStyle(MemerooToggleStyle(colorTheme: .offWhite,
+											shape: RoundedRectangle(cornerRadius: 10),
+											tabType: tabType))
 		}
-		.animation(.easeOut)
-		.toggleStyle(MemerooToggleStyle(colorTheme: .offWhite,
-										shape: RoundedRectangle(cornerRadius: 10),
-										tabType: tabType))
+	}
+	
+	private var toggleBody: some View {
+		VStack(spacing: 5) {
+			Image(systemName: imageName)
+				.resizable()
+				.aspectRatio(contentMode: .fit)
+				.foregroundColor(viewRouter.currentView == tabType ? .myPink : .gray)
+			
+			Text(labelName)
+				.font(.system(size: 12))
+				.bold()
+				.foregroundColor(viewRouter.currentView == tabType ? .myPink : .gray)
+		}
+		.frame(width: geometry.size.width/5, height: 40)
 	}
 }
 

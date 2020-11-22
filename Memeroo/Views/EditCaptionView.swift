@@ -9,6 +9,7 @@ import SwiftUI
 
 struct EditCaptionView: View {
 	@EnvironmentObject var meme: Meme
+	@EnvironmentObject var viewRouter: ViewRouter
 	
     var body: some View {
 		VStack(spacing: 0) {
@@ -26,6 +27,12 @@ struct EditCaptionView: View {
 				Image(uiImage: memeImage)
 					.resizable()
 					.scaledToFit()
+					.onTapGesture {
+						//if image is nil, don't bother showing focused image
+						withAnimation {
+							viewRouter.showingFocusedImage = meme.image != nil
+						}
+					}
 			}
 			
 			Spacer()
@@ -38,5 +45,6 @@ struct EditCaptionView_Previews: PreviewProvider {
     static var previews: some View {
         EditCaptionView()
 			.environmentObject(Meme().TestMeme())
+			.environmentObject(ViewRouter())
     }
 }

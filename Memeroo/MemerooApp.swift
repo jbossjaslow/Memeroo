@@ -16,6 +16,7 @@ struct MemerooApp: App {
 			MemerooTabBar()
 				.environmentObject(ViewRouter())
 				.environmentObject(Meme())
+//			FocusedImageViewer(image: Image("TestImage"))
 			
 //            ContentView()
 //                .environment(\.managedObjectContext, persistenceController.container.viewContext)

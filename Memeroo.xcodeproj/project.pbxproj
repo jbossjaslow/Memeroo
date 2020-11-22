@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		3935781A256972FB00743E71 /* NormalToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39357819256972FB00743E71 /* NormalToggleStyle.swift */; };
+		393578222569766200743E71 /* SingleColorBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393578212569766200743E71 /* SingleColorBackground.swift */; };
+		393578272569775900743E71 /* FocusedImageViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393578262569775900743E71 /* FocusedImageViewer.swift */; };
+		3935782C256AC24000743E71 /* CGSizeOperatorOverload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3935782B256AC24000743E71 /* CGSizeOperatorOverload.swift */; };
+		39357831256AD97C00743E71 /* SingleColorBackgroundExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39357830256AD97C00743E71 /* SingleColorBackgroundExtension.swift */; };
 		39882C79253922480072C2A5 /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39882C78253922480072C2A5 /* Meme.swift */; };
 		399ED91D2538E8E90089BD95 /* CaptureViewContextExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399ED91C2538E8E90089BD95 /* CaptureViewContextExtension.swift */; };
 		399ED9272538E9C30089BD95 /* ImageCropper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399ED9262538E9C30089BD95 /* ImageCropper.swift */; };
@@ -60,6 +64,10 @@
 
 /* Begin PBXFileReference section */
 		39357819256972FB00743E71 /* NormalToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalToggleStyle.swift; sourceTree = "<group>"; };
+		393578212569766200743E71 /* SingleColorBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleColorBackground.swift; sourceTree = "<group>"; };
+		393578262569775900743E71 /* FocusedImageViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusedImageViewer.swift; sourceTree = "<group>"; };
+		3935782B256AC24000743E71 /* CGSizeOperatorOverload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGSizeOperatorOverload.swift; sourceTree = "<group>"; };
+		39357830256AD97C00743E71 /* SingleColorBackgroundExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleColorBackgroundExtension.swift; sourceTree = "<group>"; };
 		39882C78253922480072C2A5 /* Meme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
 		399ED91C2538E8E90089BD95 /* CaptureViewContextExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureViewContextExtension.swift; sourceTree = "<group>"; };
 		399ED9262538E9C30089BD95 /* ImageCropper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCropper.swift; sourceTree = "<group>"; };
@@ -128,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				39357819256972FB00743E71 /* NormalToggleStyle.swift */,
+				393578212569766200743E71 /* SingleColorBackground.swift */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
@@ -168,6 +177,8 @@
 				39B751A92548CFAA0016714B /* NeumorphicColorExtension.swift */,
 				39B751AE2548CFCC0016714B /* UIColorChannelSplitExtension.swift */,
 				39B751B32548CFE80016714B /* DoubleAverageExtension.swift */,
+				3935782B256AC24000743E71 /* CGSizeOperatorOverload.swift */,
+				39357830256AD97C00743E71 /* SingleColorBackgroundExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -182,6 +193,7 @@
 				39B7515E25462FA60016714B /* EditCaptionView.swift */,
 				39B7519A2548B7BC0016714B /* Deprecated */,
 				39B751962548B7A90016714B /* TabBar */,
+				393578262569775900743E71 /* FocusedImageViewer.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -443,6 +455,7 @@
 				399ED91D2538E8E90089BD95 /* CaptureViewContextExtension.swift in Sources */,
 				39B7515F25462FA60016714B /* EditCaptionView.swift in Sources */,
 				39B751922548B71E0016714B /* TabIcon.swift in Sources */,
+				39357831256AD97C00743E71 /* SingleColorBackgroundExtension.swift in Sources */,
 				39B751AF2548CFCC0016714B /* UIColorChannelSplitExtension.swift in Sources */,
 				3935781A256972FB00743E71 /* NormalToggleStyle.swift in Sources */,
 				399ED9342538EB360089BD95 /* MemeView.swift in Sources */,
@@ -452,13 +465,16 @@
 				39B9298225313E8500DFC401 /* Persistence.swift in Sources */,
 				39B9297B25313E8300DFC401 /* ContentView.swift in Sources */,
 				39B7517525487AA40016714B /* ViewRouter.swift in Sources */,
+				393578222569766200743E71 /* SingleColorBackground.swift in Sources */,
 				399ED92F2538EAA30089BD95 /* ImagePicker.swift in Sources */,
 				39B7518D2548B6F60016714B /* MemerooToggleStyle.swift in Sources */,
 				399ED9272538E9C30089BD95 /* ImageCropper.swift in Sources */,
 				39B751552543C8870016714B /* MemeProcessTabView.swift in Sources */,
 				39B7517B2548B63E0016714B /* ColorfulBackground.swift in Sources */,
 				39B7516D254878140016714B /* MemerooTabBar.swift in Sources */,
+				393578272569775900743E71 /* FocusedImageViewer.swift in Sources */,
 				39B9297925313E8300DFC401 /* MemerooApp.swift in Sources */,
+				3935782C256AC24000743E71 /* CGSizeOperatorOverload.swift in Sources */,
 				39B75165254639BE0016714B /* Constants.swift in Sources */,
 				39B751A22548CF640016714B /* LinearGradientCustomInit.swift in Sources */,
 				39B7515A2543CAB80016714B /* ShareSheetView.swift in Sources */,

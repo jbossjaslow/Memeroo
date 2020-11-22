@@ -10,4 +10,5 @@ import Combine
 
 class ViewRouter: ObservableObject {
 	@Published var currentView: TabType = .background
+	@Published var showingFocusedImage: Bool = false
 }

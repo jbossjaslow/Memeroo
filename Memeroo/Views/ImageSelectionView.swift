@@ -74,15 +74,6 @@ struct ImageSelectionView: View {
 	}
 }
 
-struct SingleColorBackground: ViewModifier {
-	let color: Color
-	
-	func body(content: Content) -> some View {
-		content
-			.background(color.edgesIgnoringSafeArea(.all))
-	}
-}
-
 struct ImageSelectionView_Previews: PreviewProvider {
 	static var previews: some View {
 		ImageSelectionView()

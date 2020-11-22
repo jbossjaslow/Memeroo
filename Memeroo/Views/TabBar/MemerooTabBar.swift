@@ -14,25 +14,38 @@ struct MemerooTabBar: View {
 	
 	var body: some View {
 		GeometryReader { geometry in
-			VStack {
-				switch viewRouter.currentView {
-					case .background: ImageSelectionView()
-					case .caption: EditCaptionView()
+			ZStack {
+				VStack {
+					switch viewRouter.currentView {
+						case .background: ImageSelectionView()
+						case .caption: EditCaptionView()
+					}
+					
+					HStack {
+						TabIcon(tabType: .background,
+								geometry: geometry)
+						
+						ShareButton()
+							.offset(y: (-geometry.size.height / 10) / 2)
+						
+						TabIcon(tabType: .caption,
+								geometry: geometry)
+					}
+					.padding(.bottom, 5)
+					.frame(width: geometry.size.width, height: geometry.size.height/10)
+					.background(Color.offWhite.shadow(radius: 2))
 				}
+				.disabled(viewRouter.showingFocusedImage)
+				.zIndex(0)
 				
-				HStack {
-					TabIcon(tabType: .background,
-							geometry: geometry)
-					
-					ShareButton()
-						.offset(y: (-geometry.size.height / 10) / 2)
-					
-					TabIcon(tabType: .caption,
-							geometry: geometry)
+				if viewRouter.showingFocusedImage,
+				   let memeImage = meme.image {
+					FocusedImageViewer(image: Image(uiImage: memeImage)) {
+						//removal
+						viewRouter.showingFocusedImage = false
+					}
+					.zIndex(1)
 				}
-				.padding(.bottom, 5)
-				.frame(width: geometry.size.width, height: geometry.size.height/10)
-				.background(Color.offWhite.shadow(radius: 2))
 			}
 			.edgesIgnoringSafeArea(.bottom)
 		}

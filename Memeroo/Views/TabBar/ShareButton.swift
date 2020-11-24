@@ -29,6 +29,7 @@ struct ShareButton: View {
 //			.buttonStyle(ColorfulShareSheetStyle(shape: Circle(),
 //												 colorTheme: .offWhite))
 		}
+		.shadow(color: Color.black.opacity(0.5), radius: 5)
 	}
 	
 	func showShareSheet() {

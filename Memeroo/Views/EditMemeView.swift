@@ -1,8 +1,8 @@
 //
-//  ImageSelectionView.swift
+//  EditMemeView.swift
 //  Memeroo
 //
-//  Created by Josh Jaslow on 10/9/20.
+//  Created by Josh Jaslow on 11/23/20.
 //
 
 import SwiftUI
@@ -15,30 +15,41 @@ enum ActiveSheet: Identifiable {
 	}
 }
 
-struct ImageSelectionView: View {
+struct EditMemeView: View {
+	@EnvironmentObject var viewRouter: ViewRouter
 	@EnvironmentObject var meme: Meme
 	
 	@State fileprivate var activeSheet: ActiveSheet?
 	
-	var body: some View {
+	var textColor: Color {
+		switch viewRouter.currentView {
+			case .background: return .gray
+			case .caption: return .black
+		}
+	}
+	
+    var body: some View {
 		VStack(spacing: 0) {
 			Spacer()
 			
 			TextField(Constants.defaultCaptionText,
 					  text: $meme.caption)
 				.font(.system(size: 14))
-				.foregroundColor(.gray)
+				.foregroundColor(textColor)
 				.frame(height: 50)
 				.padding(.horizontal, 10)
 				.background(Color.white)
-				.disabled(true)
+				.disabled(viewRouter.currentView == .background)
 			
 			if let memeImage = meme.image {
 				Image(uiImage: memeImage)
 					.resizable()
 					.scaledToFit()
 					.onTapGesture {
-						self.activeSheet = .picker
+						//if image is nil, don't bother showing focused image
+						withAnimation {
+							viewRouter.showingFocusedImage = meme.image != nil
+						}
 					}
 			} else {
 				Button {
@@ -67,16 +78,17 @@ struct ImageSelectionView: View {
 		}
 		//		.padding(.horizontal)
 		.modifier(SingleColorBackground(color: Color.myPink))
-	}
+    }
 	
 	private func dismiss(showCropperView: Bool) {
 		activeSheet = showCropperView ? .cropper : nil
 	}
 }
 
-struct ImageSelectionView_Previews: PreviewProvider {
-	static var previews: some View {
-		ImageSelectionView()
+struct EditMemeView_Previews: PreviewProvider {
+    static var previews: some View {
+        EditMemeView()
 			.environmentObject(Meme().TestMeme())
-	}
+			.environmentObject(ViewRouter())
+    }
 }

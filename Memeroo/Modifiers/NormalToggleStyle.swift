@@ -24,7 +24,9 @@ struct NormalToggleStyle<S: Shape>: ToggleStyle {
 						   colorTheme: colorTheme)
 			)
 			.onTapGesture {
-				viewRouter.currentView = tabType
+				withAnimation {
+					viewRouter.currentView = tabType
+				}
 			}
 	}
 	

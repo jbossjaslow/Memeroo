@@ -12,6 +12,9 @@
 		393578272569775900743E71 /* FocusedImageViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393578262569775900743E71 /* FocusedImageViewer.swift */; };
 		3935782C256AC24000743E71 /* CGSizeOperatorOverload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3935782B256AC24000743E71 /* CGSizeOperatorOverload.swift */; };
 		39357831256AD97C00743E71 /* SingleColorBackgroundExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39357830256AD97C00743E71 /* SingleColorBackgroundExtension.swift */; };
+		3935783C256CABE100743E71 /* TabStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3935783B256CABE100743E71 /* TabStack.swift */; };
+		39357844256CB24C00743E71 /* EditButtonStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39357843256CB24C00743E71 /* EditButtonStack.swift */; };
+		3935784C256CB6AB00743E71 /* EditMemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3935784B256CB6AB00743E71 /* EditMemeView.swift */; };
 		39882C79253922480072C2A5 /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39882C78253922480072C2A5 /* Meme.swift */; };
 		399ED91D2538E8E90089BD95 /* CaptureViewContextExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399ED91C2538E8E90089BD95 /* CaptureViewContextExtension.swift */; };
 		399ED9272538E9C30089BD95 /* ImageCropper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399ED9262538E9C30089BD95 /* ImageCropper.swift */; };
@@ -68,6 +71,9 @@
 		393578262569775900743E71 /* FocusedImageViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusedImageViewer.swift; sourceTree = "<group>"; };
 		3935782B256AC24000743E71 /* CGSizeOperatorOverload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGSizeOperatorOverload.swift; sourceTree = "<group>"; };
 		39357830256AD97C00743E71 /* SingleColorBackgroundExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleColorBackgroundExtension.swift; sourceTree = "<group>"; };
+		3935783B256CABE100743E71 /* TabStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabStack.swift; sourceTree = "<group>"; };
+		39357843256CB24C00743E71 /* EditButtonStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditButtonStack.swift; sourceTree = "<group>"; };
+		3935784B256CB6AB00743E71 /* EditMemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMemeView.swift; sourceTree = "<group>"; };
 		39882C78253922480072C2A5 /* Meme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
 		399ED91C2538E8E90089BD95 /* CaptureViewContextExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureViewContextExtension.swift; sourceTree = "<group>"; };
 		399ED9262538E9C30089BD95 /* ImageCropper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCropper.swift; sourceTree = "<group>"; };
@@ -188,12 +194,11 @@
 			children = (
 				39B751792548B61C0016714B /* Neumorphic Views */,
 				399ED9252538E9A90089BD95 /* ViewRepresentable */,
-				39B929AC25313F6F00DFC401 /* ImageSelectionView.swift */,
 				399ED9332538EB360089BD95 /* MemeView.swift */,
-				39B7515E25462FA60016714B /* EditCaptionView.swift */,
+				393578262569775900743E71 /* FocusedImageViewer.swift */,
+				3935784B256CB6AB00743E71 /* EditMemeView.swift */,
 				39B7519A2548B7BC0016714B /* Deprecated */,
 				39B751962548B7A90016714B /* TabBar */,
-				393578262569775900743E71 /* FocusedImageViewer.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -231,6 +236,8 @@
 				39B7516C254878140016714B /* MemerooTabBar.swift */,
 				39B751872548B6C80016714B /* ShareButton.swift */,
 				39B751912548B71E0016714B /* TabIcon.swift */,
+				3935783B256CABE100743E71 /* TabStack.swift */,
+				39357843256CB24C00743E71 /* EditButtonStack.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -238,8 +245,10 @@
 		39B7519A2548B7BC0016714B /* Deprecated */ = {
 			isa = PBXGroup;
 			children = (
+				39B7515E25462FA60016714B /* EditCaptionView.swift */,
 				39B751542543C8870016714B /* MemeProcessTabView.swift */,
 				39B751592543CAB80016714B /* ShareSheetView.swift */,
+				39B929AC25313F6F00DFC401 /* ImageSelectionView.swift */,
 			);
 			path = Deprecated;
 			sourceTree = "<group>";
@@ -453,11 +462,13 @@
 				39B929AD25313F6F00DFC401 /* ImageSelectionView.swift in Sources */,
 				39B751B42548CFE80016714B /* DoubleAverageExtension.swift in Sources */,
 				399ED91D2538E8E90089BD95 /* CaptureViewContextExtension.swift in Sources */,
+				3935784C256CB6AB00743E71 /* EditMemeView.swift in Sources */,
 				39B7515F25462FA60016714B /* EditCaptionView.swift in Sources */,
 				39B751922548B71E0016714B /* TabIcon.swift in Sources */,
 				39357831256AD97C00743E71 /* SingleColorBackgroundExtension.swift in Sources */,
 				39B751AF2548CFCC0016714B /* UIColorChannelSplitExtension.swift in Sources */,
 				3935781A256972FB00743E71 /* NormalToggleStyle.swift in Sources */,
+				39357844256CB24C00743E71 /* EditButtonStack.swift in Sources */,
 				399ED9342538EB360089BD95 /* MemeView.swift in Sources */,
 				39B9298525313E8500DFC401 /* Memeroo.xcdatamodeld in Sources */,
 				39B751832548B67E0016714B /* ColorfulShareSheetStyle.swift in Sources */,
@@ -465,6 +476,7 @@
 				39B9298225313E8500DFC401 /* Persistence.swift in Sources */,
 				39B9297B25313E8300DFC401 /* ContentView.swift in Sources */,
 				39B7517525487AA40016714B /* ViewRouter.swift in Sources */,
+				3935783C256CABE100743E71 /* TabStack.swift in Sources */,
 				393578222569766200743E71 /* SingleColorBackground.swift in Sources */,
 				399ED92F2538EAA30089BD95 /* ImagePicker.swift in Sources */,
 				39B7518D2548B6F60016714B /* MemerooToggleStyle.swift in Sources */,

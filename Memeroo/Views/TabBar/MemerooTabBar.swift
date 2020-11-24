@@ -15,28 +15,15 @@ struct MemerooTabBar: View {
 	var body: some View {
 		GeometryReader { geometry in
 			ZStack {
-				VStack {
-					switch viewRouter.currentView {
-						case .background: ImageSelectionView()
-						case .caption: EditCaptionView()
-					}
+				VStack(spacing: 0) {
+					EditMemeView()
 					
-					HStack {
-						TabIcon(tabType: .background,
-								geometry: geometry)
-						
-						ShareButton()
-							.offset(y: (-geometry.size.height / 10) / 2)
-						
-						TabIcon(tabType: .caption,
-								geometry: geometry)
-					}
-					.padding(.bottom, 5)
-					.frame(width: geometry.size.width, height: geometry.size.height/10)
-					.background(Color.offWhite.shadow(radius: 2))
+					EditButtonStack()
+					
+					TabStack(geometry: geometry)
 				}
 				.disabled(viewRouter.showingFocusedImage)
-				.zIndex(0)
+				.zIndex(0) //necessary for animations on zstack
 				
 				if viewRouter.showingFocusedImage,
 				   let memeImage = meme.image {
@@ -44,10 +31,12 @@ struct MemerooTabBar: View {
 						//removal
 						viewRouter.showingFocusedImage = false
 					}
-					.zIndex(1)
+					.zIndex(1) //necessary for animations on zstack
 				}
 			}
 			.edgesIgnoringSafeArea(.bottom)
+			.singleColorBackground(color: .myPink)
+			.animation(.easeOut)
 		}
 	}
 }

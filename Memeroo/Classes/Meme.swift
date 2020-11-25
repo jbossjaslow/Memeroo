@@ -12,6 +12,10 @@ class Meme: ObservableObject {
 	@Published var image: UIImage?
 	@Published var renderedImage: UIImage = UIImage()
 	
+	@Published var fontSize: CGFloat = 14
+	@Published var fontColor: Color = Color.TextColors.defaultTextColor
+	@Published var fontFamily: String = "system"
+	
 	func renderInternal() {
 		guard let memeImage = image else { return }
 		self.renderedImage = MemeView.renderMemeView(caption: caption,

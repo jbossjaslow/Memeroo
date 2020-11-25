@@ -24,7 +24,7 @@ struct EditMemeView: View {
 	var textColor: Color {
 		switch viewRouter.currentView {
 			case .background: return .gray
-			case .caption: return .black
+			case .caption: return meme.fontColor
 		}
 	}
 	
@@ -34,7 +34,8 @@ struct EditMemeView: View {
 			
 			TextField(Constants.defaultCaptionText,
 					  text: $meme.caption)
-				.font(.system(size: 14))
+				.font(.custom(meme.fontFamily,
+							  size: meme.fontSize))
 				.foregroundColor(textColor)
 				.frame(height: 50)
 				.padding(.horizontal, 10)
@@ -64,6 +65,7 @@ struct EditMemeView: View {
 							.font(.headline)
 					}
 				}
+				.disabled(viewRouter.currentView == .caption)
 			}
 			
 			Spacer()

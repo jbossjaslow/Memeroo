@@ -17,6 +17,7 @@ enum EditStackSubMenuType: String {
 
 struct EditButtonStack: View {
 	@EnvironmentObject var viewRouter: ViewRouter
+	@EnvironmentObject var meme: Meme
 	
 	@State private var currentSubMenu: EditStackSubMenuType = .none
 	
@@ -24,13 +25,22 @@ struct EditButtonStack: View {
 		ZStack(alignment: .bottom) {
 			HStack {
 				Spacer()
-				Text("SubMenu: \(currentSubMenu.rawValue)")
+				switch currentSubMenu {
+					case .font: fontTypeView()
+					case .size: fontSizeView()
+					case .color: fontColorView()
+					case .chooseImage: EmptyView()
+					case .none: EmptyView()
+				}
 				Spacer()
 			}
 			.frame(height: 40)
 			.background(Color(.green))
 			.offset(y: currentSubMenu == .none ? 0 : -40)
 			.animation(currentSubMenu == .none ? .easeIn : .easeOut)
+			.onChange(of: viewRouter.currentView, perform: { value in
+				currentSubMenu = .none
+			})
 			
 			HStack(spacing: 40) {
 				Spacer()
@@ -60,6 +70,72 @@ struct EditButtonStack: View {
 		.frame(height: 40)
     }
 	
+	private struct fontTypeView: View {
+		@EnvironmentObject var meme: Meme
+		
+		var body: some View {
+			ScrollView(.horizontal, showsIndicators: false) {
+				HStack(spacing: 15) {
+					Divider()
+						.background(Color.TextColors.defaultTextColor)
+					
+					ForEach(values: Fonts.allFontFamilies) { font in
+						Group {
+							Text(font)
+								.font(.custom(font, size: 12))
+								.foregroundColor(Color.TextColors.defaultTextColor)
+								.onTapGesture {
+									meme.fontFamily = font
+								}
+							
+							Divider()
+								.background(Color.TextColors.defaultTextColor)
+						}
+					}
+				}
+			}
+			.animation(.easeInOut)
+			.transition(.move(edge: .bottom))
+		}
+	}
+	
+	private struct fontSizeView: View {
+		@EnvironmentObject var meme: Meme
+		
+		var body: some View {
+			HStack {
+				Text("\(Int(meme.fontSize))")
+				
+				Slider(value: $meme.fontSize,
+					   in: 8...72,
+					   step: 2)
+			}
+			.animation(.easeInOut)
+			.transition(.move(edge: .bottom))
+		}
+	}
+	
+	private struct fontColorView: View {
+		@EnvironmentObject var meme: Meme
+		
+		var body: some View {
+			ScrollView(.horizontal, showsIndicators: false) {
+				HStack(spacing: 15) {
+					ForEach(Color.TextColors.colorsList) { color in
+						color
+							.frame(width: 25, height: 25)
+							.border(Color.black, width: 2)
+							.onTapGesture {
+								meme.fontColor = color
+							}
+					}
+				}
+			}
+			.animation(.easeInOut)
+			.transition(.move(edge: .bottom))
+		}
+	}
+	
 	private struct MenuButton: View {
 		var buttonType: EditStackSubMenuType
 		@Binding var currentSubMenu: EditStackSubMenuType
@@ -83,6 +159,7 @@ struct EditButtonStack: View {
 struct EditButtonStack_Previews: PreviewProvider {
     static var previews: some View {
         EditButtonStack()
-			.environmentObject(ViewRouter())
+			.environmentObject(ViewRouter().setCaption())
+			.environmentObject(Meme().TestMeme())
     }
 }

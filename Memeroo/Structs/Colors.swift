@@ -37,6 +37,10 @@ extension Color {
 		
 		static let defaultTextColor = Color("Default Text Color")
 	}
+	
+	struct CaptionColor {
+		
+	}
 }
 
 extension Color: Identifiable {

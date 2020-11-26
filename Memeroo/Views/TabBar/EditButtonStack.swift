@@ -7,19 +7,13 @@
 
 import SwiftUI
 
-enum EditStackSubMenuType: String {
-	case font = "Font"
-	case size = "Size"
-	case color = "Color"
-	case chooseImage = "Choose Image"
-	case none = ""
-}
-
 struct EditButtonStack: View {
 	@EnvironmentObject var viewRouter: ViewRouter
 	@EnvironmentObject var meme: Meme
 	
 	@State private var currentSubMenu: EditStackSubMenuType = .none
+	
+	var chooseImage: (() -> Void)? = nil
 	
     var body: some View {
 		ZStack(alignment: .bottom) {
@@ -30,17 +24,19 @@ struct EditButtonStack: View {
 					case .size: fontSizeView()
 					case .color: fontColorView()
 					case .chooseImage: EmptyView()
+					case .captionBackgroundColor:
+						captionBackgroundColorView(blackLevel: meme.captionColor.red)
 					case .none: EmptyView()
 				}
 				Spacer()
 			}
 			.frame(height: 40)
-			.background(Color(.green))
+			.background(Color.white)
 			.offset(y: currentSubMenu == .none ? 0 : -40)
 			.animation(currentSubMenu == .none ? .easeIn : .easeOut)
-			.onChange(of: viewRouter.currentView, perform: { value in
+			.onChange(of: viewRouter.currentView) { _ in
 				currentSubMenu = .none
-			})
+			}
 			
 			HStack(spacing: 40) {
 				Spacer()
@@ -58,6 +54,11 @@ struct EditButtonStack: View {
 						
 					case .background:
 						MenuButton(buttonType: .chooseImage,
+								   currentSubMenu: $currentSubMenu) {
+							chooseImage?()
+						}
+						
+						MenuButton(buttonType: .captionBackgroundColor,
 								   currentSubMenu: $currentSubMenu)
 				}
 				
@@ -136,14 +137,44 @@ struct EditButtonStack: View {
 		}
 	}
 	
+	private struct captionBackgroundColorView: View {
+		@EnvironmentObject var meme: Meme
+		@State var blackLevel: Double
+		
+		var body: some View {
+			HStack {
+				meme.captionColor
+					.frame(width: 25, height: 25)
+					.border(Color.black, width: 2)
+				
+				Slider(value: $blackLevel,
+					   in: 0...1.0,
+					   step: 0.05)
+					.onChange(of: blackLevel) { _ in
+						meme.captionColor = Color(red: blackLevel,
+												  green: blackLevel,
+												  blue: blackLevel)
+					}
+			}
+			.animation(.easeInOut)
+			.transition(.move(edge: .bottom))
+		}
+	}
+	
 	private struct MenuButton: View {
 		var buttonType: EditStackSubMenuType
 		@Binding var currentSubMenu: EditStackSubMenuType
 		
+		var chooseImage: (() -> Void)? = nil
+		
 		var body: some View {
 			Button {
 				withAnimation {
-					if currentSubMenu == buttonType {
+					if buttonType == .chooseImage  {
+						currentSubMenu = .none
+						chooseImage?()
+					}
+					else if currentSubMenu == buttonType {
 						currentSubMenu = .none
 					} else {
 						currentSubMenu = buttonType

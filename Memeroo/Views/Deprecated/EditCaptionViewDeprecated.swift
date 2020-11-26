@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct EditCaptionView: View {
+struct EditCaptionViewDeprecated: View {
 	@EnvironmentObject var meme: Meme
 	@EnvironmentObject var viewRouter: ViewRouter
 	

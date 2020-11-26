@@ -7,11 +7,6 @@
 
 import SwiftUI
 
-enum TabType {
-	case background
-	case caption
-}
-
 struct TabIcon: View {
 	@EnvironmentObject var viewRouter: ViewRouter
 	

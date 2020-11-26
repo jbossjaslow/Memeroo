@@ -12,13 +12,21 @@ struct MemerooTabBar: View {
 	@EnvironmentObject var viewRouter: ViewRouter
 	@EnvironmentObject var meme: Meme
 	
+	@State fileprivate var activeSheet: ActiveSheet?
+	
 	var body: some View {
 		GeometryReader { geometry in
 			ZStack {
 				VStack(spacing: 0) {
-					EditMemeView()
+					EditMemeView() {
+						//choose image chosen
+						activeSheet = .picker
+					}
 					
-					EditButtonStack()
+					EditButtonStack() {
+						//choose image chosen
+						activeSheet = .picker
+					}
 					
 					TabStack(geometry: geometry)
 				}
@@ -32,12 +40,27 @@ struct MemerooTabBar: View {
 						viewRouter.showingFocusedImage = false
 					}
 					.zIndex(1) //necessary for animations on zstack
+				} else if viewRouter.editingCaption {
+					EditCaptionView()
+						.zIndex(1) //necessary for animations on zstack
 				}
 			}
 			.edgesIgnoringSafeArea(.bottom)
 			.singleColorBackground(color: .myPink)
 			.animation(.easeOut)
+			.sheet(item: $activeSheet) { sheet in
+				switch sheet {
+					case .picker:
+						ImagePicker(dismissFuncShouldShowCropper: dismiss(showCropperView:))
+					case .cropper:
+						ImageCropper(dismissFuncShouldShowCropper: dismiss(showCropperView:))
+				}
+			}
 		}
+	}
+	
+	private func dismiss(showCropperView: Bool) {
+		activeSheet = showCropperView ? .cropper : nil
 	}
 }
 

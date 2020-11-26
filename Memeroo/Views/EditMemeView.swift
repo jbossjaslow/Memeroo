@@ -7,19 +7,11 @@
 
 import SwiftUI
 
-enum ActiveSheet: Identifiable {
-	case picker, cropper
-	
-	var id: Int {
-		hashValue
-	}
-}
-
 struct EditMemeView: View {
 	@EnvironmentObject var viewRouter: ViewRouter
 	@EnvironmentObject var meme: Meme
 	
-	@State fileprivate var activeSheet: ActiveSheet?
+	var chooseImage: (() -> Void)? = nil
 	
 	var textColor: Color {
 		switch viewRouter.currentView {
@@ -32,15 +24,32 @@ struct EditMemeView: View {
 		VStack(spacing: 0) {
 			Spacer()
 			
-			TextField(Constants.defaultCaptionText,
-					  text: $meme.caption)
-				.font(.custom(meme.fontFamily,
-							  size: meme.fontSize))
-				.foregroundColor(textColor)
-				.frame(height: 50)
-				.padding(.horizontal, 10)
-				.background(Color.white)
-				.disabled(viewRouter.currentView == .background)
+			HStack {
+				if meme.alignment == .trailing || meme.alignment == .center {
+					Spacer()
+				}
+				
+				Text(meme.caption)
+					.font(.custom(meme.fontFamily,
+								  size: meme.fontSize))
+					.foregroundColor(textColor)
+					.padding(.horizontal, 10)
+					.padding(.vertical, 15)
+					.multilineTextAlignment(meme.alignment)
+				
+				if meme.alignment == .leading || meme.alignment == .center {
+					Spacer()
+				}
+			}
+			.contentShape(Rectangle())
+			.onTapGesture {
+				withAnimation {
+					if viewRouter.currentView == .caption {
+						viewRouter.editingCaption = true
+					}
+				}
+			}
+			.background(meme.captionColor)
 			
 			if let memeImage = meme.image {
 				Image(uiImage: memeImage)
@@ -54,7 +63,7 @@ struct EditMemeView: View {
 					}
 			} else {
 				Button {
-					self.activeSheet = .picker
+					self.chooseImage?()
 				} label: {
 					ZStack {
 						Rectangle()
@@ -70,21 +79,8 @@ struct EditMemeView: View {
 			
 			Spacer()
 		}
-		.sheet(item: $activeSheet) { sheet in
-			switch sheet {
-				case .picker:
-					ImagePicker(dismissFuncShouldShowCropper: dismiss(showCropperView:))
-				case .cropper:
-					ImageCropper(dismissFuncShouldShowCropper: dismiss(showCropperView:))
-			}
-		}
-		//		.padding(.horizontal)
 		.modifier(SingleColorBackground(color: Color.myPink))
     }
-	
-	private func dismiss(showCropperView: Bool) {
-		activeSheet = showCropperView ? .cropper : nil
-	}
 }
 
 struct EditMemeView_Previews: PreviewProvider {

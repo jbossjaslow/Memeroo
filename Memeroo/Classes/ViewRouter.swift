@@ -11,6 +11,7 @@ import Combine
 class ViewRouter: ObservableObject {
 	@Published var currentView: TabType = .background
 	@Published var showingFocusedImage: Bool = false
+	@Published var editingCaption: Bool = false
 	
 	#if DEBUG
 	func setCaption() -> Self {

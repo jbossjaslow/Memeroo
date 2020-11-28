@@ -25,7 +25,7 @@ struct EditMemeView: View {
 			Spacer()
 			
 			HStack {
-				if meme.alignment == .trailing || meme.alignment == .center {
+				if meme.alignment != .leading {
 					Spacer()
 				}
 				
@@ -37,7 +37,7 @@ struct EditMemeView: View {
 					.padding(.vertical, 15)
 					.multilineTextAlignment(meme.alignment)
 				
-				if meme.alignment == .leading || meme.alignment == .center {
+				if meme.alignment != .trailing {
 					Spacer()
 				}
 			}
@@ -79,6 +79,7 @@ struct EditMemeView: View {
 			
 			Spacer()
 		}
+		.padding(.horizontal)
 		.modifier(SingleColorBackground(color: Color.myPink))
     }
 }

@@ -67,6 +67,7 @@ struct EditButtonStack: View {
 			.frame(height: 40)
 			.background(Color.white)
 			.animation(.easeOut)
+			.shadow(radius: currentSubMenu == .none ? 0 : 1, y: currentSubMenu == .none ? 0 : -1)
 		}
 		.frame(height: 40)
     }

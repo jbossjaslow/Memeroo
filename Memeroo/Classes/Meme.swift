@@ -19,14 +19,16 @@ class Meme: ObservableObject {
 	
 	@Published var captionColor: Color = .white
 	
-	func renderInternal() {
-		guard image != nil else { return }
-		self.renderedImage = MemeView.renderMemeView(self)
-	}
+	@Published var renderingImage: Bool = false
+	var currentMemeView: AnyView?
 	
 	func render() -> UIImage {
-		guard image != nil else { return UIImage() }
-		return MemeView.renderMemeView(self)
+		guard image != nil,
+			  let currView = currentMemeView else { return UIImage() }
+		renderingImage = true
+		return currView.asImage() {
+			renderingImage = false
+		}
 	}
 }
 

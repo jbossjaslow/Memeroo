@@ -34,6 +34,6 @@ struct MemeView {
 		}
 		.padding(.horizontal)
 		
-		return stack.asImage()
+		return stack.asImage(completion: {})
 	}
 }

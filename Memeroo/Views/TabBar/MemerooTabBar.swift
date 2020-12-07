@@ -18,10 +18,14 @@ struct MemerooTabBar: View {
 		GeometryReader { geometry in
 			ZStack {
 				VStack(spacing: 0) {
+					Spacer()
+					
 					EditMemeView() {
 						//choose image chosen
 						activeSheet = .picker
 					}
+					
+					Spacer()
 					
 					EditButtonStack() {
 						//choose image chosen

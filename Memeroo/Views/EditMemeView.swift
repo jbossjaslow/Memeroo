@@ -22,8 +22,6 @@ struct EditMemeView: View {
 	
     var body: some View {
 		VStack(spacing: 0) {
-			Spacer()
-			
 			HStack {
 				if meme.alignment != .leading {
 					Spacer()
@@ -76,11 +74,16 @@ struct EditMemeView: View {
 				}
 				.disabled(viewRouter.currentView == .caption)
 			}
-			
-			Spacer()
 		}
-		.padding(.horizontal)
-		.modifier(SingleColorBackground(color: Color.myPink))
+		.padding(.horizontal,
+				 meme.renderingImage ? 0 : 10)
+		.onAppear {
+			meme.currentMemeView = AnyView(
+				self
+					.environmentObject(meme)
+					.environmentObject(viewRouter)
+			)
+		}
     }
 }
 

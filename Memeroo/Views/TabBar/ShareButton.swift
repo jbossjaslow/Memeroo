@@ -38,8 +38,7 @@ struct ShareButton: View {
 		let av = UIActivityViewController(activityItems: [imageToSend],
 										  applicationActivities: nil)
 		let root = UIApplication.shared.windows.first?.rootViewController
-		root?.present(av,
-					  animated: true)
+		root?.present(av, animated: true)
 	}
 }
 

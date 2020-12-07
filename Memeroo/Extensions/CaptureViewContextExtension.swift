@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension View {
-	func asImage() -> UIImage {
+	func asImage(completion: () -> Void) -> UIImage {
 		let controller = UIHostingController(rootView: self)
 
 		// locate far out of screen
@@ -19,14 +19,16 @@ extension View {
 		controller.view.bounds = CGRect(origin: .zero, size: size)
 		controller.view.sizeToFit()
 
-		let image = controller.view.asImage()
+		let image = controller.view.asImage() {
+			completion()
+		}
 		controller.view.removeFromSuperview()
 		return image
 	}
 }
 
 extension UIView {
-	func asImage() -> UIImage {
+	func asImage(completion: () -> Void) -> UIImage {
 		//remove 1 pixel of white space from right edge of image
 		let adjustedBounds = CGRect(x: 0,
 									y: 0,
@@ -42,7 +44,8 @@ extension UIView {
 // In some cases might be needed to make this asynchronously,
 // so uncomment below DispatchQueue if you'd same met crash
 //            DispatchQueue.main.async {
-				 layer.render(in: rendererContext.cgContext)
+			layer.render(in: rendererContext.cgContext)
+			completion()
 //            }
 		}
 	}

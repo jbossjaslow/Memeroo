@@ -36,7 +36,7 @@ struct MemeProcessTabView: View {
 				.tag(2)
 				.onChange(of: selectedView, perform: { value in
 					if value == 2 {
-						meme.renderInternal()
+//						meme.renderInternal()
 					}
 				})
 		}

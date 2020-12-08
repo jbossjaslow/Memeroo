@@ -39,8 +39,6 @@ struct EditButtonStack: View {
 			}
 			
 			HStack(spacing: 40) {
-				Spacer()
-				
 				switch viewRouter.currentView {
 					case .caption:
 						MenuButton(buttonType: .font,
@@ -61,8 +59,6 @@ struct EditButtonStack: View {
 						MenuButton(buttonType: .captionBackgroundColor,
 								   currentSubMenu: $currentSubMenu)
 				}
-				
-				Spacer()
 			}
 			.frame(height: 40)
 			.background(Color.white)
@@ -191,7 +187,7 @@ struct EditButtonStack: View {
 struct EditButtonStack_Previews: PreviewProvider {
     static var previews: some View {
         EditButtonStack()
-			.environmentObject(ViewRouter().setCaption())
+			.environmentObject(ViewRouter())
 			.environmentObject(Meme().TestMeme())
     }
 }

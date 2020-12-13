@@ -59,24 +59,11 @@ struct EditMemeView: View {
 							viewRouter.showingFocusedImage = meme.image != nil
 						}
 					}
-			} else {
-				Button {
-					self.chooseImage?()
-				} label: {
-					ZStack {
-						Rectangle()
-							.fill(Color.clear)
-						
-						Text("Tap to select a picture")
-							.foregroundColor(.white)
-							.font(.headline)
-					}
-				}
-				.disabled(viewRouter.currentView == .caption)
+			}
+			else {
+				Spacer()
 			}
 		}
-		.padding(.horizontal,
-				 meme.renderingImage ? 0 : 10)
 		.onAppear {
 			meme.currentMemeView = AnyView(
 				self

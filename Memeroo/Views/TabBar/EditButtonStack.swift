@@ -12,28 +12,29 @@ struct EditButtonStack: View {
 	@EnvironmentObject var meme: Meme
 	
 	@State private var currentSubMenu: EditStackSubMenuType = .none
+	@State private var menuHeight: CGFloat = 40
 	
 	var chooseImage: (() -> Void)? = nil
 	
     var body: some View {
 		ZStack(alignment: .bottom) {
 			HStack {
-				Spacer()
 				switch currentSubMenu {
-					case .font: fontTypeView()
-					case .size: fontSizeView()
-					case .color: fontColorView()
+					case .font: fontTypeView(currentSubMenu: $currentSubMenu,
+											 menuHeight: $menuHeight)
+					case .size: fontSizeView(currentSubMenu: $currentSubMenu,
+											 menuHeight: $menuHeight)
+					case .color: fontColorView(currentSubMenu: $currentSubMenu,
+											   menuHeight: $menuHeight)
 					case .chooseImage: EmptyView()
 					case .captionBackgroundColor:
-						captionBackgroundColorView(blackLevel: meme.captionColor.red)
+						captionBackgroundColorView(blackLevel: meme.captionColor.red,
+												   currentSubMenu: $currentSubMenu,
+												   menuHeight: $menuHeight)
 					case .none: EmptyView()
 				}
-				Spacer()
 			}
-			.frame(height: 40)
-			.background(Color.white)
-			.offset(y: currentSubMenu == .none ? 0 : -40)
-			.animation(currentSubMenu == .none ? .easeIn : .easeOut)
+			.background(Color.ViewColors.editButtonBackground)
 			.onChange(of: viewRouter.currentView) { _ in
 				currentSubMenu = .none
 			}
@@ -60,16 +61,21 @@ struct EditButtonStack: View {
 								   currentSubMenu: $currentSubMenu)
 				}
 			}
-			.frame(height: 40)
-			.background(Color.white)
+			.padding(.horizontal, 10)
 			.animation(.easeOut)
-			.shadow(radius: currentSubMenu == .none ? 0 : 1, y: currentSubMenu == .none ? 0 : -1)
+//			.shadow(radius: currentSubMenu == .none ? 0 : 1, y: currentSubMenu == .none ? 0 : -1)
+			.frame(height: menuHeight)
+			.frame(maxWidth: .infinity)
+			.background(Color.ViewColors.editButtonBackground)
 		}
-		.frame(height: 40)
+		.frame(height: menuHeight)
     }
 	
+	//MARK: - Sub Menus
 	private struct fontTypeView: View {
 		@EnvironmentObject var meme: Meme
+		@Binding var currentSubMenu: EditStackSubMenuType
+		@Binding var menuHeight: CGFloat
 		
 		var body: some View {
 			ScrollView(.horizontal, showsIndicators: false) {
@@ -92,44 +98,60 @@ struct EditButtonStack: View {
 					}
 				}
 			}
-			.animation(.easeInOut)
+			.padding(.horizontal, 10)
+			.frame(height: menuHeight)
+			.background(Color.ViewColors.editButtonBackground)
+			.offset(y: currentSubMenu == .none ? 0 : -menuHeight)
+			.animation(currentSubMenu == .none ? .easeIn : .easeOut)
 			.transition(.move(edge: .bottom))
 		}
 	}
 	
 	private struct fontSizeView: View {
 		@EnvironmentObject var meme: Meme
+		@Binding var currentSubMenu: EditStackSubMenuType
+		@Binding var menuHeight: CGFloat
 		
 		var body: some View {
 			HStack {
 				Text("\(Int(meme.fontSize))")
 				
 				Slider(value: $meme.fontSize,
-					   in: 8...72,
+					   in: 8...54,
 					   step: 2)
 			}
-			.animation(.easeInOut)
+			.padding(.horizontal, 10)
+			.frame(height: menuHeight)
+			.background(Color.ViewColors.editButtonBackground)
+			.offset(y: currentSubMenu == .none ? 0 : -menuHeight)
+			.animation(currentSubMenu == .none ? .easeIn : .easeOut)
 			.transition(.move(edge: .bottom))
 		}
 	}
 	
 	private struct fontColorView: View {
 		@EnvironmentObject var meme: Meme
+		@Binding var currentSubMenu: EditStackSubMenuType
+		@Binding var menuHeight: CGFloat
 		
 		var body: some View {
 			ScrollView(.horizontal, showsIndicators: false) {
 				HStack(spacing: 15) {
 					ForEach(Color.TextColors.colorsList) { color in
 						color
-							.frame(width: 25, height: 25)
-							.border(Color.black, width: 2)
+							.frame(width: 30, height: 30)
+							.border(Color.TextColors.defaultTextColor, width: 2)
 							.onTapGesture {
 								meme.fontColor = color
 							}
 					}
 				}
 			}
-			.animation(.easeInOut)
+			.padding(.horizontal, 10)
+			.frame(height: menuHeight)
+			.background(Color.ViewColors.editButtonBackground)
+			.offset(y: currentSubMenu == .none ? 0 : -menuHeight)
+			.animation(currentSubMenu == .none ? .easeIn : .easeOut)
 			.transition(.move(edge: .bottom))
 		}
 	}
@@ -137,11 +159,13 @@ struct EditButtonStack: View {
 	private struct captionBackgroundColorView: View {
 		@EnvironmentObject var meme: Meme
 		@State var blackLevel: Double
+		@Binding var currentSubMenu: EditStackSubMenuType
+		@Binding var menuHeight: CGFloat
 		
 		var body: some View {
 			HStack {
 				meme.captionColor
-					.frame(width: 25, height: 25)
+					.frame(width: 30, height: 30)
 					.border(Color.black, width: 2)
 				
 				Slider(value: $blackLevel,
@@ -153,11 +177,16 @@ struct EditButtonStack: View {
 												  blue: blackLevel)
 					}
 			}
-			.animation(.easeInOut)
+			.padding(.horizontal, 10)
+			.frame(height: menuHeight)
+			.background(Color.ViewColors.editButtonBackground)
+			.offset(y: currentSubMenu == .none ? 0 : -menuHeight)
+			.animation(currentSubMenu == .none ? .easeIn : .easeOut)
 			.transition(.move(edge: .bottom))
 		}
 	}
 	
+	//MARK: - Menu Button
 	private struct MenuButton: View {
 		var buttonType: EditStackSubMenuType
 		@Binding var currentSubMenu: EditStackSubMenuType

@@ -24,6 +24,11 @@ struct MemerooTabBar: View {
 						//choose image chosen
 						activeSheet = .picker
 					}
+					.onAppear {
+						DispatchQueue.main.async {
+							activeSheet = .picker
+						}
+					}
 					
 					Spacer()
 					

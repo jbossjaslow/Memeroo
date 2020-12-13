@@ -38,6 +38,10 @@ extension Color {
 		static let defaultTextColor = Color("Default Text Color")
 	}
 	
+	struct ViewColors {
+		static let editButtonBackground = Color("Edit Button Menu Background")
+	}
+	
 	struct CaptionColor {
 		
 	}

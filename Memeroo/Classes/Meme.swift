@@ -17,7 +17,7 @@ class Meme: ObservableObject {
 	@Published var fontFamily: String = "system"
 	@Published var alignment: TextAlignment = .leading
 	
-	@Published var captionColor: Color = .white
+	@Published var captionColor: Color = Color.ViewColors.editButtonBackground
 	
 	@Published var renderingImage: Bool = false
 	var currentMemeView: AnyView?

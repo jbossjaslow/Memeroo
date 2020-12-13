@@ -12,8 +12,6 @@ struct MemerooTabBar: View {
 	@EnvironmentObject var viewRouter: ViewRouter
 	@EnvironmentObject var meme: Meme
 	
-	@State fileprivate var activeSheet: ActiveSheet?
-	
 	var body: some View {
 		GeometryReader { geometry in
 			ZStack {
@@ -22,11 +20,11 @@ struct MemerooTabBar: View {
 					
 					EditMemeView() {
 						//choose image chosen
-						activeSheet = .picker
+						viewRouter.showingPicker = true
 					}
 					.onAppear {
 						DispatchQueue.main.async {
-							activeSheet = .picker
+							viewRouter.showingPicker = true
 						}
 					}
 					
@@ -34,7 +32,7 @@ struct MemerooTabBar: View {
 					
 					EditButtonStack() {
 						//choose image chosen
-						activeSheet = .picker
+						viewRouter.showingPicker = true
 					}
 					
 					TabStack(geometry: geometry)
@@ -57,20 +55,10 @@ struct MemerooTabBar: View {
 			.edgesIgnoringSafeArea(.bottom)
 			.singleColorBackground(color: .myPink)
 			.animation(.easeOut)
-			.sheet(item: $activeSheet) { sheet in
-				switch sheet {
-					case .picker:
-						ImagePicker(dismissFuncShouldShowCropper: dismiss(showCropperView:))
-//						ImagePickerWithNav(dismissFuncShouldShowCropper: dismiss(showCropperView:))
-					case .cropper:
-						ImageCropper(dismissFuncShouldShowCropper: dismiss(showCropperView:))
-				}
+			.sheet(isPresented: $viewRouter.showingPicker) {
+				SelectImageView()
 			}
 		}
-	}
-	
-	private func dismiss(showCropperView: Bool) {
-		activeSheet = showCropperView ? .cropper : nil
 	}
 }
 

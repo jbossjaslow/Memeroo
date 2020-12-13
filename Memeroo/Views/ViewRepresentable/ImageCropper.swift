@@ -11,7 +11,7 @@ import TOCropViewController
 struct ImageCropper: UIViewControllerRepresentable {
 	@EnvironmentObject var meme: Meme
 	
-	let dismissFuncShouldShowCropper: (Bool) -> Void
+	var dismiss: ((Bool) -> Void)? = nil
 	
 	func makeCoordinator() -> Coordinator {
 		Coordinator(self)
@@ -35,7 +35,7 @@ struct ImageCropper: UIViewControllerRepresentable {
 		
 		func cropViewController(_ cropViewController: TOCropViewController,
 								didFinishCancelled cancelled: Bool) {
-			parent.dismissFuncShouldShowCropper(false)
+			parent.dismiss?(true)
 		}
 		
 		func cropViewController(_ cropViewController: TOCropViewController,
@@ -43,14 +43,16 @@ struct ImageCropper: UIViewControllerRepresentable {
 								with cropRect: CGRect,
 								angle: Int) {
 			parent.meme.image = image
-			parent.dismissFuncShouldShowCropper(false)
+			parent.dismiss?(false)
 		}
 	}
 }
 
 struct ImageCropper_Previews: PreviewProvider {
 	static var previews: some View {
-		ImageCropper(dismissFuncShouldShowCropper: test(param:))
+		ImageCropper() { didCancel in
+			print("Cancelled: \(didCancel)")
+		}
 			.environmentObject(Meme())
 	}
 	

@@ -9,7 +9,8 @@ import SwiftUI
 
 struct ImagePicker: UIViewControllerRepresentable {
 	@EnvironmentObject var meme: Meme
-	let dismissFuncShouldShowCropper: (Bool) -> Void
+	
+	var onDismissShowCropper: ((Bool) -> Void)? = nil
 	
 	func makeCoordinator() -> Coordinator {
 		Coordinator(self)
@@ -36,21 +37,23 @@ struct ImagePicker: UIViewControllerRepresentable {
 								   didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
 			if let uiImage = info[.originalImage] as? UIImage {
 				parent.meme.image = uiImage
-				parent.dismissFuncShouldShowCropper(true)
+				parent.onDismissShowCropper?(true)
 			} else {
-				parent.dismissFuncShouldShowCropper(false)
+				parent.onDismissShowCropper?(false)
 			}
 		}
 		
 		func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-			parent.dismissFuncShouldShowCropper(false)
+			parent.onDismissShowCropper?(false)
 		}
 	}
 }
 
 struct ImagePicker_Previews: PreviewProvider {
 	static var previews: some View {
-		ImagePicker(dismissFuncShouldShowCropper: test(param:))
+		ImagePicker() { showCropper in
+			print(showCropper)
+		}
 			.environmentObject(Meme())
 	}
 	

@@ -12,6 +12,7 @@ class ViewRouter: ObservableObject {
 	@Published var currentView: TabType = .background
 	@Published var showingFocusedImage: Bool = false
 	@Published var editingCaption: Bool = false
+	@Published var showingPicker: Bool = false
 	
 	#if DEBUG
 	func setCaption() -> Self {

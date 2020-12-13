@@ -27,6 +27,7 @@
 		3935789525701CA000743E71 /* ViewEditingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3935789425701CA000743E71 /* ViewEditingExtension.swift */; };
 		3935789D25701CD000743E71 /* ViewEditingModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3935789C25701CD000743E71 /* ViewEditingModifier.swift */; };
 		393578A325701FFD00743E71 /* EditCaptionButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393578A225701FFD00743E71 /* EditCaptionButtons.swift */; };
+		39704C4E258688FD00018324 /* ImagePickerWithNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39704C4D258688FD00018324 /* ImagePickerWithNav.swift */; };
 		39882C79253922480072C2A5 /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39882C78253922480072C2A5 /* Meme.swift */; };
 		399ED91D2538E8E90089BD95 /* CaptureViewContextExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399ED91C2538E8E90089BD95 /* CaptureViewContextExtension.swift */; };
 		399ED9272538E9C30089BD95 /* ImageCropper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399ED9262538E9C30089BD95 /* ImageCropper.swift */; };
@@ -98,6 +99,7 @@
 		3935789425701CA000743E71 /* ViewEditingExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEditingExtension.swift; sourceTree = "<group>"; };
 		3935789C25701CD000743E71 /* ViewEditingModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEditingModifier.swift; sourceTree = "<group>"; };
 		393578A225701FFD00743E71 /* EditCaptionButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCaptionButtons.swift; sourceTree = "<group>"; };
+		39704C4D258688FD00018324 /* ImagePickerWithNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerWithNav.swift; sourceTree = "<group>"; };
 		39882C78253922480072C2A5 /* Meme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
 		399ED91C2538E8E90089BD95 /* CaptureViewContextExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureViewContextExtension.swift; sourceTree = "<group>"; };
 		399ED9262538E9C30089BD95 /* ImageCropper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCropper.swift; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 			children = (
 				399ED9262538E9C30089BD95 /* ImageCropper.swift */,
 				399ED92E2538EAA30089BD95 /* ImagePicker.swift */,
+				39704C4D258688FD00018324 /* ImagePickerWithNav.swift */,
 			);
 			path = ViewRepresentable;
 			sourceTree = "<group>";
@@ -522,6 +525,7 @@
 				39B7515F25462FA60016714B /* EditCaptionViewDeprecated.swift in Sources */,
 				39B751922548B71E0016714B /* TabIcon.swift in Sources */,
 				39357861256E0F9C00743E71 /* ForEachExtention.swift in Sources */,
+				39704C4E258688FD00018324 /* ImagePickerWithNav.swift in Sources */,
 				39357831256AD97C00743E71 /* SingleColorBackgroundExtension.swift in Sources */,
 				39B751AF2548CFCC0016714B /* UIColorChannelSplitExtension.swift in Sources */,
 				3935781A256972FB00743E71 /* NormalToggleStyle.swift in Sources */,

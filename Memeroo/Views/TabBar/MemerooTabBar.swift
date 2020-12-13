@@ -61,6 +61,7 @@ struct MemerooTabBar: View {
 				switch sheet {
 					case .picker:
 						ImagePicker(dismissFuncShouldShowCropper: dismiss(showCropperView:))
+//						ImagePickerWithNav(dismissFuncShouldShowCropper: dismiss(showCropperView:))
 					case .cropper:
 						ImageCropper(dismissFuncShouldShowCropper: dismiss(showCropperView:))
 				}

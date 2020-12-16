@@ -9,6 +9,7 @@ import SwiftUI
 import Combine
 
 class ViewRouter: ObservableObject {
+	@Published var showingMainMenu: Bool = true
 	@Published var currentView: TabType = .background
 	@Published var showingFocusedImage: Bool = false
 	@Published var editingCaption: Bool = false

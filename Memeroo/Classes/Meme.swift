@@ -8,6 +8,8 @@
 import SwiftUI
 
 class Meme: ObservableObject {
+	@Published var memeType: MemeType? = nil
+	
 	@Published var caption: String = Constants.defaultCaptionText
 	@Published var image: UIImage?
 	@Published var renderedImage: UIImage = UIImage()

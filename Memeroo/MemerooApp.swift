@@ -13,7 +13,7 @@ struct MemerooApp: App {
 
     var body: some Scene {
         WindowGroup {
-			MemerooTabBar()
+			MainView()
 				.environmentObject(ViewRouter())
 				.environmentObject(Meme())
 //			FocusedImageViewer(image: Image("TestImage"))

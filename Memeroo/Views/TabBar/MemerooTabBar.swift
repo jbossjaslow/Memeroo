@@ -23,7 +23,7 @@ struct MemerooTabBar: View {
 						viewRouter.showingPicker = true
 					}
 					.onAppear {
-						DispatchQueue.main.async {
+						DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
 							viewRouter.showingPicker = true
 						}
 					}

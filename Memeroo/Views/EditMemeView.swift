@@ -15,13 +15,19 @@ struct EditMemeView: View {
 	
 	var textColor: Color {
 		switch viewRouter.currentView {
-			case .background: return .gray
+			case .background:
+				if meme.caption == Constants.defaultCaptionText {
+					return .gray
+				} else {
+					return meme.fontColor
+				}
 			case .caption: return meme.fontColor
 		}
 	}
 	
     var body: some View {
 		VStack(spacing: 0) {
+			//Caption
 			HStack {
 				if meme.alignment != .leading {
 					Spacer()
@@ -49,6 +55,7 @@ struct EditMemeView: View {
 			}
 			.background(meme.captionColor)
 			
+			//Image
 			if let memeImage = meme.image {
 				Image(uiImage: memeImage)
 					.resizable()

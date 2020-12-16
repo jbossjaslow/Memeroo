@@ -36,6 +36,11 @@ struct MemerooTabBar: View {
 					}
 					
 					TabStack(geometry: geometry)
+						.onChange(of: viewRouter.currentView) { view in
+							if view == .caption && meme.caption == Constants.defaultCaptionText {
+								viewRouter.editingCaption = true
+							}
+						}
 				}
 				.disabled(viewRouter.showingFocusedImage)
 				.zIndex(0) //necessary for animations on zstack

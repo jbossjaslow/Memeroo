@@ -15,21 +15,25 @@ extension Color {
 	static let specialBlack = Color.black.opacity(0.2)
 	static let darkPink = Color(red: 112.5/255, green: 68.5/255, blue: 89/255)
 	
+	/// Red channel of current color
 	var red: Double {
 		let components = UIColor(self).rgba
 		return Double(components.red)
 	}
 	
+	/// Green channel of current color
 	var green: Double {
 		let components = UIColor(self).rgba
 		return Double(components.green)
 	}
 	
+	/// Blue channel of current color
 	var blue: Double {
 		let components = UIColor(self).rgba
 		return Double(components.blue)
 	}
 	
+	/// Alpha channel of current color
 	var alpha: Double {
 		let components = UIColor(self).rgba
 		return Double(components.alpha)

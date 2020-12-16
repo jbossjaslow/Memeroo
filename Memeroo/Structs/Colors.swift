@@ -45,6 +45,16 @@ extension Color {
 	struct CaptionColor {
 		
 	}
+	
+	func opposite() -> Color {
+		let newRed = abs(self.red - 1)
+		let newGreen = abs(self.green - 1)
+		let newBlue = abs(self.blue - 1)
+		
+		return Color(red: newRed,
+					 green: newGreen,
+					 blue: newBlue)
+	}
 }
 
 extension Color: Identifiable {

@@ -26,7 +26,12 @@
 		3935789525701CA000743E71 /* ViewEditingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3935789425701CA000743E71 /* ViewEditingExtension.swift */; };
 		3935789D25701CD000743E71 /* ViewEditingModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3935789C25701CD000743E71 /* ViewEditingModifier.swift */; };
 		393578A325701FFD00743E71 /* EditCaptionButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393578A225701FFD00743E71 /* EditCaptionButtons.swift */; };
-		39704C532586D1F400018324 /* ImagePickerWithNavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39704C522586D1F400018324 /* ImagePickerWithNavView.swift */; };
+		39362B97258A6394007053A0 /* FontTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39362B96258A6394007053A0 /* FontTypeView.swift */; };
+		39362B9F258A64B7007053A0 /* FontSizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39362B9E258A64B7007053A0 /* FontSizeView.swift */; };
+		39362BA4258A6510007053A0 /* FontColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39362BA3258A6510007053A0 /* FontColorView.swift */; };
+		39362BA9258A6555007053A0 /* CaptionBackgroundColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39362BA8258A6555007053A0 /* CaptionBackgroundColorView.swift */; };
+		39362BAE258A6598007053A0 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39362BAD258A6598007053A0 /* MenuButton.swift */; };
+		39704C532586D1F400018324 /* SelectImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39704C522586D1F400018324 /* SelectImageView.swift */; };
 		39882C79253922480072C2A5 /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39882C78253922480072C2A5 /* Meme.swift */; };
 		399ED91D2538E8E90089BD95 /* CaptureViewContextExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399ED91C2538E8E90089BD95 /* CaptureViewContextExtension.swift */; };
 		399ED9272538E9C30089BD95 /* ImageCropper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399ED9262538E9C30089BD95 /* ImageCropper.swift */; };
@@ -93,7 +98,12 @@
 		3935789425701CA000743E71 /* ViewEditingExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEditingExtension.swift; sourceTree = "<group>"; };
 		3935789C25701CD000743E71 /* ViewEditingModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEditingModifier.swift; sourceTree = "<group>"; };
 		393578A225701FFD00743E71 /* EditCaptionButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCaptionButtons.swift; sourceTree = "<group>"; };
-		39704C522586D1F400018324 /* ImagePickerWithNavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerWithNavView.swift; sourceTree = "<group>"; };
+		39362B96258A6394007053A0 /* FontTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontTypeView.swift; sourceTree = "<group>"; };
+		39362B9E258A64B7007053A0 /* FontSizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSizeView.swift; sourceTree = "<group>"; };
+		39362BA3258A6510007053A0 /* FontColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontColorView.swift; sourceTree = "<group>"; };
+		39362BA8258A6555007053A0 /* CaptionBackgroundColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptionBackgroundColorView.swift; sourceTree = "<group>"; };
+		39362BAD258A6598007053A0 /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
+		39704C522586D1F400018324 /* SelectImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectImageView.swift; sourceTree = "<group>"; };
 		39882C78253922480072C2A5 /* Meme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
 		399ED91C2538E8E90089BD95 /* CaptureViewContextExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureViewContextExtension.swift; sourceTree = "<group>"; };
 		399ED9262538E9C30089BD95 /* ImageCropper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCropper.swift; sourceTree = "<group>"; };
@@ -183,6 +193,19 @@
 			path = Caption;
 			sourceTree = "<group>";
 		};
+		39362B95258A634D007053A0 /* Edit Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				39357843256CB24C00743E71 /* EditButtonStack.swift */,
+				39362B96258A6394007053A0 /* FontTypeView.swift */,
+				39362B9E258A64B7007053A0 /* FontSizeView.swift */,
+				39362BA3258A6510007053A0 /* FontColorView.swift */,
+				39362BA8258A6555007053A0 /* CaptionBackgroundColorView.swift */,
+				39362BAD258A6598007053A0 /* MenuButton.swift */,
+			);
+			path = "Edit Buttons";
+			sourceTree = "<group>";
+		};
 		39882C77253922220072C2A5 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -232,13 +255,14 @@
 			isa = PBXGroup;
 			children = (
 				393578A125701FD900743E71 /* Caption */,
-				39B751792548B61C0016714B /* Neumorphic Views */,
-				399ED9252538E9A90089BD95 /* ViewRepresentable */,
-				393578262569775900743E71 /* FocusedImageViewer.swift */,
-				3935784B256CB6AB00743E71 /* EditMemeView.swift */,
-				39704C522586D1F400018324 /* ImagePickerWithNavView.swift */,
 				39B7519A2548B7BC0016714B /* Deprecated */,
+				39362B95258A634D007053A0 /* Edit Buttons */,
+				3935784B256CB6AB00743E71 /* EditMemeView.swift */,
+				393578262569775900743E71 /* FocusedImageViewer.swift */,
+				39704C522586D1F400018324 /* SelectImageView.swift */,
+				39B751792548B61C0016714B /* Neumorphic Views */,
 				39B751962548B7A90016714B /* TabBar */,
+				399ED9252538E9A90089BD95 /* ViewRepresentable */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -279,7 +303,6 @@
 				39B751872548B6C80016714B /* ShareButton.swift */,
 				39B751912548B71E0016714B /* TabIcon.swift */,
 				3935783B256CABE100743E71 /* TabStack.swift */,
-				39357843256CB24C00743E71 /* EditButtonStack.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -499,8 +522,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39362BAE258A6598007053A0 /* MenuButton.swift in Sources */,
 				3935789525701CA000743E71 /* ViewEditingExtension.swift in Sources */,
 				3935789D25701CD000743E71 /* ViewEditingModifier.swift in Sources */,
+				39362B9F258A64B7007053A0 /* FontSizeView.swift in Sources */,
 				3935786825700B6A00743E71 /* TabType.swift in Sources */,
 				39B751B42548CFE80016714B /* DoubleAverageExtension.swift in Sources */,
 				399ED91D2538E8E90089BD95 /* CaptureViewContextExtension.swift in Sources */,
@@ -517,10 +542,12 @@
 				39B9298525313E8500DFC401 /* Memeroo.xcdatamodeld in Sources */,
 				39357890257019B100743E71 /* EditCaptionButtonsStyle.swift in Sources */,
 				39B751832548B67E0016714B /* ColorfulShareSheetStyle.swift in Sources */,
-				39704C532586D1F400018324 /* ImagePickerWithNavView.swift in Sources */,
+				39704C532586D1F400018324 /* SelectImageView.swift in Sources */,
 				39B751AA2548CFAA0016714B /* NeumorphicColorExtension.swift in Sources */,
 				39B9298225313E8500DFC401 /* Persistence.swift in Sources */,
+				39362BA9258A6555007053A0 /* CaptionBackgroundColorView.swift in Sources */,
 				39B9297B25313E8300DFC401 /* ContentView.swift in Sources */,
+				39362BA4258A6510007053A0 /* FontColorView.swift in Sources */,
 				39B7517525487AA40016714B /* ViewRouter.swift in Sources */,
 				3935783C256CABE100743E71 /* TabStack.swift in Sources */,
 				393578222569766200743E71 /* SingleColorBackground.swift in Sources */,
@@ -536,6 +563,7 @@
 				39B9297925313E8300DFC401 /* MemerooApp.swift in Sources */,
 				3935782C256AC24000743E71 /* CGSizeOperatorOverload.swift in Sources */,
 				39B75165254639BE0016714B /* Constants.swift in Sources */,
+				39362B97258A6394007053A0 /* FontTypeView.swift in Sources */,
 				39357880257013FC00743E71 /* EditCaptionView.swift in Sources */,
 				39B751A22548CF640016714B /* LinearGradientCustomInit.swift in Sources */,
 				39882C79253922480072C2A5 /* Meme.swift in Sources */,

@@ -47,9 +47,9 @@ extension Color {
 	}
 	
 	func opposite() -> Color {
-		let newRed = abs(self.red - 1)
-		let newGreen = abs(self.green - 1)
-		let newBlue = abs(self.blue - 1)
+		let newRed = abs(self.redChannel - 1)
+		let newGreen = abs(self.greenChannel - 1)
+		let newBlue = abs(self.blueChannel - 1)
 		
 		return Color(red: newRed,
 					 green: newGreen,

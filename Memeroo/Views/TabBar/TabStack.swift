@@ -8,29 +8,45 @@
 import SwiftUI
 
 struct TabStack: View {
-	
-	@State var geometry: GeometryProxy
+	@EnvironmentObject var viewRouter: ViewRouter
+	@EnvironmentObject var meme: Meme
 	
 	var body: some View {
-		HStack {
+		HStack() {
 			Spacer()
 			
-			TabIcon(tabType: .background,
-					geometry: geometry)
+			TabIcon(tabType: .background)
 			
 			Spacer()
 			
-			ShareButton()
-//				.offset(y: (-geometry.size.height / 10) / 2)
-			Spacer()
-			
-			TabIcon(tabType: .caption,
-					geometry: geometry)
+			TabIcon(tabType: .caption)
 			
 			Spacer()
 		}
-		.padding(.bottom, 5)
-		.frame(width: geometry.size.width, height: geometry.size.height/10)
+		.padding(.bottom, 20)
+		.frame(height: 70)
 		.background(Color.offWhite.shadow(radius: 2))
+		.onChange(of: viewRouter.currentTab) { tab in
+			if tab == .caption {
+				switch meme.memeType {
+					case .captionAbove:
+						if meme.captions.first == Constants.Text.defaultCaptionText {
+							viewRouter.currentCaptionEditingIndex = 0
+						}
+					default:
+						if meme.captions.isEmpty {
+							viewRouter.currentCaptionEditingIndex = 0
+						}
+				}
+			}
+		}
+	}
+}
+
+struct TabStack_Previews: PreviewProvider {
+	static var previews: some View {
+		TabStack()
+			.environmentObject(ViewRouter())
+			.environmentObject(Meme())
 	}
 }

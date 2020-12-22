@@ -16,41 +16,41 @@ extension Color {
 	static let darkPink = Color(red: 112.5/255, green: 68.5/255, blue: 89/255)
 	
 	/// Red channel of current color
-	var red: Double {
+	var redChannel: Double {
 		let components = UIColor(self).rgba
 		return Double(components.red)
 	}
 	
 	/// Green channel of current color
-	var green: Double {
+	var greenChannel: Double {
 		let components = UIColor(self).rgba
 		return Double(components.green)
 	}
 	
 	/// Blue channel of current color
-	var blue: Double {
+	var blueChannel: Double {
 		let components = UIColor(self).rgba
 		return Double(components.blue)
 	}
 	
 	/// Alpha channel of current color
-	var alpha: Double {
+	var alphaChannel: Double {
 		let components = UIColor(self).rgba
 		return Double(components.alpha)
 	}
 	
 	var offLight: Color {
-		return offLight(red: red,
-						green: green,
-						blue: blue,
-						alpha: alpha)
+		return offLight(red: redChannel,
+						green: greenChannel,
+						blue: blueChannel,
+						alpha: alphaChannel)
 	}
 	
 	var offDark: Color {
-		return offDark(red: red,
-					   green: green,
-					   blue: blue,
-					   alpha: alpha)
+		return offDark(red: redChannel,
+					   green: greenChannel,
+					   blue: blueChannel,
+					   alpha: alphaChannel)
 	}
 	
 	/// Gives a slightly brighter version of the color passed in

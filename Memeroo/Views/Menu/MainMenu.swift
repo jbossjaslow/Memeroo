@@ -12,7 +12,7 @@ struct MainMenu: View {
 	@EnvironmentObject var meme: Meme
 	
     var body: some View {
-		NavigationView {
+//		NavigationView {
 			VStack {
 				Text("Memeroo")
 				
@@ -21,30 +21,24 @@ struct MainMenu: View {
 				Text("Select Meme Type")
 				
 				HStack {
-//					Button {
-//						meme.memeType = .captionAbove
-//						viewRouter.showingMainMenu = false
-//					} label: {
-//						Text("Caption Above")
-//					}
-					
-					NavigationLink(destination: Text("Destination"),
-								   isActive: $meme.memeType != nil,
-								   label: {
-									Text("Navigate")
-								   })
-					
-//					Button {
-//						meme.memeType = .freeText
-//						viewRouter.showingMainMenu = false
-//					} label: {
-//						Text("Free Text")
-//					}
+					ForEach(values: MemeType.allCases) { memeType in
+						Button {
+							meme.setup(type: memeType)
+							viewRouter.showingMemeEditor = true
+						} label: {
+							Text(memeType.rawValue)
+						}
+					}
 				}
+				
+//				NavigationLink(destination: MemerooTabBar(),
+//							   isActive: $viewRouter.showingMemeEditor) {
+//					EmptyView()
+//				}
 				
 				Spacer()
 			}
-		}
+//		}
     }
 }
 

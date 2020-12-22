@@ -9,15 +9,23 @@ import SwiftUI
 import Combine
 
 class ViewRouter: ObservableObject {
-	@Published var showingMainMenu: Bool = true
-	@Published var currentView: TabType = .background
+	@Published var showingMemeEditor: Bool = false
+	@Published var currentTab: TabType = .background
 	@Published var showingFocusedImage: Bool = false
-	@Published var editingCaption: Bool = false
-	@Published var showingPicker: Bool = false
+	@Published var currentCaptionEditingIndex: Int? = nil
+	@Published var showingImageSelector: Bool = false
+	
+	//MARK: - Edit Buttons Menu
+	@Published var currentSubMenu: EditStackSubMenuType = .none
 	
 	#if DEBUG
 	func setCaption() -> Self {
-		currentView = .caption
+		currentTab = .caption
+		return self
+	}
+	
+	func setSubMenu(_ menu: EditStackSubMenuType) -> Self {
+		currentSubMenu = menu
 		return self
 	}
 	#endif

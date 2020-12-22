@@ -8,9 +8,15 @@
 import SwiftUI
 
 struct EditCaptionButtonsModifier: ViewModifier {
+	private var color: Color = .white
+	
+	init(_ color: Color = .white) {
+		self.color = color
+	}
+	
 	func body(content: Content) -> some View {
 		content
-			.foregroundColor(.white)
+			.foregroundColor(color)
 			.frame(height: 50)
 			.padding(.horizontal)
 			.background(Color.black.opacity(0.5))

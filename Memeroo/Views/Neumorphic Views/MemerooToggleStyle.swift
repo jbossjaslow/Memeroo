@@ -19,12 +19,12 @@ struct MemerooToggleStyle<S: Shape>: ToggleStyle {
 			.padding(5)
 			.contentShape(shape)
 			.background(
-				ColorfulBackground(isHighlighted: viewRouter.currentView == tabType,
+				ColorfulBackground(isHighlighted: viewRouter.currentTab == tabType,
 								   shape: shape,
 								   colorTheme: colorTheme)
 			)
 			.onTapGesture {
-				viewRouter.currentView = tabType
+				viewRouter.currentTab = tabType
 			}
 	}
 }

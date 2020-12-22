@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct CaptionBackgroundColorView: View {
+	@EnvironmentObject var viewRouter: ViewRouter
 	@EnvironmentObject var meme: Meme
+	
 	@State private var blackLevel: Double = 1
-	@Binding var currentSubMenu: EditStackSubMenuType
-	@Binding var menuHeight: CGFloat
 	
 	var body: some View {
 		HStack {
@@ -28,25 +28,22 @@ struct CaptionBackgroundColorView: View {
 											  blue: blackLevel)
 				}
 				.onAppear {
-					blackLevel = meme.captionColor.red
+					blackLevel = meme.captionColor.redChannel
 				}
 		}
 		.padding(.horizontal, 10)
-		.frame(height: menuHeight)
+		.frame(height: Constants.EditButtons.menuHeight)
 		.background(Color.ViewColors.editButtonBackground)
-		.offset(y: currentSubMenu == .none ? 0 : -menuHeight)
-		.animation(currentSubMenu == .none ? .easeIn : .easeOut)
+		.offset(y: viewRouter.currentSubMenu == .none ? 0 : -Constants.EditButtons.menuHeight)
+		.animation(viewRouter.currentSubMenu == .none ? .easeIn : .easeOut)
 		.transition(.move(edge: .bottom))
 	}
 }
 
 struct CaptionBackgroundColorView_Previews: PreviewProvider {
-	@State static var subMenu: EditStackSubMenuType = .font
-	@State static var menuHeight: CGFloat = 40
-	
     static var previews: some View {
-        CaptionBackgroundColorView(currentSubMenu: $subMenu,
-								   menuHeight: $menuHeight)
-			.environmentObject(Meme().TestMeme())
+        CaptionBackgroundColorView()
+			.environmentObject(ViewRouter().setSubMenu(.captionBackgroundColor))
+			.environmentObject(Meme().TestMemeCaptionAbove())
     }
 }

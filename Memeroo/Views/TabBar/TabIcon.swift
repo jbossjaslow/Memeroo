@@ -11,9 +11,6 @@ struct TabIcon: View {
 	@EnvironmentObject var viewRouter: ViewRouter
 	
 	@State var tabType: TabType
-	var geometry: GeometryProxy
-	
-	@State private var normalToggleStyle = true
 	@State private var togge: Bool = false
 	
 	private var imageName: String {
@@ -31,48 +28,36 @@ struct TabIcon: View {
 	}
 	
 	var body: some View {
-		if normalToggleStyle {
-			Toggle(isOn: $togge) {
-				toggleBody
-			}
-			.animation(.easeOut)
-			.toggleStyle(NormalToggleStyle(colorTheme: .offWhite,
-										   shape: RoundedRectangle(cornerRadius: 10),
-										   tabType: tabType))
-		} else {
-			Toggle(isOn: $togge) {
-				toggleBody
-			}
-			.animation(.easeOut)
-			.toggleStyle(MemerooToggleStyle(colorTheme: .offWhite,
-											shape: RoundedRectangle(cornerRadius: 10),
-											tabType: tabType))
+		Toggle(isOn: $togge) {
+			toggleBody
 		}
+		.animation(.easeOut)
+		.toggleStyle(NormalToggleStyle(colorTheme: .offWhite,
+									   shape: RoundedRectangle(cornerRadius: 10),
+									   tabType: tabType))
 	}
 	
 	private var toggleBody: some View {
-		VStack(spacing: 5) {
+		VStack(alignment: .center, spacing: 0) {
 			Image(systemName: imageName)
 				.resizable()
 				.aspectRatio(contentMode: .fit)
-				.foregroundColor(viewRouter.currentView == tabType ? .myPink : .gray)
+				.foregroundColor(viewRouter.currentTab == tabType ? .myPink : .gray)
+				.font(.system(size: 16, weight: viewRouter.currentTab == tabType ? .bold : .regular))
 			
 			Text(labelName)
-				.font(.system(size: 12))
-				.bold()
-				.foregroundColor(viewRouter.currentView == tabType ? .myPink : .gray)
+				.font(.system(size: 12, weight: viewRouter.currentTab == tabType ? .bold : .regular))
+				.foregroundColor(viewRouter.currentTab == tabType ? .myPink : .gray)
 		}
-		.frame(width: geometry.size.width/5, height: 40)
+		.frame(width: 80, height: 40)
+		.animation(nil)
 	}
 }
 
 struct TabIcon_Previews: PreviewProvider {
-    static var previews: some View {
-		GeometryReader { geometry in
-			TabIcon(tabType: .background,
-					geometry: geometry)
-				.environmentObject(Meme().TestMeme())
-				.environmentObject(ViewRouter())
-		}
-    }
+	static var previews: some View {
+		TabIcon(tabType: .background)
+			.environmentObject(Meme().TestMemeCaptionAbove())
+			.environmentObject(ViewRouter())
+	}
 }

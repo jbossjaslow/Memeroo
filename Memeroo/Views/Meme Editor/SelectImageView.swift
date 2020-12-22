@@ -20,7 +20,7 @@ struct SelectImageView: View {
 					if showCropper {
 						showingCropper = true
 					} else {
-						viewRouter.showingPicker = false
+						viewRouter.showingImageSelector = false
 					}
 				}
 				
@@ -28,7 +28,7 @@ struct SelectImageView: View {
 					if didCancel {
 						showingCropper = false
 					} else {
-						viewRouter.showingPicker = false
+						viewRouter.showingImageSelector = false
 					}
 				},
 				isActive: $showingCropper) {

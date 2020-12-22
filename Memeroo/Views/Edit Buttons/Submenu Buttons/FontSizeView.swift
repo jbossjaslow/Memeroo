@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct FontSizeView: View {
+	@EnvironmentObject var viewRouter: ViewRouter
 	@EnvironmentObject var meme: Meme
-	@Binding var currentSubMenu: EditStackSubMenuType
-	@Binding var menuHeight: CGFloat
 	
 	var body: some View {
 		HStack {
@@ -21,21 +20,19 @@ struct FontSizeView: View {
 				   step: 2)
 		}
 		.padding(.horizontal, 10)
-		.frame(height: menuHeight)
+		.frame(height: Constants.EditButtons.menuHeight)
 		.background(Color.ViewColors.editButtonBackground)
-		.offset(y: currentSubMenu == .none ? 0 : -menuHeight)
-		.animation(currentSubMenu == .none ? .easeIn : .easeOut)
+		.offset(y: viewRouter.currentSubMenu == .none ? 0 : -Constants.EditButtons.menuHeight)
+		.animation(viewRouter.currentSubMenu == .none ? .easeIn : .easeOut)
 		.transition(.move(edge: .bottom))
 	}
 }
 
 struct FontSizeView_Previews: PreviewProvider {
-	@State static var subMenu: EditStackSubMenuType = .size
-	@State static var menuHeight: CGFloat = 40
 	
     static var previews: some View {
-        FontSizeView(currentSubMenu: $subMenu,
-					 menuHeight: $menuHeight)
-			.environmentObject(Meme().TestMeme())
+        FontSizeView()
+			.environmentObject(ViewRouter().setSubMenu(.size))
+			.environmentObject(Meme().TestMemeCaptionAbove())
     }
 }

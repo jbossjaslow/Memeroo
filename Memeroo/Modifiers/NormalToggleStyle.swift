@@ -18,14 +18,14 @@ struct NormalToggleStyle<S: Shape>: ToggleStyle {
 		configuration.label
 			.padding(5)
 			.contentShape(shape)
-			.background(
-				Background(isHighlighted: viewRouter.currentView == tabType,
-						   shape: shape,
-						   colorTheme: colorTheme)
-			)
+//			.background(
+//				Background(isHighlighted: viewRouter.currentView == tabType,
+//						   shape: shape,
+//						   colorTheme: colorTheme)
+//			)
 			.onTapGesture {
 				withAnimation {
-					viewRouter.currentView = tabType
+					viewRouter.currentTab = tabType
 				}
 			}
 	}

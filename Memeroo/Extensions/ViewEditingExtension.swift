@@ -15,6 +15,14 @@ extension View {
 	func unableToEndEditing() -> some View {
 		self.modifier(cannotEndEditing())
 	}
+	
+	func runOnSpacerTap(_ completion: @escaping () -> Void) -> some View {
+		self.modifier(runOnSpacerTapModifier(completion))
+	}
+	
+	func runNothingOnSpacerTap() -> some View {
+		self.modifier(cannotEndEditing())
+	}
 }
 
 extension UIApplication {

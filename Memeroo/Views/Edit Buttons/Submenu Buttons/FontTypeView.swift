@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct FontTypeView: View {
+	@EnvironmentObject var viewRouter: ViewRouter
 	@EnvironmentObject var meme: Meme
-	@Binding var currentSubMenu: EditStackSubMenuType
-	@Binding var menuHeight: CGFloat
 	
 	var body: some View {
 		ScrollView(.horizontal, showsIndicators: false) {
@@ -34,21 +33,19 @@ struct FontTypeView: View {
 			}
 		}
 		.padding(.horizontal, 10)
-		.frame(height: menuHeight)
+		.frame(height: Constants.EditButtons.menuHeight)
 		.background(Color.ViewColors.editButtonBackground)
-		.offset(y: currentSubMenu == .none ? 0 : -menuHeight)
-		.animation(currentSubMenu == .none ? .easeIn : .easeOut)
+		.offset(y: viewRouter.currentSubMenu == .none ? 0 : -Constants.EditButtons.menuHeight)
+		.animation(viewRouter.currentSubMenu == .none ? .easeIn : .easeOut)
 		.transition(.move(edge: .bottom))
 	}
 }
 
 struct FontTypeView_Previews: PreviewProvider {
-	@State static var subMenu: EditStackSubMenuType = .font
-	@State static var menuHeight: CGFloat = 40
 	
     static var previews: some View {
-		FontTypeView(currentSubMenu: $subMenu,
-					 menuHeight: $menuHeight)
-			.environmentObject(Meme().TestMeme())
+		FontTypeView()
+			.environmentObject(ViewRouter().setSubMenu(.font))
+			.environmentObject(Meme().TestMemeCaptionAbove())
     }
 }

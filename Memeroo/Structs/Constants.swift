@@ -5,6 +5,14 @@
 //  Created by Josh Jaslow on 10/25/20.
 //
 
+import CoreGraphics
+
 struct Constants {
-	static let defaultCaptionText = "Caption"
+	struct Text {
+		static let defaultCaptionText = "Caption"
+	}
+	
+	struct EditButtons {
+		static let menuHeight: CGFloat = 40
+	}
 }

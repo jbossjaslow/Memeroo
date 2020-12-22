@@ -13,5 +13,6 @@ enum EditStackSubMenuType: String {
 	case color = "Color"
 	case chooseImage = "Choose Image"
 	case captionBackgroundColor = "Caption Background"
+	case addCaption = "Add Text"
 	case none = ""
 }

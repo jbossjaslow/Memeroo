@@ -7,20 +7,18 @@
 
 import SwiftUI
 
-struct EditMemeView: View {
+struct CaptionAboveMemeView: View {
 	@EnvironmentObject var viewRouter: ViewRouter
 	@EnvironmentObject var meme: Meme
 	
-	var chooseImage: (() -> Void)? = nil
-	
 	var textColor: Color {
-		switch viewRouter.currentView {
+		switch viewRouter.currentTab {
 			case .background:
-				if meme.caption == Constants.defaultCaptionText {
-					return .gray
-				} else {
+				if let caption = meme.captions.first,
+				   caption != Constants.Text.defaultCaptionText {
 					return meme.fontColor
 				}
+				return .gray
 			case .caption: return meme.fontColor
 		}
 	}
@@ -33,7 +31,7 @@ struct EditMemeView: View {
 					Spacer()
 				}
 				
-				Text(meme.caption)
+				Text(meme.captions.first ?? Constants.Text.defaultCaptionText)
 					.font(.custom(meme.fontFamily,
 								  size: meme.fontSize))
 					.foregroundColor(textColor)
@@ -46,10 +44,12 @@ struct EditMemeView: View {
 				}
 			}
 			.contentShape(Rectangle())
+			.animation(.easeInOut)
 			.onTapGesture {
 				withAnimation {
-					if viewRouter.currentView == .caption {
-						viewRouter.editingCaption = true
+					if viewRouter.currentTab == .caption,
+					   meme.captions.count == 1 {
+						viewRouter.currentCaptionEditingIndex = 0
 					}
 				}
 			}
@@ -62,9 +62,7 @@ struct EditMemeView: View {
 					.scaledToFit()
 					.onTapGesture {
 						//if image is nil, don't bother showing focused image
-						withAnimation {
-							viewRouter.showingFocusedImage = meme.image != nil
-						}
+						viewRouter.showingFocusedImage = meme.image != nil
 					}
 			}
 			else {
@@ -83,8 +81,8 @@ struct EditMemeView: View {
 
 struct EditMemeView_Previews: PreviewProvider {
     static var previews: some View {
-        EditMemeView()
-			.environmentObject(Meme().TestMeme())
+        CaptionAboveMemeView()
+			.environmentObject(Meme().TestMemeCaptionAbove())
 			.environmentObject(ViewRouter())
     }
 }

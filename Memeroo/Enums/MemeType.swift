@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum MemeType {
-	case captionAbove
-	case freeText
+enum MemeType: String, CaseIterable {
+	case captionAbove = "Caption Above"
+	case freeText = "Free Text"
 }

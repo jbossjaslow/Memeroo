@@ -11,6 +11,22 @@ struct MemeEditorView: View {
 	@EnvironmentObject var viewRouter: ViewRouter
 	@EnvironmentObject var meme: Meme
 	
+	private var captionEditingMode: CaptionEditingMode {
+		switch meme.memeType {
+			case .captionAbove:
+				return .editingExisting
+			case .freeText:
+				if let index = viewRouter.currentCaptionEditingIndex,
+				   meme.captions.indices.contains(index) {
+					return .editingExisting
+				} else {
+					return .addingNew
+				}
+			default:
+				return .editingExisting
+		}
+	}
+	
 	var body: some View {
 		ZStack {
 			VStack(spacing: 0) {
@@ -20,7 +36,14 @@ struct MemeEditorView: View {
 					Spacer()
 				}
 				
-				CaptionAboveMemeView()
+				switch meme.memeType {
+					case .captionAbove:
+						CaptionAboveMemeView()
+					case .freeText:
+						FreeTextMemeView()
+					default:
+						Text("There is an error, please reload")
+				}
 				
 				Spacer()
 				
@@ -39,7 +62,8 @@ struct MemeEditorView: View {
 				}
 				.zIndex(1) //necessary for animations on zstack
 			} else if let index = viewRouter.currentCaptionEditingIndex {
-				EditCaptionView(captionIndex: index)
+				EditCaptionView(captionIndex: index,
+								editingMode: captionEditingMode)
 					.zIndex(1) //necessary for animations on zstack
 			}
 		}
@@ -49,6 +73,11 @@ struct MemeEditorView: View {
 		.sheet(isPresented: $viewRouter.showingImageSelector) {
 			SelectImageView()
 		}
+		.onAppear {
+			DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+				viewRouter.showingImageSelector = true
+			}
+		}
 	}
 }
 
@@ -56,6 +85,6 @@ struct MemerooTabBar_Previews: PreviewProvider {
 	static var previews: some View {
 		MemeEditorView()
 			.environmentObject(ViewRouter())
-			.environmentObject(Meme())
+			.environmentObject(Meme().TestMemeFreeText())
 	}
 }

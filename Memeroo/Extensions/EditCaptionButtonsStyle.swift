@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension View {
-	func editCaptionButtonsStyle() -> some View {
-		return modifier(EditCaptionButtonsModifier())
+	func editCaptionButtonsStyle(_ color: Color = .white) -> some View {
+		return modifier(EditCaptionButtonsModifier(color))
 	}
 }

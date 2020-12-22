@@ -12,16 +12,15 @@ struct MainView: View {
 	@EnvironmentObject var meme: Meme
 	
     var body: some View {
-//		VStack {
-//			if viewRouter.showingMainMenu {
-//				MainMenu()
-//			} else {
-//				MemerooTabBar()
-//					.animation(.easeInOut)
-//					.transition(.move(edge: .trailing))
-//			}
-//		}
-		MainMenu()
+		VStack {
+			if viewRouter.showingMemeEditor {
+				MemeEditorView()
+					.transition(AnyTransition.opacity.animation(.easeInOut(duration: 0.25)))
+			} else {
+				MainMenu()
+					.transition(AnyTransition.scale.animation(.easeInOut(duration: 0.5)))
+			}
+		}
     }
 }
 

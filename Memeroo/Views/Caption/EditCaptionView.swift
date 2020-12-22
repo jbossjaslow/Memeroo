@@ -11,6 +11,8 @@ struct EditCaptionView: View {
 	@EnvironmentObject var viewRouter: ViewRouter
 	@EnvironmentObject var meme: Meme
 	
+	@State var captionIndex: Int
+	@State var editingMode: CaptionEditingMode
 	@State private var currentText: String = ""
 	
 	var body: some View {
@@ -30,10 +32,17 @@ struct EditCaptionView: View {
 							.stroke(Color.black, lineWidth: 2)
 					)
 					.onAppear {
-						currentText = meme.caption
+						switch editingMode {
+							case .editingExisting:
+								currentText = meme.captions[captionIndex]
+							case .addingNew:
+								currentText = Constants.Text.defaultCaptionText
+						}
 					}
 				
-				EditCaptionButtons(currentText: $currentText)
+				EditCaptionButtons(captionIndex: $captionIndex,
+								   currentText: $currentText,
+								   editingMode: $editingMode)
 			}
 			.padding()
 			.background(
@@ -54,8 +63,9 @@ struct EditCaptionView: View {
 
 struct SwiftUIView_Previews: PreviewProvider {
 	static var previews: some View {
-		EditCaptionView()
+		EditCaptionView(captionIndex: 0,
+						editingMode: .editingExisting)
 			.environmentObject(ViewRouter())
-			.environmentObject(Meme().TestMeme())
+			.environmentObject(Meme().TestMemeFreeText())
 	}
 }

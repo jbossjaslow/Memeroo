@@ -10,9 +10,9 @@ import SwiftUI
 class Meme: ObservableObject {
 	@Published var memeType: MemeType? = nil
 	
-	@Published var caption: String = Constants.defaultCaptionText
+	@Published var captions: [String] = [Constants.Text.defaultCaptionText]
 	@Published var image: UIImage?
-	@Published var renderedImage: UIImage = UIImage()
+	@Published private var renderedImage: UIImage = UIImage()
 	
 	@Published var fontSize: CGFloat = 14
 	@Published var fontColor: Color = .black
@@ -32,13 +32,46 @@ class Meme: ObservableObject {
 			renderingImage = false
 		}
 	}
+	
+	func setup(type: MemeType) {
+		resetToDefault()
+		memeType = type
+		switch memeType {
+			case .captionAbove:
+				captions = [Constants.Text.defaultCaptionText]
+			case .freeText:
+				captions = []
+			default:
+				return
+		}
+	}
+	
+	func resetToDefault() {
+		memeType = nil
+		captions = [Constants.Text.defaultCaptionText]
+		image = nil
+		fontSize = 14
+		fontColor = .black
+		fontFamily = "system"
+		alignment = .leading
+		captionColor = .white
+		renderingImage = false
+		currentMemeView = nil
+	}
 }
 
 extension Meme {
-	func TestMeme() -> Self {
-		caption = "Test Caption"
+	func TestMemeCaptionAbove() -> Self {
+		captions = ["Test Caption"]
 		image = UIImage(named: "TestImage")
-//		render()
+		memeType = .captionAbove
+		return self
+	}
+	
+	func TestMemeFreeText() -> Self {
+		captions = ["Top text", "Bottom text"]
+		image = UIImage(named: "TestImage")
+		memeType = .freeText
 		return self
 	}
 }

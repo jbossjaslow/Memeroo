@@ -19,13 +19,20 @@ struct EditButtonStack: View {
 			//Menu
 			switch (meme.memeType ?? .captionAbove, viewRouter.currentTab) {
 				case (.captionAbove, .background):
-					MenuButtonStack(buttonsToShow: [.chooseImage, .captionBackgroundColor])
+					MenuButtonStack(buttonsToShow: [.chooseImage,
+													.captionBackgroundColor])
 				case (.freeText, .background):
 					MenuButtonStack(buttonsToShow: [.chooseImage])
 				case (.captionAbove, .caption):
-					MenuButtonStack(buttonsToShow: [.font, .size, .color])
+					MenuButtonStack(buttonsToShow: [.font,
+													.size,
+													.color])
 				case (.freeText, .caption):
-					MenuButtonStack(buttonsToShow: [.addCaption, .font, .size, .color])
+					MenuButtonStack(buttonsToShow: [.addCaption,
+													.font,
+													.size,
+													.color,
+													.stroke])
 			}
 		}
 		.frame(height: Constants.EditButtons.menuHeight)

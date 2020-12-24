@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension View {
-	func asImage(completion: () -> Void) -> UIImage {
+	func asImage(completion: (() -> Void)?) -> UIImage {
 		let controller = UIHostingController(rootView: self)
 
 		// locate far out of screen
@@ -20,7 +20,7 @@ extension View {
 		controller.view.sizeToFit()
 
 		let image = controller.view.asImage() {
-			completion()
+			completion?()
 		}
 		controller.view.removeFromSuperview()
 		return image

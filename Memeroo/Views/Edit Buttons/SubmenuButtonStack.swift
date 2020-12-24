@@ -18,6 +18,7 @@ struct SubmenuButtonStack: View {
 				case .size: FontSizeView()
 				case .color: FontColorView()
 				case .captionBackgroundColor: CaptionBackgroundColorView()
+				case .stroke: FontStrokeColorView()
 				default: EmptyView()
 			}
 		}

@@ -11,12 +11,10 @@ struct FreeTextMemeView: View {
 	@EnvironmentObject var viewRouter: ViewRouter
 	@EnvironmentObject var meme: Meme
 	
-	var chooseImage: (() -> Void)? = nil
-	
 	var textColor: Color {
 		switch viewRouter.currentTab {
 			case .background:
-				if let caption = meme.captions.first,
+				if let caption = meme.captions.first?.text,
 				   caption != Constants.Text.defaultCaptionText {
 					return meme.fontColor
 				}
@@ -37,18 +35,12 @@ struct FreeTextMemeView: View {
 					}
 				
 				ForEach(meme.captions, id: \.self) { caption in
-					FreeTextCaption(caption: caption)
+					FreeTextCaption(caption: caption,
+									offset: caption.offset)
 				}
 			} else {
 				Spacer()
 			}
-		}
-		.onAppear {
-			meme.currentMemeView = AnyView(
-				self
-					.environmentObject(meme)
-					.environmentObject(viewRouter)
-			)
 		}
     }
 }

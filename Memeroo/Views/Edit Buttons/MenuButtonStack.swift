@@ -14,9 +14,11 @@ struct MenuButtonStack: View {
 	@State var buttonsToShow: [EditStackSubMenuType]
 	
     var body: some View {
-		HStack(spacing: 40) {
-			ForEach(buttonsToShow, id: \.rawValue) { button in
-				MenuButton(buttonType: button)
+		ScrollView(.horizontal, showsIndicators: false) {
+			HStack(spacing: 30) {
+				ForEach(buttonsToShow, id: \.rawValue) { button in
+					MenuButton(buttonType: button)
+				}
 			}
 		}
 		.padding(.horizontal, 10)

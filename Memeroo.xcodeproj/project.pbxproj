@@ -67,6 +67,10 @@
 		39B9299B25313E8500DFC401 /* MemerooUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B9299A25313E8500DFC401 /* MemerooUITests.swift */; };
 		39E5CDDA25353DF7001C338C /* CropViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 39E5CDD925353DF7001C338C /* CropViewController */; };
 		39E5CDDC25353DF7001C338C /* TOCropViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 39E5CDDB25353DF7001C338C /* TOCropViewController */; };
+		39E621672592A5D800C70023 /* FontStrokeColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E621662592A5D800C70023 /* FontStrokeColorView.swift */; };
+		39E6216C2593B27E00C70023 /* TextStrokeModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E6216B2593B27E00C70023 /* TextStrokeModifier.swift */; };
+		39E6217125941F1800C70023 /* AddTextStrokeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E6217025941F1800C70023 /* AddTextStrokeExtension.swift */; };
+		39E621792594251B00C70023 /* Caption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E621782594251B00C70023 /* Caption.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -151,6 +155,10 @@
 		39B9299625313E8500DFC401 /* MemerooUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MemerooUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		39B9299A25313E8500DFC401 /* MemerooUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemerooUITests.swift; sourceTree = "<group>"; };
 		39B9299C25313E8500DFC401 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		39E621662592A5D800C70023 /* FontStrokeColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontStrokeColorView.swift; sourceTree = "<group>"; };
+		39E6216B2593B27E00C70023 /* TextStrokeModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStrokeModifier.swift; sourceTree = "<group>"; };
+		39E6217025941F1800C70023 /* AddTextStrokeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTextStrokeExtension.swift; sourceTree = "<group>"; };
+		39E621782594251B00C70023 /* Caption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Caption.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +195,7 @@
 				393578212569766200743E71 /* SingleColorBackground.swift */,
 				3935788A2570196800743E71 /* EditCaptionButtonsModifier.swift */,
 				3935789C25701CD000743E71 /* ViewEditingModifier.swift */,
+				39E6216B2593B27E00C70023 /* TextStrokeModifier.swift */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
@@ -292,6 +301,7 @@
 				39362B9E258A64B7007053A0 /* FontSizeView.swift */,
 				39362BA3258A6510007053A0 /* FontColorView.swift */,
 				39362BA8258A6555007053A0 /* CaptionBackgroundColorView.swift */,
+				39E621662592A5D800C70023 /* FontStrokeColorView.swift */,
 			);
 			path = "Submenu Buttons";
 			sourceTree = "<group>";
@@ -337,6 +347,7 @@
 				39357860256E0F9C00743E71 /* ForEachExtension.swift */,
 				3935788F257019B100743E71 /* EditCaptionButtonsStyle.swift */,
 				3935789425701CA000743E71 /* ViewEditingExtension.swift */,
+				39E6217025941F1800C70023 /* AddTextStrokeExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -373,6 +384,7 @@
 				39B75164254639BE0016714B /* Constants.swift */,
 				39357856256D4B9A00743E71 /* Colors.swift */,
 				3935785B256E0C8A00743E71 /* Fonts.swift */,
+				39E621782594251B00C70023 /* Caption.swift */,
 			);
 			path = Structs;
 			sourceTree = "<group>";
@@ -617,6 +629,7 @@
 				39362BC1258A6F32007053A0 /* MemeType.swift in Sources */,
 				3935786825700B6A00743E71 /* TabType.swift in Sources */,
 				39B751B42548CFE80016714B /* DoubleAverageExtension.swift in Sources */,
+				39E6216C2593B27E00C70023 /* TextStrokeModifier.swift in Sources */,
 				399ED91D2538E8E90089BD95 /* CaptureViewContextExtension.swift in Sources */,
 				39959D292592604100F1A71F /* SubmenuButtonStack.swift in Sources */,
 				39357857256D4B9A00743E71 /* Colors.swift in Sources */,
@@ -641,11 +654,14 @@
 				39362BBC258A6D75007053A0 /* MainView.swift in Sources */,
 				39362BA4258A6510007053A0 /* FontColorView.swift in Sources */,
 				39B7517525487AA40016714B /* ViewRouter.swift in Sources */,
+				39E621792594251B00C70023 /* Caption.swift in Sources */,
 				3935783C256CABE100743E71 /* TabStack.swift in Sources */,
+				39E621672592A5D800C70023 /* FontStrokeColorView.swift in Sources */,
 				393578222569766200743E71 /* SingleColorBackground.swift in Sources */,
 				399ED92F2538EAA30089BD95 /* ImagePicker.swift in Sources */,
 				3935785C256E0C8A00743E71 /* Fonts.swift in Sources */,
 				39B7518D2548B6F60016714B /* MemerooToggleStyle.swift in Sources */,
+				39E6217125941F1800C70023 /* AddTextStrokeExtension.swift in Sources */,
 				397280F225918CD5006326F3 /* FreeTextCaption.swift in Sources */,
 				399ED9272538E9C30089BD95 /* ImageCropper.swift in Sources */,
 				3935788B2570196800743E71 /* EditCaptionButtonsModifier.swift in Sources */,

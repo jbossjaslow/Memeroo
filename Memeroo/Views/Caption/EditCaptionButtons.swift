@@ -37,10 +37,10 @@ struct EditCaptionButtons: View {
 			Button {
 				switch editingMode {
 					case .editingExisting:
-						meme.captions[captionIndex] = currentText
+						meme.captions[captionIndex].text = currentText
 						viewRouter.currentCaptionEditingIndex = nil
 					case .addingNew:
-						meme.captions.append(currentText)
+						meme.captions.append(Caption(currentText))
 						viewRouter.currentCaptionEditingIndex = nil
 				}
 			} label: {

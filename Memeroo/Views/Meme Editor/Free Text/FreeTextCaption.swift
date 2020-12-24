@@ -11,43 +11,46 @@ struct FreeTextCaption: View {
 	@EnvironmentObject var viewRouter: ViewRouter
 	@EnvironmentObject var meme: Meme
 	
-	@State var caption: String
-//	@State var index: Int
+	@State var caption: Caption
 	@State private var currentOffset: CGSize = .zero
-	@State private var finalOffset: CGSize = .zero
-	private var offset: CGSize {
-		return currentOffset + finalOffset
-	}
+	@State var offset: CGSize
+	
+	@State private var currIndex: Int = 0
 	
     var body: some View {
-		Text(caption)
+		Text(caption.text)
 			.font(.custom(meme.fontFamily,
 						  size: meme.fontSize))
 			.foregroundColor(meme.fontColor)
-			.offset(offset)
+			.addTextStroke(text: caption.text)
 			.animation(nil)
+			.offset(offset + currentOffset)
+			.onAppear {
+				currIndex = meme.captions.firstIndex(of: caption) ?? 0
+			}
 			.onTapGesture {
-//				viewRouter.currentCaptionEditingIndex = index
-				viewRouter.currentCaptionEditingIndex = meme.captions.firstIndex(of: caption)
+				viewRouter.currentCaptionEditingIndex = currIndex
 			}
 			.gesture(
 				DragGesture()
-					.onChanged { gesture in
-						self.currentOffset = gesture.translation
+					.onChanged {
+						self.currentOffset = $0.translation
 					}
-					.onEnded { gesture in
-						self.finalOffset += self.currentOffset
+					.onEnded { _ in
+						self.offset += self.currentOffset
 						self.currentOffset = .zero
+						meme.captions[currIndex].offset = offset
 					}
 			)
     }
 }
 
 struct FreeTextCaption_Previews: PreviewProvider {
-	@State static var caption: String = Constants.Text.defaultCaptionText
+	@State static var caption: Caption = Caption(Constants.Text.defaultCaptionText)
 	
     static var previews: some View {
-		FreeTextCaption(caption: caption)
+		FreeTextCaption(caption: caption,
+						offset: .zero)
 			.environmentObject(ViewRouter())
 			.environmentObject(Meme().TestMemeFreeText())
     }

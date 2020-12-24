@@ -34,7 +34,7 @@ struct EditCaptionView: View {
 					.onAppear {
 						switch editingMode {
 							case .editingExisting:
-								currentText = meme.captions[captionIndex]
+								currentText = meme.captions[captionIndex].text
 							case .addingNew:
 								currentText = Constants.Text.defaultCaptionText
 						}

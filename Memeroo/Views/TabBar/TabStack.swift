@@ -30,7 +30,7 @@ struct TabStack: View {
 			if tab == .caption {
 				switch meme.memeType {
 					case .captionAbove:
-						if meme.captions.first == Constants.Text.defaultCaptionText {
+						if meme.captions.first?.text == Constants.Text.defaultCaptionText {
 							viewRouter.currentCaptionEditingIndex = 0
 						}
 					default:

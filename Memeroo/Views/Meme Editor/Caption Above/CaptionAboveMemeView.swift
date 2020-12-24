@@ -14,7 +14,7 @@ struct CaptionAboveMemeView: View {
 	var textColor: Color {
 		switch viewRouter.currentTab {
 			case .background:
-				if let caption = meme.captions.first,
+				if let caption = meme.captions.first?.text,
 				   caption != Constants.Text.defaultCaptionText {
 					return meme.fontColor
 				}
@@ -31,7 +31,7 @@ struct CaptionAboveMemeView: View {
 					Spacer()
 				}
 				
-				Text(meme.captions.first ?? Constants.Text.defaultCaptionText)
+				Text(meme.captions.first?.text ?? Constants.Text.defaultCaptionText)
 					.font(.custom(meme.fontFamily,
 								  size: meme.fontSize))
 					.foregroundColor(textColor)
@@ -53,7 +53,7 @@ struct CaptionAboveMemeView: View {
 					}
 				}
 			}
-			.background(meme.captionColor)
+			.background(meme.captionBackgroundColor)
 			
 			//Image
 			if let memeImage = meme.image {
@@ -68,13 +68,6 @@ struct CaptionAboveMemeView: View {
 			else {
 				Spacer()
 			}
-		}
-		.onAppear {
-			meme.currentMemeView = AnyView(
-				self
-					.environmentObject(meme)
-					.environmentObject(viewRouter)
-			)
 		}
     }
 }

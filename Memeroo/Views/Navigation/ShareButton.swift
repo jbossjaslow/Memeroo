@@ -24,8 +24,7 @@ struct ShareButton: View {
 	}
 	
 	func showShareSheet() {
-		let imageToSend = meme.render()
-		guard imageToSend != UIImage() else { return }
+		guard let imageToSend = meme.render() else { return }
 		let av = UIActivityViewController(activityItems: [imageToSend],
 										  applicationActivities: nil)
 		let root = UIApplication.shared.windows.first?.rootViewController

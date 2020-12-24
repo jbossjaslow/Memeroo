@@ -10,7 +10,8 @@ import SwiftUI
 class Meme: ObservableObject {
 	@Published var memeType: MemeType? = nil
 	
-	@Published var captions: [String] = [Constants.Text.defaultCaptionText]
+	@Published var captions: [Caption] = [Caption(Constants.Text.defaultCaptionText)]
+	
 	@Published var image: UIImage?
 	@Published private var renderedImage: UIImage = UIImage()
 	
@@ -19,17 +20,23 @@ class Meme: ObservableObject {
 	@Published var fontFamily: String = "system"
 	@Published var alignment: TextAlignment = .leading
 	
-	@Published var captionColor: Color = .white
+	@Published var fontStrokeColor: Color? = nil
+//	@Published var fontStrokeWidth: CGFloat = 0
 	
-	@Published var renderingImage: Bool = false
-	var currentMemeView: AnyView?
+	@Published var captionBackgroundColor: Color = .white
 	
-	func render() -> UIImage {
+	func render() -> UIImage? {
 		guard image != nil,
-			  let currView = currentMemeView else { return UIImage() }
-		renderingImage = true
-		return currView.asImage() {
-			renderingImage = false
+			  let type = memeType else { return nil }
+		switch type {
+			case .captionAbove:
+				return CaptionAboveMemeView()
+					.environmentObject(self)
+					.asImage(completion: nil)
+			case .freeText:
+				return FreeTextMemeView()
+					.environmentObject(self)
+					.asImage(completion: nil)
 		}
 	}
 	
@@ -38,7 +45,7 @@ class Meme: ObservableObject {
 		memeType = type
 		switch memeType {
 			case .captionAbove:
-				captions = [Constants.Text.defaultCaptionText]
+				captions = [Caption(Constants.Text.defaultCaptionText)]
 			case .freeText:
 				captions = []
 			default:
@@ -48,30 +55,34 @@ class Meme: ObservableObject {
 	
 	func resetToDefault() {
 		memeType = nil
-		captions = [Constants.Text.defaultCaptionText]
+		captions = [Caption(Constants.Text.defaultCaptionText)]
 		image = nil
 		fontSize = 14
 		fontColor = .black
 		fontFamily = "system"
 		alignment = .leading
-		captionColor = .white
-		renderingImage = false
-		currentMemeView = nil
+		captionBackgroundColor = .white
+		fontStrokeColor = nil
 	}
 }
 
 extension Meme {
 	func TestMemeCaptionAbove() -> Self {
-		captions = ["Test Caption"]
+		setup(type: .captionAbove)
+		captions = [Caption("Test Caption")]
 		image = UIImage(named: "TestImage")
 		memeType = .captionAbove
 		return self
 	}
 	
 	func TestMemeFreeText() -> Self {
-		captions = ["Top text", "Bottom text"]
+		setup(type: .freeText)
+		captions = [Caption("Top text"), Caption("Bottom text")]
 		image = UIImage(named: "TestImage")
 		memeType = .freeText
+		fontStrokeColor = .black
+//		fontStrokeWidth = 0.5
+		fontColor = .white
 		return self
 	}
 }

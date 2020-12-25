@@ -14,6 +14,7 @@ class ViewRouter: ObservableObject {
 	@Published var showingFocusedImage: Bool = false
 	@Published var currentCaptionEditingIndex: Int? = nil
 	@Published var showingImageSelector: Bool = false
+	@Published var imageSelectionMode: ImageSelectionMode = .imageSelectionAndCropping
 	
 	//MARK: - Edit Buttons Menu
 	@Published var currentSubMenu: EditStackSubMenuType = .none

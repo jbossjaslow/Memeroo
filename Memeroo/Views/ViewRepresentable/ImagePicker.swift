@@ -37,6 +37,7 @@ struct ImagePicker: UIViewControllerRepresentable {
 								   didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
 			if let uiImage = info[.originalImage] as? UIImage {
 				parent.meme.image = uiImage
+				parent.meme.originalImage = uiImage
 				parent.onDismissShowCropper?(true)
 			} else {
 				parent.onDismissShowCropper?(false)

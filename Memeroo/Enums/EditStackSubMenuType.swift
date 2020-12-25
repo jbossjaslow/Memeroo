@@ -15,5 +15,6 @@ enum EditStackSubMenuType: String {
 	case captionBackgroundColor = "Caption Background"
 	case addCaption = "Add Text"
 	case stroke = "Stroke Color"
+	case cropImage = "Crop Image"
 	case none = ""
 }

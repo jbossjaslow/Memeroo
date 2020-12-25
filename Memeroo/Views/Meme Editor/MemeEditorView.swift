@@ -71,11 +71,12 @@ struct MemeEditorView: View {
 		.singleColorBackground(color: .myPink)
 		.animation(.easeOut)
 		.sheet(isPresented: $viewRouter.showingImageSelector) {
-			SelectImageView()
+			SelectImageView(selectionMode: viewRouter.imageSelectionMode)
 		}
 		.onAppear {
 			DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
 				viewRouter.showingImageSelector = true
+				viewRouter.imageSelectionMode = .imageSelectionAndCropping
 			}
 		}
 	}

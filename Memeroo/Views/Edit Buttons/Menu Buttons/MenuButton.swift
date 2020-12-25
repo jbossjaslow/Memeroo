@@ -16,17 +16,24 @@ struct MenuButton: View {
 	var body: some View {
 		Button {
 			withAnimation {
-				if buttonType == .chooseImage {
-					viewRouter.currentSubMenu = .none
-					viewRouter.showingImageSelector = true
-				} else if buttonType == .addCaption {
-					viewRouter.currentSubMenu = .none
-					viewRouter.currentCaptionEditingIndex = meme.captions.count
-				}
-				else if viewRouter.currentSubMenu == buttonType {
-					viewRouter.currentSubMenu = .none
-				} else {
-					viewRouter.currentSubMenu = buttonType
+				switch buttonType {
+					case .chooseImage:
+						viewRouter.currentSubMenu = .none
+						viewRouter.showingImageSelector = true
+						viewRouter.imageSelectionMode = .imageSelectionAndCropping
+					case .addCaption:
+						viewRouter.currentSubMenu = .none
+						viewRouter.currentCaptionEditingIndex = meme.captions.count
+					case .cropImage:
+						viewRouter.currentSubMenu = .none
+						viewRouter.showingImageSelector = true
+						viewRouter.imageSelectionMode = .cropOnly
+					default:
+						if viewRouter.currentSubMenu == buttonType {
+							viewRouter.currentSubMenu = .none
+						} else {
+							viewRouter.currentSubMenu = buttonType
+						}
 				}
 			}
 		} label: {

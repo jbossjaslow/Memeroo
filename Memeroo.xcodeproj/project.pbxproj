@@ -71,6 +71,7 @@
 		39E6216C2593B27E00C70023 /* TextStrokeModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E6216B2593B27E00C70023 /* TextStrokeModifier.swift */; };
 		39E6217125941F1800C70023 /* AddTextStrokeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E6217025941F1800C70023 /* AddTextStrokeExtension.swift */; };
 		39E621792594251B00C70023 /* Caption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E621782594251B00C70023 /* Caption.swift */; };
+		39E621812595637500C70023 /* ImageSelectionMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E621802595637500C70023 /* ImageSelectionMode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -159,6 +160,7 @@
 		39E6216B2593B27E00C70023 /* TextStrokeModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStrokeModifier.swift; sourceTree = "<group>"; };
 		39E6217025941F1800C70023 /* AddTextStrokeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTextStrokeExtension.swift; sourceTree = "<group>"; };
 		39E621782594251B00C70023 /* Caption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Caption.swift; sourceTree = "<group>"; };
+		39E621802595637500C70023 /* ImageSelectionMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectionMode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +209,7 @@
 				3935786F25700BB800743E71 /* EditStackSubMenuType.swift */,
 				39362BC0258A6F32007053A0 /* MemeType.swift */,
 				39959D3D2592764600F1A71F /* CaptionEditingMode.swift */,
+				39E621802595637500C70023 /* ImageSelectionMode.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -672,6 +675,7 @@
 				393578272569775900743E71 /* FocusedImageViewer.swift in Sources */,
 				397280AD258FA511006326F3 /* MemerooNavBar.swift in Sources */,
 				39B9297925313E8300DFC401 /* MemerooApp.swift in Sources */,
+				39E621812595637500C70023 /* ImageSelectionMode.swift in Sources */,
 				3935782C256AC24000743E71 /* CGSizeOperatorOverload.swift in Sources */,
 				39B75165254639BE0016714B /* Constants.swift in Sources */,
 				39362B97258A6394007053A0 /* FontTypeView.swift in Sources */,

@@ -18,7 +18,7 @@ struct ImageCropper: UIViewControllerRepresentable {
 	}
 	
 	func makeUIViewController(context: UIViewControllerRepresentableContext<ImageCropper>) -> TOCropViewController {
-		let vc = TOCropViewController(image: meme.image ?? UIImage())
+		let vc = TOCropViewController(image: meme.originalImage ?? meme.image ?? UIImage())
 		vc.delegate = context.coordinator
 		return vc
 	}

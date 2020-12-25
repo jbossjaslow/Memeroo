@@ -13,7 +13,8 @@ class Meme: ObservableObject {
 	@Published var captions: [Caption] = [Caption(Constants.Text.defaultCaptionText)]
 	
 	@Published var image: UIImage?
-	@Published private var renderedImage: UIImage = UIImage()
+	@Published var originalImage: UIImage?
+//	@Published private var renderedImage: UIImage = UIImage()
 	
 	@Published var fontSize: CGFloat = 14
 	@Published var fontColor: Color = .black

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ShareButton: View {
+	@EnvironmentObject var viewRouter: ViewRouter
 	@EnvironmentObject var meme: Meme
 	
 	@State private var buttonSize: CGFloat = 20
@@ -25,8 +26,14 @@ struct ShareButton: View {
 	
 	func showShareSheet() {
 		guard let imageToSend = meme.render() else { return }
+		ViewRouter.performSimpleHaptics_ChoseSelection()
 		let av = UIActivityViewController(activityItems: [imageToSend],
 										  applicationActivities: nil)
+		av.completionWithItemsHandler = { (activity, success, items, error) in
+			if success {
+				viewRouter.popSuccess()
+			}
+		}
 		let root = UIApplication.shared.windows.first?.rootViewController
 		root?.present(av, animated: true)
 	}

@@ -11,18 +11,6 @@ struct CaptionAboveMemeView: View {
 	@EnvironmentObject var viewRouter: ViewRouter
 	@EnvironmentObject var meme: Meme
 	
-	var textColor: Color {
-		switch viewRouter.currentTab {
-			case .background:
-				if let caption = meme.captions.first?.text,
-				   caption != Constants.Text.defaultCaptionText {
-					return meme.fontColor
-				}
-				return .gray
-			case .caption: return meme.fontColor
-		}
-	}
-	
     var body: some View {
 		VStack(spacing: 0) {
 			//Caption
@@ -34,7 +22,7 @@ struct CaptionAboveMemeView: View {
 				Text(meme.captions.first?.text ?? Constants.Text.defaultCaptionText)
 					.font(.custom(meme.fontFamily,
 								  size: meme.fontSize))
-					.foregroundColor(textColor)
+					.foregroundColor(meme.fontColor)
 					.padding(.horizontal, 10)
 					.padding(.vertical, 15)
 					.multilineTextAlignment(meme.alignment)

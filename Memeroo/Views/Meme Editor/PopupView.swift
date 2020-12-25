@@ -29,7 +29,10 @@ struct PopupView: View {
 	
 	@ViewBuilder
     var body: some View {
-		if viewRouter.showingFocusedImage,
+		if viewRouter.showSuccessfulAction {
+			SuccessView()
+				.zIndex(1) //necessary for animations on zstack
+		} else if viewRouter.showingFocusedImage,
 		   let memeImage = meme.image {
 			FocusedImageViewer(image: Image(uiImage: memeImage)) {
 				//removal
@@ -45,7 +48,7 @@ struct PopupView: View {
 }
 
 struct PopupView_Previews: PreviewProvider {
-    static var previews: some View {
+	static var previews: some View {
         PopupView()
 			.environmentObject(ViewRouter())
 			.environmentObject(Meme().TestMemeFreeText())

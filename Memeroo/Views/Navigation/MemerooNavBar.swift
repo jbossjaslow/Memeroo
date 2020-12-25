@@ -17,6 +17,7 @@ struct MemerooNavBar: View {
 			Button {
 				//prompt in case of accident
 				if true {
+					ViewRouter.performSimpleHaptics_ChoseSelection()
 					meme.resetToDefault()
 					viewRouter.resetToDefault()
 					viewRouter.showingMemeEditor = false

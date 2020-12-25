@@ -11,41 +11,38 @@ struct MainMenu: View {
 	@EnvironmentObject var viewRouter: ViewRouter
 	@EnvironmentObject var meme: Meme
 	
-    var body: some View {
-//		NavigationView {
-			VStack {
-				Text("Memeroo")
-				
-				Spacer()
-				
-				Text("Select Meme Type")
-				
-				HStack {
-					ForEach(values: MemeType.allCases) { memeType in
-						Button {
-							meme.setup(type: memeType)
-							viewRouter.showingMemeEditor = true
-						} label: {
-							Text(memeType.rawValue)
-						}
-					}
+	@State private var selection: Int = 0
+	
+	var body: some View {
+		VStack {
+			Text("Memeroo")
+			
+			Spacer()
+			
+			Text("Select Meme Type")
+			
+			TabView(selection: $selection) {
+				ForEachWithIndex(MemeType.allCases) { index, memeType in
+					MemeTypePreview(type: memeType)
+						.tag(index)
 				}
-				
-//				NavigationLink(destination: MemerooTabBar(),
-//							   isActive: $viewRouter.showingMemeEditor) {
-//					EmptyView()
-//				}
-				
-				Spacer()
 			}
-//		}
-    }
+			.tabViewStyle(PageTabViewStyle())
+			.indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
+			.frame(height: 200)
+			.onChange(of: selection) { _ in
+				ViewRouter.performSimpleHaptics_SelectionChanged()
+			}
+			
+			Spacer()
+		}
+	}
 }
 
 struct MainMenu_Previews: PreviewProvider {
-    static var previews: some View {
-        MainMenu()
+	static var previews: some View {
+		MainMenu()
 			.environmentObject(ViewRouter())
 			.environmentObject(Meme())
-    }
+	}
 }

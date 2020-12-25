@@ -11,3 +11,7 @@ enum MemeType: String, CaseIterable {
 	case captionAbove = "Caption Above"
 	case freeText = "Free Text"
 }
+
+extension MemeType: Identifiable {
+	var id: MemeType { self }
+}

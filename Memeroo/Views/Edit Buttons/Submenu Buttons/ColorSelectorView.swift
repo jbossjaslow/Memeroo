@@ -11,10 +11,11 @@ struct ColorSelectorView: View {
 	@EnvironmentObject var viewRouter: ViewRouter
 	@EnvironmentObject var meme: Meme
 	
+	@State var title: String = ""
 	@Binding var currentColor: Color
 	
     var body: some View {
-		ColorPicker("Change color",
+		ColorPicker("Change \(title) color",
 					selection: $currentColor)
 		.padding(.horizontal, 10)
 		.frame(height: Constants.EditButtons.menuHeight)

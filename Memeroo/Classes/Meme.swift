@@ -21,7 +21,7 @@ class Meme: ObservableObject {
 	@Published var fontFamily: String = "system"
 	@Published var alignment: TextAlignment = .leading
 	
-	@Published var fontStrokeColor: Color? = nil
+	@Published var fontStrokeColor: Color = .clear
 //	@Published var fontStrokeWidth: CGFloat = 0
 	
 	@Published var captionBackgroundColor: Color = .white
@@ -63,7 +63,7 @@ class Meme: ObservableObject {
 		fontFamily = "system"
 		alignment = .leading
 		captionBackgroundColor = .white
-		fontStrokeColor = nil
+		fontStrokeColor = .clear
 	}
 }
 

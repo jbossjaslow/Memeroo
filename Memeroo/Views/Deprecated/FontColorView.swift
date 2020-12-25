@@ -1,34 +1,25 @@
 //
-//  FontStrokeColorView.swift
+//  FontColorView.swift
 //  Memeroo
 //
-//  Created by Josh Jaslow on 12/22/20.
+//  Created by Josh Jaslow on 12/16/20.
 //
 
 import SwiftUI
 
-struct FontStrokeColorView: View {
+struct FontColorView: View {
 	@EnvironmentObject var viewRouter: ViewRouter
 	@EnvironmentObject var meme: Meme
 	
-    var body: some View {
+	var body: some View {
 		ScrollView(.horizontal, showsIndicators: false) {
 			HStack(spacing: 15) {
-				Image(systemName: "square.split.diagonal.2x2")
-					.resizable()
-					.foregroundColor(.red)
-					.frame(width: 30, height: 30)
-					.border(Color.TextColors.defaultTextColor, width: 2)
-					.onTapGesture {
-						meme.fontStrokeColor = nil
-					}
-				
 				ForEach(Color.TextColors.colorsList) { color in
 					color
 						.frame(width: 30, height: 30)
 						.border(Color.TextColors.defaultTextColor, width: 2)
 						.onTapGesture {
-							meme.fontStrokeColor = color
+							meme.fontColor = color
 						}
 				}
 			}
@@ -39,13 +30,13 @@ struct FontStrokeColorView: View {
 		.offset(y: viewRouter.currentSubMenu == .none ? 0 : -Constants.EditButtons.menuHeight)
 		.animation(viewRouter.currentSubMenu == .none ? .easeIn : .easeOut)
 		.transition(.move(edge: .bottom))
-    }
+	}
 }
 
-struct FontStrokeColorView_Previews: PreviewProvider {
-    static var previews: some View {
-        FontStrokeColorView()
-			.environmentObject(ViewRouter().setSubMenu(.stroke))
+struct FontColorView_Previews: PreviewProvider {
+	static var previews: some View {
+        FontColorView()
+			.environmentObject(ViewRouter().setSubMenu(.textColor))
 			.environmentObject(Meme().TestMemeCaptionAbove())
     }
 }

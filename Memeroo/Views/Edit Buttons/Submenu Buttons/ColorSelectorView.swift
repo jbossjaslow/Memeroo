@@ -1,38 +1,36 @@
 //
-//  FontSizeView.swift
+//  ColorSelectorView.swift
 //  Memeroo
 //
-//  Created by Josh Jaslow on 12/16/20.
+//  Created by Josh Jaslow on 12/24/20.
 //
 
 import SwiftUI
 
-struct FontSizeView: View {
+struct ColorSelectorView: View {
 	@EnvironmentObject var viewRouter: ViewRouter
 	@EnvironmentObject var meme: Meme
 	
-	var body: some View {
-		HStack {
-			Text("\(Int(meme.fontSize))")
-			
-			Slider(value: $meme.fontSize,
-				   in: 8...54,
-				   step: 2)
-		}
+	@Binding var currentColor: Color
+	
+    var body: some View {
+		ColorPicker("Change color",
+					selection: $currentColor)
 		.padding(.horizontal, 10)
 		.frame(height: Constants.EditButtons.menuHeight)
 		.background(Color.ViewColors.editButtonBackground)
 		.offset(y: viewRouter.currentSubMenu == .none ? 0 : -Constants.EditButtons.menuHeight)
 		.animation(viewRouter.currentSubMenu == .none ? .easeIn : .easeOut)
 		.transition(.move(edge: .bottom))
-	}
+    }
 }
 
-struct FontSizeView_Previews: PreviewProvider {
+struct ColorSelectorView_Previews: PreviewProvider {
+	@State static var color: Color = .green
 	
     static var previews: some View {
-        FontSizeView()
-			.environmentObject(ViewRouter().setSubMenu(.textSize))
-			.environmentObject(Meme().TestMemeCaptionAbove())
-    }
+		ColorSelectorView(currentColor: $color)
+			.environmentObject(ViewRouter().setSubMenu(.textColor))
+			.environmentObject(Meme().TestMemeFreeText())
+	}
 }

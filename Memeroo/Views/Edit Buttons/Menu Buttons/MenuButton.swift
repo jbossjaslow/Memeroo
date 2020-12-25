@@ -44,7 +44,7 @@ struct MenuButton: View {
 
 struct MenuButton_Previews: PreviewProvider {
     static var previews: some View {
-		MenuButton(buttonType: .color)
+		MenuButton(buttonType: .textColor)
 			.environmentObject(ViewRouter())
     }
 }

@@ -18,6 +18,7 @@ struct MemerooNavBar: View {
 				//prompt in case of accident
 				if true {
 					meme.resetToDefault()
+					viewRouter.resetToDefault()
 					viewRouter.showingMemeEditor = false
 				}
 			} label: {

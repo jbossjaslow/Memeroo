@@ -15,9 +15,20 @@ class ViewRouter: ObservableObject {
 	@Published var currentCaptionEditingIndex: Int? = nil
 	@Published var showingImageSelector: Bool = false
 	@Published var imageSelectionMode: ImageSelectionMode = .imageSelectionAndCropping
+	@Published var showingColorSelector: Bool = false
 	
 	//MARK: - Edit Buttons Menu
 	@Published var currentSubMenu: EditStackSubMenuType = .none
+	
+	func resetToDefault() {
+		showingMemeEditor = false
+		currentTab = .background
+		showingFocusedImage = false
+		currentCaptionEditingIndex = nil
+		showingImageSelector = false
+		imageSelectionMode = .imageSelectionAndCropping
+		showingColorSelector = false
+	}
 	
 	#if DEBUG
 	func setCaption() -> Self {

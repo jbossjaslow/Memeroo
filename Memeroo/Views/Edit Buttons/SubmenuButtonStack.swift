@@ -15,10 +15,10 @@ struct SubmenuButtonStack: View {
 		HStack {
 			switch viewRouter.currentSubMenu {
 				case .font: FontTypeView()
-				case .size: FontSizeView()
-				case .color: FontColorView()
-				case .captionBackgroundColor: CaptionBackgroundColorView()
-				case .stroke: FontStrokeColorView()
+				case .textSize: FontSizeView()
+				case .textColor: ColorSelectorView(currentColor: $meme.fontColor)
+				case .captionBackgroundColor: ColorSelectorView(currentColor: $meme.captionBackgroundColor)
+				case .strokeColor: ColorSelectorView(currentColor: $meme.fontStrokeColor)
 				default: EmptyView()
 			}
 		}

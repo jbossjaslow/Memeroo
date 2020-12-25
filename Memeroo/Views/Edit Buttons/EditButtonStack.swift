@@ -27,14 +27,14 @@ struct EditButtonStack: View {
 													.cropImage,])
 				case (.captionAbove, .caption):
 					MenuButtonStack(buttonsToShow: [.font,
-													.size,
-													.color])
+													.textSize,
+													.textColor])
 				case (.freeText, .caption):
 					MenuButtonStack(buttonsToShow: [.addCaption,
 													.font,
-													.size,
-													.color,
-													.stroke])
+													.textSize,
+													.textColor,
+													.strokeColor])
 			}
 		}
 		.frame(height: Constants.EditButtons.menuHeight)

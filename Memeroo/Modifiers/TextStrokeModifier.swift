@@ -15,13 +15,13 @@ struct TextStrokeModifier: ViewModifier {
 	func body(content: Content) -> some View {
 		
 		content
-			.shadow(color: meme.fontStrokeColor ?? .clear,
+			.shadow(color: meme.fontStrokeColor,
 					radius: 0, x: 1, y: 1)
-			.shadow(color: meme.fontStrokeColor ?? .clear,
+			.shadow(color: meme.fontStrokeColor,
 					radius: 0, x: -1, y: 1)
-			.shadow(color: meme.fontStrokeColor ?? .clear,
+			.shadow(color: meme.fontStrokeColor,
 					radius: 0, x: -1, y: -1)
-			.shadow(color: meme.fontStrokeColor ?? .clear,
+			.shadow(color: meme.fontStrokeColor,
 					radius: 0, x: 1, y: -1)
 	}
 }

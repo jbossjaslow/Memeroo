@@ -34,10 +34,7 @@ struct PopupView: View {
 				.zIndex(1) //necessary for animations on zstack
 		} else if viewRouter.showingFocusedImage,
 		   let memeImage = meme.image {
-			FocusedImageViewer(image: Image(uiImage: memeImage)) {
-				//removal
-				viewRouter.showingFocusedImage = false
-			}
+			FocusedImageViewer(image: Image(uiImage: memeImage))
 			.zIndex(1) //necessary for animations on zstack
 		} else if let index = viewRouter.currentCaptionEditingIndex {
 			EditCaptionView(captionIndex: index,

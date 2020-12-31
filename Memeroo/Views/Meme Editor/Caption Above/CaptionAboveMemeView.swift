@@ -14,34 +14,7 @@ struct CaptionAboveMemeView: View {
     var body: some View {
 		VStack(spacing: 0) {
 			//Caption
-			HStack {
-				if meme.alignment != .leading {
-					Spacer()
-				}
-				
-				Text(meme.captions.first?.text ?? Constants.Text.defaultCaptionText)
-					.font(.custom(meme.fontFamily,
-								  size: meme.fontSize))
-					.foregroundColor(meme.fontColor)
-					.padding(.horizontal, 10)
-					.padding(.vertical, 15)
-					.multilineTextAlignment(meme.alignment)
-				
-				if meme.alignment != .trailing {
-					Spacer()
-				}
-			}
-			.contentShape(Rectangle())
-			.animation(.easeInOut)
-			.onTapGesture {
-				withAnimation {
-					if viewRouter.currentTab == .caption,
-					   meme.captions.count == 1 {
-						viewRouter.currentCaptionEditingIndex = 0
-					}
-				}
-			}
-			.background(meme.captionBackgroundColor)
+			CaptionAboveCaptionStack()
 			
 			//Image
 			if let memeImage = meme.image {
@@ -60,10 +33,28 @@ struct CaptionAboveMemeView: View {
     }
 }
 
+struct TestCaptionAboveAsImage: View {
+	@EnvironmentObject var meme: Meme
+	
+	@State var image: UIImage?
+	
+	var body: some View {
+		Image(uiImage: image ?? UIImage())
+			.onAppear {
+//				image = CaptionAboveMemeView()
+//					.environmentObject(meme).asImage()
+				image = meme.render()
+			}
+	}
+}
+
 struct EditMemeView_Previews: PreviewProvider {
     static var previews: some View {
         CaptionAboveMemeView()
 			.environmentObject(Meme().TestMemeCaptionAbove())
 			.environmentObject(ViewRouter())
+		
+//		TestCaptionAboveAsImage()
+//			.environmentObject(Meme().TestMemeCaptionAbove())
     }
 }

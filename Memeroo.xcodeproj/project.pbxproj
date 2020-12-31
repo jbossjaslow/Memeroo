@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		392BD25C259D39F500074059 /* CaptionAboveCaptionStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392BD25B259D39F500074059 /* CaptionAboveCaptionStack.swift */; };
 		3935781A256972FB00743E71 /* NormalToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39357819256972FB00743E71 /* NormalToggleStyle.swift */; };
 		393578222569766200743E71 /* SingleColorBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393578212569766200743E71 /* SingleColorBackground.swift */; };
 		393578272569775900743E71 /* FocusedImageViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393578262569775900743E71 /* FocusedImageViewer.swift */; };
@@ -96,6 +97,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		392BD25B259D39F500074059 /* CaptionAboveCaptionStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptionAboveCaptionStack.swift; sourceTree = "<group>"; };
 		39357819256972FB00743E71 /* NormalToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalToggleStyle.swift; sourceTree = "<group>"; };
 		393578212569766200743E71 /* SingleColorBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleColorBackground.swift; sourceTree = "<group>"; };
 		393578262569775900743E71 /* FocusedImageViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusedImageViewer.swift; sourceTree = "<group>"; };
@@ -286,6 +288,7 @@
 			isa = PBXGroup;
 			children = (
 				3935784B256CB6AB00743E71 /* CaptionAboveMemeView.swift */,
+				392BD25B259D39F500074059 /* CaptionAboveCaptionStack.swift */,
 			);
 			path = "Caption Above";
 			sourceTree = "<group>";
@@ -349,17 +352,17 @@
 		399ED91B2538E8C50089BD95 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				39E6217025941F1800C70023 /* AddTextStrokeExtension.swift */,
 				399ED91C2538E8E90089BD95 /* CaptureViewContextExtension.swift */,
+				3935782B256AC24000743E71 /* CGSizeOperatorOverload.swift */,
+				39B751B32548CFE80016714B /* DoubleAverageExtension.swift */,
+				3935788F257019B100743E71 /* EditCaptionButtonsStyle.swift */,
+				39357860256E0F9C00743E71 /* ForEachExtension.swift */,
 				39B751A12548CF640016714B /* LinearGradientCustomInit.swift */,
 				39B751A92548CFAA0016714B /* NeumorphicColorExtension.swift */,
-				39B751AE2548CFCC0016714B /* UIColorChannelSplitExtension.swift */,
-				39B751B32548CFE80016714B /* DoubleAverageExtension.swift */,
-				3935782B256AC24000743E71 /* CGSizeOperatorOverload.swift */,
 				39357830256AD97C00743E71 /* SingleColorBackgroundExtension.swift */,
-				39357860256E0F9C00743E71 /* ForEachExtension.swift */,
-				3935788F257019B100743E71 /* EditCaptionButtonsStyle.swift */,
+				39B751AE2548CFCC0016714B /* UIColorChannelSplitExtension.swift */,
 				3935789425701CA000743E71 /* ViewEditingExtension.swift */,
-				39E6217025941F1800C70023 /* AddTextStrokeExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -693,6 +696,7 @@
 				39B9297925313E8300DFC401 /* MemerooApp.swift in Sources */,
 				39E621812595637500C70023 /* ImageSelectionMode.swift in Sources */,
 				3935782C256AC24000743E71 /* CGSizeOperatorOverload.swift in Sources */,
+				392BD25C259D39F500074059 /* CaptionAboveCaptionStack.swift in Sources */,
 				39B75165254639BE0016714B /* Constants.swift in Sources */,
 				39362B97258A6394007053A0 /* FontTypeView.swift in Sources */,
 				39362BB4258A6B57007053A0 /* MainMenu.swift in Sources */,

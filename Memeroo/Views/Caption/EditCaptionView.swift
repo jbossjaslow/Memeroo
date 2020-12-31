@@ -49,6 +49,7 @@ struct EditCaptionView: View {
 				RoundedRectangle(cornerRadius: 10)
 							.fill(Color.gray)
 			)
+			.runNothingOnSpacerTap()
 
 			Spacer()
 			
@@ -57,7 +58,9 @@ struct EditCaptionView: View {
 		.padding(.horizontal)
 		.singleColorBackground(color: Color.black.opacity(0.8))
 		.transition(.opacity)
-		.ableToEndEditing()
+		.runOnSpacerTap() {
+			viewRouter.currentCaptionEditingIndex = nil
+		}
 	}
 }
 

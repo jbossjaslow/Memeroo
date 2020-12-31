@@ -30,8 +30,13 @@ struct ShareButton: View {
 		let av = UIActivityViewController(activityItems: [imageToSend],
 										  applicationActivities: nil)
 		av.completionWithItemsHandler = { (activity, success, items, error) in
-			if success {
+			if let error = error {
+				print("Error: \(error)")
+			}
+			else if success {
 				viewRouter.popSuccess()
+			} else {
+				print("Failed for some other reason")
 			}
 		}
 		let root = UIApplication.shared.windows.first?.rootViewController

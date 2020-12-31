@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct FocusedImageViewer: View {
+	@EnvironmentObject var viewRouter: ViewRouter
 	
 	@State var image: Image
-	var removal: () -> Void
 	
 	//Offset
 	@State private var currentOffset: CGSize = .zero
@@ -51,7 +51,7 @@ struct FocusedImageViewer: View {
 							
 							if distance(finalOffset) > 150 {
 								withAnimation {
-									self.removal()
+									viewRouter.showingFocusedImage = false
 								}
 							}
 							
@@ -88,7 +88,7 @@ struct FocusedImageViewer: View {
 		.singleColorBackground(color: Color.black.opacity(0.8))
 		.transition(.opacity)
 		.runOnSpacerTap() {
-			removal()
+			viewRouter.showingFocusedImage = false
 		}
 	}
 	
@@ -111,8 +111,7 @@ struct FocusedImageViewer: View {
 
 struct FocusedImageViewer_Previews: PreviewProvider {
 	static var previews: some View {
-		FocusedImageViewer(image: Image("TestImage")) {
-			print("Removing image")
-		}
+		FocusedImageViewer(image: Image("TestImage"))
+		.environmentObject(ViewRouter())
 	}
 }

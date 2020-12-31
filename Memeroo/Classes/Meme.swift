@@ -22,22 +22,23 @@ class Meme: ObservableObject {
 	@Published var alignment: TextAlignment = .leading
 	
 	@Published var fontStrokeColor: Color = .clear
-//	@Published var fontStrokeWidth: CGFloat = 0
+	@Published var fontStrokeWidth: CGFloat = 1
 	
 	@Published var captionBackgroundColor: Color = .white
 	
 	func render() -> UIImage? {
 		guard image != nil,
-			  let type = memeType else { return nil }
+			  let type = memeType,
+			  !captions.isEmpty else { return nil }
 		switch type {
 			case .captionAbove:
 				return CaptionAboveMemeView()
 					.environmentObject(self)
-					.asImage(completion: nil)
+					.asImage()
 			case .freeText:
 				return FreeTextMemeView()
 					.environmentObject(self)
-					.asImage(completion: nil)
+					.asImage()
 		}
 	}
 	
@@ -68,9 +69,9 @@ class Meme: ObservableObject {
 }
 
 extension Meme {
-	func TestMemeCaptionAbove() -> Self {
+	func TestMemeCaptionAbove(_ captionText: String = "Test Caption") -> Self {
 		setup(type: .captionAbove)
-		captions = [Caption("Test Caption")]
+		captions = [Caption(captionText)]
 		image = UIImage(named: "TestImage")
 		memeType = .captionAbove
 		return self
@@ -84,6 +85,12 @@ extension Meme {
 		fontStrokeColor = .black
 //		fontStrokeWidth = 0.5
 		fontColor = .white
+		return self
+	}
+	
+	func setPreviewTestMemeCaptions() -> Self {
+		fontSize = 24
+		
 		return self
 	}
 }

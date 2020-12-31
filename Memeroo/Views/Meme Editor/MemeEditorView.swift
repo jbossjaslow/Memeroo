@@ -59,6 +59,6 @@ struct MemerooTabBar_Previews: PreviewProvider {
 	static var previews: some View {
 		MemeEditorView()
 			.environmentObject(ViewRouter())
-			.environmentObject(Meme().TestMemeFreeText())
+			.environmentObject(Meme().TestMemeCaptionAbove())
 	}
 }

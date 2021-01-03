@@ -31,7 +31,7 @@ struct ColorSelectorView_Previews: PreviewProvider {
 	
     static var previews: some View {
 		ColorSelectorView(currentColor: $color)
-			.environmentObject(ViewRouter().setSubMenu(.textColor))
+			.environmentObject(ViewRouter())
 			.environmentObject(Meme().TestMemeFreeText())
 	}
 }

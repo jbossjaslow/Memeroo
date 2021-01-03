@@ -45,7 +45,7 @@ struct FontTypeView_Previews: PreviewProvider {
 	
     static var previews: some View {
 		FontTypeView()
-			.environmentObject(ViewRouter().setSubMenu(.font))
+			.environmentObject(ViewRouter())
 			.environmentObject(Meme().TestMemeCaptionAbove())
     }
 }

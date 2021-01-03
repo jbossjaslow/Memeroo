@@ -45,7 +45,7 @@ struct FontStrokeColorView: View {
 struct FontStrokeColorView_Previews: PreviewProvider {
     static var previews: some View {
         FontStrokeColorView()
-			.environmentObject(ViewRouter().setSubMenu(.strokeColor))
+			.environmentObject(ViewRouter())
 			.environmentObject(Meme().TestMemeCaptionAbove())
     }
 }

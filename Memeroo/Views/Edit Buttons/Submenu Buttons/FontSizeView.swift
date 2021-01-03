@@ -32,7 +32,7 @@ struct FontSizeView_Previews: PreviewProvider {
 	
     static var previews: some View {
         FontSizeView()
-			.environmentObject(ViewRouter().setSubMenu(.textSize))
+			.environmentObject(ViewRouter())
 			.environmentObject(Meme().TestMemeCaptionAbove())
     }
 }

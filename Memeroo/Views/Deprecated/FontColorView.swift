@@ -36,7 +36,7 @@ struct FontColorView: View {
 struct FontColorView_Previews: PreviewProvider {
 	static var previews: some View {
         FontColorView()
-			.environmentObject(ViewRouter().setSubMenu(.textColor))
+			.environmentObject(ViewRouter())
 			.environmentObject(Meme().TestMemeCaptionAbove())
     }
 }

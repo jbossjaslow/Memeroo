@@ -43,7 +43,7 @@ struct CaptionBackgroundColorView: View {
 struct CaptionBackgroundColorView_Previews: PreviewProvider {
     static var previews: some View {
         CaptionBackgroundColorView()
-			.environmentObject(ViewRouter().setSubMenu(.captionBackgroundColor))
+			.environmentObject(ViewRouter())
 			.environmentObject(Meme().TestMemeCaptionAbove())
     }
 }

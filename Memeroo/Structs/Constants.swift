@@ -12,6 +12,10 @@ struct Constants {
 		static let defaultCaptionText = "Caption"
 	}
 	
+	struct FontSize {
+		static let defaultFontSize: CGFloat = 14
+	}
+	
 	struct EditButtons {
 		static let menuHeight: CGFloat = 40
 	}

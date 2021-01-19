@@ -23,7 +23,7 @@ struct FontTypeView: View {
 							.font(.custom(font, size: 12))
 							.foregroundColor(Color.TextColors.defaultTextColor)
 							.onTapGesture {
-								meme.fontFamily = font
+								meme.singleCaption.fontFamily = font
 							}
 						
 						Divider()

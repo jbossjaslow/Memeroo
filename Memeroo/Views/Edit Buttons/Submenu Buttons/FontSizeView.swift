@@ -13,11 +13,13 @@ struct FontSizeView: View {
 	
 	var body: some View {
 		HStack {
-			Text("\(Int(meme.fontSize))")
-			
-			Slider(value: $meme.fontSize,
-				   in: 8...54,
-				   step: 2)
+			if meme.memeType == .captionAbove {
+				Text("\(Int(meme.singleCaption.fontSize))")
+				
+				Slider(value: $meme.singleCaption.fontSize,
+					   in: 8...54,
+					   step: 2)
+			}
 		}
 		.padding(.horizontal, 10)
 		.frame(height: Constants.EditButtons.menuHeight)

@@ -15,6 +15,7 @@ struct CaptionAboveMemeView: View {
 		VStack(spacing: 0) {
 			//Caption
 			CaptionAboveCaptionStack()
+				.zIndex(0)
 			
 			//Image
 			if let memeImage = meme.image {
@@ -25,6 +26,7 @@ struct CaptionAboveMemeView: View {
 						//if image is nil, don't bother showing focused image
 						viewRouter.showingFocusedImage = meme.image != nil
 					}
+					.zIndex(1)
 			}
 			else {
 				Spacer()

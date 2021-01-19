@@ -15,7 +15,7 @@ struct CaptionBackgroundColorView: View {
 	
 	var body: some View {
 		HStack {
-			meme.captionBackgroundColor
+			meme.singleCaption.backgroundColor
 				.frame(width: 30, height: 30)
 				.border(Color.TextColors.defaultTextColor, width: 2)
 			
@@ -23,12 +23,12 @@ struct CaptionBackgroundColorView: View {
 				   in: 0...1.0,
 				   step: 0.05)
 				.onChange(of: blackLevel) { _ in
-					meme.captionBackgroundColor = Color(red: blackLevel,
+					meme.singleCaption.backgroundColor = Color(red: blackLevel,
 											  green: blackLevel,
 											  blue: blackLevel)
 				}
 				.onAppear {
-					blackLevel = meme.captionBackgroundColor.redChannel
+					blackLevel = meme.singleCaption.backgroundColor.redChannel
 				}
 		}
 		.padding(.horizontal, 10)

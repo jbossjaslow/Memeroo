@@ -20,45 +20,45 @@ struct MemeTypePreview: View {
 	var body: some View {
 		VStack(spacing: 0) {
 			
-			switch type {
-				case .captionAbove:
-					ZStack(alignment: .top) {
-						Image("TestImage")
-							.resizable()
-							.aspectRatio(contentMode: .fit)
-						
-						HStack {
-							Text(meme.captions.first?.text ?? Constants.Text.defaultCaptionText)
-								.font(.custom(meme.fontFamily,
-											  size: meme.fontSize))
-								.foregroundColor(meme.fontColor)
-								.padding(.horizontal, 10)
-								.padding(.vertical, 15)
-								.multilineTextAlignment(meme.alignment)
-							
-							Spacer()
-						}
-						.background(meme.captionBackgroundColor)
-					}
-					.padding()
-				case .freeText:
-					ZStack() {
-						Image("TestImage")
-							.resizable()
-							.aspectRatio(contentMode: .fit)
-						
-						FreeTextCaption(caption: Caption("Top Text"),
-										offset: .init(width: 0,
-													  height: -90))
-							.environmentObject(previewMeme)
-						
-						FreeTextCaption(caption: Caption("Bottom Text"),
-										offset: .init(width: 0,
-													  height: 90))
-							.environmentObject(previewMeme)
-					}
-					.padding()
-			}
+//			switch type {
+//				case .captionAbove:
+//					ZStack(alignment: .top) {
+//						Image("TestImage")
+//							.resizable()
+//							.aspectRatio(contentMode: .fit)
+//						
+//						HStack {
+//							Text(meme.captions.first?.text ?? Constants.Text.defaultCaptionText)
+//								.font(.custom(meme.fontFamily,
+//											  size: meme.fontSizes.first ?? 14))
+//								.foregroundColor(meme.fontColor)
+//								.padding(.horizontal, 10)
+//								.padding(.vertical, 15)
+//								.multilineTextAlignment(meme.alignment)
+//							
+//							Spacer()
+//						}
+//						.background(meme.captionBackgroundColor)
+//					}
+//					.padding()
+//				case .freeText:
+//					ZStack() {
+//						Image("TestImage")
+//							.resizable()
+//							.aspectRatio(contentMode: .fit)
+//						
+//						FreeTextCaption(caption: Caption("Top Text"),
+//										offset: .init(width: 0,
+//													  height: -90))
+//							.environmentObject(previewMeme)
+//						
+//						FreeTextCaption(caption: Caption("Bottom Text"),
+//										offset: .init(width: 0,
+//													  height: 90))
+//							.environmentObject(previewMeme)
+//					}
+//					.padding()
+//			}
 			
 //			Spacer()
 			

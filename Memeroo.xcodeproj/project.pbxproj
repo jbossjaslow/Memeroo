@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		39231E7725AF885A00DEF951 /* EditSingleCaptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39231E7625AF885A00DEF951 /* EditSingleCaptionView.swift */; };
+		39231E7C25AF886700DEF951 /* EditMultiCaptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39231E7B25AF886700DEF951 /* EditMultiCaptionView.swift */; };
+		39231E8125AF891200DEF951 /* SingleCaptionExitButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39231E8025AF891200DEF951 /* SingleCaptionExitButtons.swift */; };
+		39231E8625AF893900DEF951 /* CaptionAlignmentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39231E8525AF893900DEF951 /* CaptionAlignmentButton.swift */; };
+		39231E8B25AF8A4D00DEF951 /* MultipleCaptionsExitButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39231E8A25AF8A4D00DEF951 /* MultipleCaptionsExitButtons.swift */; };
+		39231EA825AFA59700DEF951 /* MultipleCaptionsEditButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39231EA725AFA59700DEF951 /* MultipleCaptionsEditButtons.swift */; };
+		39231EAD25AFA5E600DEF951 /* SingleCaptionEditButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39231EAC25AFA5E600DEF951 /* SingleCaptionEditButtons.swift */; };
+		39231EBA25B65FA600DEF951 /* EditCaptionStrokeStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39231EB925B65FA600DEF951 /* EditCaptionStrokeStack.swift */; };
+		39231EC525B6608900DEF951 /* EditCaptionTextStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39231EC425B6608900DEF951 /* EditCaptionTextStack.swift */; };
+		39231ECA25B6610900DEF951 /* EditCaptionFontTypeStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39231EC925B6610900DEF951 /* EditCaptionFontTypeStack.swift */; };
+		39231ED025B661D200DEF951 /* EditCaptionBackgroundColorStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39231ECF25B661D200DEF951 /* EditCaptionBackgroundColorStack.swift */; };
+		39231ED825B663F100DEF951 /* CaptionEditButtonsHStackModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39231ED725B663F100DEF951 /* CaptionEditButtonsHStackModifier.swift */; };
+		39231EE025B6642C00DEF951 /* CaptionEditButtonsModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39231EDF25B6642C00DEF951 /* CaptionEditButtonsModifier.swift */; };
 		392BD25C259D39F500074059 /* CaptionAboveCaptionStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392BD25B259D39F500074059 /* CaptionAboveCaptionStack.swift */; };
 		3935781A256972FB00743E71 /* NormalToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39357819256972FB00743E71 /* NormalToggleStyle.swift */; };
 		393578222569766200743E71 /* SingleColorBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393578212569766200743E71 /* SingleColorBackground.swift */; };
@@ -21,15 +34,12 @@
 		39357861256E0F9C00743E71 /* ForEachExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39357860256E0F9C00743E71 /* ForEachExtension.swift */; };
 		3935786825700B6A00743E71 /* TabType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3935786725700B6A00743E71 /* TabType.swift */; };
 		3935787025700BB800743E71 /* EditStackSubMenuType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3935786F25700BB800743E71 /* EditStackSubMenuType.swift */; };
-		39357880257013FC00743E71 /* EditCaptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3935787F257013FC00743E71 /* EditCaptionView.swift */; };
 		3935788B2570196800743E71 /* EditCaptionButtonsModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3935788A2570196800743E71 /* EditCaptionButtonsModifier.swift */; };
 		39357890257019B100743E71 /* EditCaptionButtonsStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3935788F257019B100743E71 /* EditCaptionButtonsStyle.swift */; };
 		3935789525701CA000743E71 /* ViewEditingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3935789425701CA000743E71 /* ViewEditingExtension.swift */; };
 		3935789D25701CD000743E71 /* ViewEditingModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3935789C25701CD000743E71 /* ViewEditingModifier.swift */; };
-		393578A325701FFD00743E71 /* EditCaptionButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393578A225701FFD00743E71 /* EditCaptionButtons.swift */; };
 		39362B97258A6394007053A0 /* FontTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39362B96258A6394007053A0 /* FontTypeView.swift */; };
 		39362B9F258A64B7007053A0 /* FontSizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39362B9E258A64B7007053A0 /* FontSizeView.swift */; };
-		39362BA4258A6510007053A0 /* FontColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39362BA3258A6510007053A0 /* FontColorView.swift */; };
 		39362BA9258A6555007053A0 /* CaptionBackgroundColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39362BA8258A6555007053A0 /* CaptionBackgroundColorView.swift */; };
 		39362BAE258A6598007053A0 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39362BAD258A6598007053A0 /* MenuButton.swift */; };
 		39362BB4258A6B57007053A0 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39362BB3258A6B57007053A0 /* MainMenu.swift */; };
@@ -97,6 +107,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		39231E7625AF885A00DEF951 /* EditSingleCaptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSingleCaptionView.swift; sourceTree = "<group>"; };
+		39231E7B25AF886700DEF951 /* EditMultiCaptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMultiCaptionView.swift; sourceTree = "<group>"; };
+		39231E8025AF891200DEF951 /* SingleCaptionExitButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleCaptionExitButtons.swift; sourceTree = "<group>"; };
+		39231E8525AF893900DEF951 /* CaptionAlignmentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptionAlignmentButton.swift; sourceTree = "<group>"; };
+		39231E8A25AF8A4D00DEF951 /* MultipleCaptionsExitButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleCaptionsExitButtons.swift; sourceTree = "<group>"; };
+		39231EA725AFA59700DEF951 /* MultipleCaptionsEditButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleCaptionsEditButtons.swift; sourceTree = "<group>"; };
+		39231EAC25AFA5E600DEF951 /* SingleCaptionEditButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleCaptionEditButtons.swift; sourceTree = "<group>"; };
+		39231EB925B65FA600DEF951 /* EditCaptionStrokeStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCaptionStrokeStack.swift; sourceTree = "<group>"; };
+		39231EC425B6608900DEF951 /* EditCaptionTextStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCaptionTextStack.swift; sourceTree = "<group>"; };
+		39231EC925B6610900DEF951 /* EditCaptionFontTypeStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCaptionFontTypeStack.swift; sourceTree = "<group>"; };
+		39231ECF25B661D200DEF951 /* EditCaptionBackgroundColorStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCaptionBackgroundColorStack.swift; sourceTree = "<group>"; };
+		39231ED725B663F100DEF951 /* CaptionEditButtonsHStackModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptionEditButtonsHStackModifier.swift; sourceTree = "<group>"; };
+		39231EDF25B6642C00DEF951 /* CaptionEditButtonsModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptionEditButtonsModifier.swift; sourceTree = "<group>"; };
 		392BD25B259D39F500074059 /* CaptionAboveCaptionStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptionAboveCaptionStack.swift; sourceTree = "<group>"; };
 		39357819256972FB00743E71 /* NormalToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalToggleStyle.swift; sourceTree = "<group>"; };
 		393578212569766200743E71 /* SingleColorBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleColorBackground.swift; sourceTree = "<group>"; };
@@ -111,15 +134,12 @@
 		39357860256E0F9C00743E71 /* ForEachExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForEachExtension.swift; sourceTree = "<group>"; };
 		3935786725700B6A00743E71 /* TabType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabType.swift; sourceTree = "<group>"; };
 		3935786F25700BB800743E71 /* EditStackSubMenuType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStackSubMenuType.swift; sourceTree = "<group>"; };
-		3935787F257013FC00743E71 /* EditCaptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCaptionView.swift; sourceTree = "<group>"; };
 		3935788A2570196800743E71 /* EditCaptionButtonsModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCaptionButtonsModifier.swift; sourceTree = "<group>"; };
 		3935788F257019B100743E71 /* EditCaptionButtonsStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCaptionButtonsStyle.swift; sourceTree = "<group>"; };
 		3935789425701CA000743E71 /* ViewEditingExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEditingExtension.swift; sourceTree = "<group>"; };
 		3935789C25701CD000743E71 /* ViewEditingModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEditingModifier.swift; sourceTree = "<group>"; };
-		393578A225701FFD00743E71 /* EditCaptionButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCaptionButtons.swift; sourceTree = "<group>"; };
 		39362B96258A6394007053A0 /* FontTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontTypeView.swift; sourceTree = "<group>"; };
 		39362B9E258A64B7007053A0 /* FontSizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSizeView.swift; sourceTree = "<group>"; };
-		39362BA3258A6510007053A0 /* FontColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontColorView.swift; sourceTree = "<group>"; };
 		39362BA8258A6555007053A0 /* CaptionBackgroundColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptionBackgroundColorView.swift; sourceTree = "<group>"; };
 		39362BAD258A6598007053A0 /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 		39362BB3258A6B57007053A0 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
@@ -200,6 +220,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		39231EB725B65F3D00DEF951 /* Multiple Captions */ = {
+			isa = PBXGroup;
+			children = (
+				39231E7B25AF886700DEF951 /* EditMultiCaptionView.swift */,
+				39231EA725AFA59700DEF951 /* MultipleCaptionsEditButtons.swift */,
+				39231E8A25AF8A4D00DEF951 /* MultipleCaptionsExitButtons.swift */,
+			);
+			path = "Multiple Captions";
+			sourceTree = "<group>";
+		};
+		39231EB825B65F5000DEF951 /* Single Caption */ = {
+			isa = PBXGroup;
+			children = (
+				39231E8525AF893900DEF951 /* CaptionAlignmentButton.swift */,
+				39231E7625AF885A00DEF951 /* EditSingleCaptionView.swift */,
+				39231EAC25AFA5E600DEF951 /* SingleCaptionEditButtons.swift */,
+				39231E8025AF891200DEF951 /* SingleCaptionExitButtons.swift */,
+			);
+			path = "Single Caption";
+			sourceTree = "<group>";
+		};
+		39231ECE25B6617500DEF951 /* Caption Modification Stacks */ = {
+			isa = PBXGroup;
+			children = (
+				39231EB925B65FA600DEF951 /* EditCaptionStrokeStack.swift */,
+				39231EC425B6608900DEF951 /* EditCaptionTextStack.swift */,
+				39231EC925B6610900DEF951 /* EditCaptionFontTypeStack.swift */,
+				39231ECF25B661D200DEF951 /* EditCaptionBackgroundColorStack.swift */,
+			);
+			path = "Caption Modification Stacks";
+			sourceTree = "<group>";
+		};
 		39357818256972E200743E71 /* Modifiers */ = {
 			isa = PBXGroup;
 			children = (
@@ -208,6 +260,7 @@
 				3935788A2570196800743E71 /* EditCaptionButtonsModifier.swift */,
 				3935789C25701CD000743E71 /* ViewEditingModifier.swift */,
 				39E6216B2593B27E00C70023 /* TextStrokeModifier.swift */,
+				39231EDF25B6642C00DEF951 /* CaptionEditButtonsModifier.swift */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
@@ -227,8 +280,9 @@
 		393578A125701FD900743E71 /* Caption */ = {
 			isa = PBXGroup;
 			children = (
-				3935787F257013FC00743E71 /* EditCaptionView.swift */,
-				393578A225701FFD00743E71 /* EditCaptionButtons.swift */,
+				39231ECE25B6617500DEF951 /* Caption Modification Stacks */,
+				39231EB825B65F5000DEF951 /* Single Caption */,
+				39231EB725B65F3D00DEF951 /* Multiple Captions */,
 			);
 			path = Caption;
 			sourceTree = "<group>";
@@ -363,6 +417,7 @@
 				39357830256AD97C00743E71 /* SingleColorBackgroundExtension.swift */,
 				39B751AE2548CFCC0016714B /* UIColorChannelSplitExtension.swift */,
 				3935789425701CA000743E71 /* ViewEditingExtension.swift */,
+				39231ED725B663F100DEF951 /* CaptionEditButtonsHStackModifier.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -426,7 +481,6 @@
 		39B7519A2548B7BC0016714B /* Deprecated */ = {
 			isa = PBXGroup;
 			children = (
-				39362BA3258A6510007053A0 /* FontColorView.swift */,
 				39362BA8258A6555007053A0 /* CaptionBackgroundColorView.swift */,
 				39E621662592A5D800C70023 /* FontStrokeColorView.swift */,
 			);
@@ -648,6 +702,8 @@
 				39362BC1258A6F32007053A0 /* MemeType.swift in Sources */,
 				3935786825700B6A00743E71 /* TabType.swift in Sources */,
 				39B751B42548CFE80016714B /* DoubleAverageExtension.swift in Sources */,
+				39231E7725AF885A00DEF951 /* EditSingleCaptionView.swift in Sources */,
+				39231ED825B663F100DEF951 /* CaptionEditButtonsHStackModifier.swift in Sources */,
 				39E6216C2593B27E00C70023 /* TextStrokeModifier.swift in Sources */,
 				399ED91D2538E8E90089BD95 /* CaptureViewContextExtension.swift in Sources */,
 				39959D292592604100F1A71F /* SubmenuButtonStack.swift in Sources */,
@@ -658,6 +714,8 @@
 				39357861256E0F9C00743E71 /* ForEachExtension.swift in Sources */,
 				39357831256AD97C00743E71 /* SingleColorBackgroundExtension.swift in Sources */,
 				39B6B56F2596374000D2C54C /* MemeTypePreview.swift in Sources */,
+				39231EBA25B65FA600DEF951 /* EditCaptionStrokeStack.swift in Sources */,
+				39231EC525B6608900DEF951 /* EditCaptionTextStack.swift in Sources */,
 				39B751AF2548CFCC0016714B /* UIColorChannelSplitExtension.swift in Sources */,
 				39959D31259264AC00F1A71F /* MenuButtonStack.swift in Sources */,
 				3935781A256972FB00743E71 /* NormalToggleStyle.swift in Sources */,
@@ -673,34 +731,40 @@
 				39B9298225313E8500DFC401 /* Persistence.swift in Sources */,
 				39362BA9258A6555007053A0 /* CaptionBackgroundColorView.swift in Sources */,
 				39B9297B25313E8300DFC401 /* ContentView.swift in Sources */,
+				39231EAD25AFA5E600DEF951 /* SingleCaptionEditButtons.swift in Sources */,
 				39362BBC258A6D75007053A0 /* MainView.swift in Sources */,
-				39362BA4258A6510007053A0 /* FontColorView.swift in Sources */,
+				39231E8625AF893900DEF951 /* CaptionAlignmentButton.swift in Sources */,
 				39B7517525487AA40016714B /* ViewRouter.swift in Sources */,
 				39E621792594251B00C70023 /* Caption.swift in Sources */,
 				3935783C256CABE100743E71 /* TabStack.swift in Sources */,
 				39E621672592A5D800C70023 /* FontStrokeColorView.swift in Sources */,
 				393578222569766200743E71 /* SingleColorBackground.swift in Sources */,
 				399ED92F2538EAA30089BD95 /* ImagePicker.swift in Sources */,
+				39231E8125AF891200DEF951 /* SingleCaptionExitButtons.swift in Sources */,
 				3935785C256E0C8A00743E71 /* Fonts.swift in Sources */,
 				39B7518D2548B6F60016714B /* MemerooToggleStyle.swift in Sources */,
 				39E6217125941F1800C70023 /* AddTextStrokeExtension.swift in Sources */,
 				397280F225918CD5006326F3 /* FreeTextCaption.swift in Sources */,
+				39231ECA25B6610900DEF951 /* EditCaptionFontTypeStack.swift in Sources */,
+				39231EE025B6642C00DEF951 /* CaptionEditButtonsModifier.swift in Sources */,
 				399ED9272538E9C30089BD95 /* ImageCropper.swift in Sources */,
 				3935788B2570196800743E71 /* EditCaptionButtonsModifier.swift in Sources */,
-				393578A325701FFD00743E71 /* EditCaptionButtons.swift in Sources */,
 				39959D3E2592764600F1A71F /* CaptionEditingMode.swift in Sources */,
 				39B7517B2548B63E0016714B /* ColorfulBackground.swift in Sources */,
 				39B7516D254878140016714B /* MemeEditorView.swift in Sources */,
 				393578272569775900743E71 /* FocusedImageViewer.swift in Sources */,
+				39231EA825AFA59700DEF951 /* MultipleCaptionsEditButtons.swift in Sources */,
+				39231E8B25AF8A4D00DEF951 /* MultipleCaptionsExitButtons.swift in Sources */,
 				397280AD258FA511006326F3 /* MemerooNavBar.swift in Sources */,
 				39B9297925313E8300DFC401 /* MemerooApp.swift in Sources */,
+				39231E7C25AF886700DEF951 /* EditMultiCaptionView.swift in Sources */,
 				39E621812595637500C70023 /* ImageSelectionMode.swift in Sources */,
 				3935782C256AC24000743E71 /* CGSizeOperatorOverload.swift in Sources */,
 				392BD25C259D39F500074059 /* CaptionAboveCaptionStack.swift in Sources */,
+				39231ED025B661D200DEF951 /* EditCaptionBackgroundColorStack.swift in Sources */,
 				39B75165254639BE0016714B /* Constants.swift in Sources */,
 				39362B97258A6394007053A0 /* FontTypeView.swift in Sources */,
 				39362BB4258A6B57007053A0 /* MainMenu.swift in Sources */,
-				39357880257013FC00743E71 /* EditCaptionView.swift in Sources */,
 				39B751A22548CF640016714B /* LinearGradientCustomInit.swift in Sources */,
 				39882C79253922480072C2A5 /* Meme.swift in Sources */,
 				39B751882548B6C80016714B /* ShareButton.swift in Sources */,

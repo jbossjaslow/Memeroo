@@ -1,17 +1,16 @@
 //
-//  SwiftUIView.swift
+//  EditSingleCaptionView.swift
 //  Memeroo
 //
-//  Created by Josh Jaslow on 11/26/20.
+//  Created by Josh Jaslow on 1/13/21.
 //
 
 import SwiftUI
 
-struct EditCaptionView: View {
+struct EditSingleCaptionView: View {
 	@EnvironmentObject var viewRouter: ViewRouter
 	@EnvironmentObject var meme: Meme
-	
-	@State var captionIndex: Int
+
 	@State var editingMode: CaptionEditingMode
 	@State private var currentText: String = ""
 	
@@ -21,8 +20,10 @@ struct EditCaptionView: View {
 
 			VStack {
 				TextEditor(text: $currentText)
+					.font(.custom(meme.singleCaption.fontFamily,
+								  size: meme.singleCaption.fontSize))
+					.foregroundColor(meme.singleCaption.fontColor)
 					.multilineTextAlignment(meme.alignment)
-					.foregroundColor(Color.TextColors.defaultTextColor)
 					.lineLimit(7)
 					.frame(height: 200)
 					.unableToEndEditing()
@@ -34,22 +35,22 @@ struct EditCaptionView: View {
 					.onAppear {
 						switch editingMode {
 							case .editingExisting:
-								currentText = meme.captions[captionIndex].text
+								currentText = meme.singleCaption.text
 							case .addingNew:
 								currentText = Constants.Text.defaultCaptionText
 						}
 					}
 				
-				EditCaptionButtons(captionIndex: $captionIndex,
-								   currentText: $currentText,
-								   editingMode: $editingMode)
+				SingleCaptionEditButtons(caption: $meme.singleCaption)
+				
+				SingleCaptionExitButtons(currentText: $currentText,
+										 editingMode: $editingMode)
 			}
 			.padding()
 			.background(
 				RoundedRectangle(cornerRadius: 10)
 							.fill(Color.gray)
 			)
-			.runNothingOnSpacerTap()
 
 			Spacer()
 			
@@ -58,17 +59,13 @@ struct EditCaptionView: View {
 		.padding(.horizontal)
 		.singleColorBackground(color: Color.black.opacity(0.8))
 		.transition(.opacity)
-		.runOnSpacerTap() {
-			viewRouter.currentCaptionEditingIndex = nil
-		}
 	}
 }
 
-struct SwiftUIView_Previews: PreviewProvider {
-	static var previews: some View {
-		EditCaptionView(captionIndex: 0,
-						editingMode: .editingExisting)
+struct EditSingleCaptionView_Previews: PreviewProvider {
+    static var previews: some View {
+        EditSingleCaptionView(editingMode: .editingExisting)
 			.environmentObject(ViewRouter())
 			.environmentObject(Meme().TestMemeFreeText())
-	}
+    }
 }

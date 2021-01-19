@@ -20,21 +20,14 @@ struct EditButtonStack: View {
 			switch (meme.memeType ?? .captionAbove, viewRouter.currentTab) {
 				case (.captionAbove, .background):
 					MenuButtonStack(buttonsToShow: [.chooseImage,
-													.cropImage,
-													.captionBackgroundColor])
+													.cropImage])
 				case (.freeText, .background):
 					MenuButtonStack(buttonsToShow: [.chooseImage,
 													.cropImage,])
-				case (.captionAbove, .caption):
-					MenuButtonStack(buttonsToShow: [.font,
-													.textSize,
-													.textColor])
 				case (.freeText, .caption):
-					MenuButtonStack(buttonsToShow: [.addCaption,
-													.font,
-													.textSize,
-													.textColor,
-													.strokeColor])
+					MenuButtonStack(buttonsToShow: [.addCaption])
+				default:
+					EmptyView()
 			}
 		}
 		.frame(height: Constants.EditButtons.menuHeight)

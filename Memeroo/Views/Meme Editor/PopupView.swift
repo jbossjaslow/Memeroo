@@ -17,7 +17,7 @@ struct PopupView: View {
 				return .editingExisting
 			case .freeText:
 				if let index = viewRouter.currentCaptionEditingIndex,
-				   meme.captions.indices.contains(index) {
+				   meme.multiCaptions.indices.contains(index) {
 					return .editingExisting
 				} else {
 					return .addingNew
@@ -35,11 +35,28 @@ struct PopupView: View {
 		} else if viewRouter.showingFocusedImage,
 		   let memeImage = meme.image {
 			FocusedImageViewer(image: Image(uiImage: memeImage))
-			.zIndex(1) //necessary for animations on zstack
-		} else if let index = viewRouter.currentCaptionEditingIndex {
-			EditCaptionView(captionIndex: index,
-							editingMode: captionEditingMode)
 				.zIndex(1) //necessary for animations on zstack
+		} else if let index = viewRouter.currentCaptionEditingIndex {
+			switch meme.memeType {
+				case .captionAbove:
+					EditSingleCaptionView(editingMode: captionEditingMode)
+						.zIndex(1) //necessary for animations on zstack
+				case .freeText:
+					switch captionEditingMode {
+						case .editingExisting:
+							EditMultiCaptionView(caption: meme.multiCaptions[index],
+												 captionIndex: index,
+												 editingMode: captionEditingMode)
+								.zIndex(1) //necessary for animations on zstack
+						case .addingNew:
+							EditMultiCaptionView(caption: Caption.defaultCaption(),
+												 editingMode: captionEditingMode)
+								.zIndex(1) //necessary for animations on zstack
+					}
+				default:
+					EditSingleCaptionView(editingMode: captionEditingMode)
+						.zIndex(1) //necessary for animations on zstack
+			}
 		}
     }
 }

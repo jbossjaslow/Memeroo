@@ -20,7 +20,7 @@ struct FontStrokeColorView: View {
 					.frame(width: 30, height: 30)
 					.border(Color.TextColors.defaultTextColor, width: 2)
 					.onTapGesture {
-						meme.fontStrokeColor = .clear
+						meme.singleCaption.strokeColor = .clear
 					}
 				
 				ForEach(Color.TextColors.colorsList) { color in
@@ -28,7 +28,7 @@ struct FontStrokeColorView: View {
 						.frame(width: 30, height: 30)
 						.border(Color.TextColors.defaultTextColor, width: 2)
 						.onTapGesture {
-							meme.fontStrokeColor = color
+							meme.singleCaption.strokeColor = color
 						}
 				}
 			}

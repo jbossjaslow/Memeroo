@@ -11,18 +11,6 @@ struct FreeTextMemeView: View {
 	@EnvironmentObject var viewRouter: ViewRouter
 	@EnvironmentObject var meme: Meme
 	
-	var textColor: Color {
-		switch viewRouter.currentTab {
-			case .background:
-				if let caption = meme.captions.first?.text,
-				   caption != Constants.Text.defaultCaptionText {
-					return meme.fontColor
-				}
-				return .gray
-			case .caption: return meme.fontColor
-		}
-	}
-	
     var body: some View {
 		ZStack {
 			if let memeImage = meme.image {
@@ -33,10 +21,12 @@ struct FreeTextMemeView: View {
 						//if image is nil, don't bother showing focused image
 						viewRouter.showingFocusedImage = meme.image != nil
 					}
+					.zIndex(0)
 				
-				ForEach(meme.captions, id: \.self) { caption in
+				ForEach(meme.multiCaptions, id: \.self) { caption in
 					FreeTextCaption(caption: caption,
 									offset: caption.offset)
+						.zIndex(1)
 				}
 			} else {
 				Spacer()

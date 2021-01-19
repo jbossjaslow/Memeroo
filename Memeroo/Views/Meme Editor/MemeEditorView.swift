@@ -26,7 +26,8 @@ struct MemeEditorView: View {
 					case .freeText:
 						FreeTextMemeView()
 					default:
-						Text("There is an error, please reload")
+//						Text("There is an error, please reload")
+						EmptyView()
 				}
 				
 				Spacer()

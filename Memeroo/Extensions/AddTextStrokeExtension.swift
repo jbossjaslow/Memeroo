@@ -8,8 +8,9 @@
 import SwiftUI
 
 extension View {
-	func addTextStroke(text: String, _ overrideColor: Color? = nil) -> some View {
-		self.modifier(TextStrokeModifier(text: text,
+	func addTextStroke(caption: Caption,
+					   _ overrideColor: Color? = nil) -> some View {
+		self.modifier(TextStrokeModifier(caption: caption,
 										 color: overrideColor))
 	}
 }

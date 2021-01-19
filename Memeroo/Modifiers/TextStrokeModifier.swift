@@ -8,15 +8,13 @@
 import SwiftUI
 
 struct TextStrokeModifier: ViewModifier {
-	@EnvironmentObject var meme: Meme
-	
-	let text: String
+	let caption: Caption
 	let color: Color?
 	var shadowColor: Color {
-		return color ?? meme.fontStrokeColor
+		return color ?? caption.strokeColor
 	}
 	var radius: CGFloat {
-		return 1 - meme.fontStrokeWidth //normally 0
+		return 1 - caption.strokeWidth //normally 0
 	}
 	
 	func body(content: Content) -> some View {
@@ -24,19 +22,19 @@ struct TextStrokeModifier: ViewModifier {
 		content
 			.shadow(color: shadowColor,
 					radius: radius,
-					x: meme.fontStrokeWidth,
-					y: meme.fontStrokeWidth)
+					x: caption.strokeWidth,
+					y: caption.strokeWidth)
 			.shadow(color: shadowColor,
 					radius: 0,
-					x: -meme.fontStrokeWidth,
-					y: meme.fontStrokeWidth)
+					x: -caption.strokeWidth,
+					y: caption.strokeWidth)
 			.shadow(color: shadowColor,
 					radius: 0,
-					x: -meme.fontStrokeWidth,
-					y: -meme.fontStrokeWidth)
+					x: -caption.strokeWidth,
+					y: -caption.strokeWidth)
 			.shadow(color: shadowColor,
 					radius: 0,
-					x: meme.fontStrokeWidth,
-					y: -meme.fontStrokeWidth)
+					x: caption.strokeWidth,
+					y: -caption.strokeWidth)
 	}
 }

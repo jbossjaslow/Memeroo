@@ -23,7 +23,7 @@ struct MenuButton: View {
 						viewRouter.imageSelectionMode = .imageSelectionAndCropping
 					case .addCaption:
 						viewRouter.currentSubMenu = .none
-						viewRouter.currentCaptionEditingIndex = meme.captions.count
+						viewRouter.currentCaptionEditingIndex = meme.multiCaptions.count
 					case .cropImage:
 						viewRouter.currentSubMenu = .none
 						viewRouter.showingImageSelector = true

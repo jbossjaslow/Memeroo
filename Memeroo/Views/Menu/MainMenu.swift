@@ -12,15 +12,20 @@ struct MainMenu: View {
 	@EnvironmentObject var meme: Meme
 	
 	@State private var selection: Int = 0
+	@State private var memerooTitle = Caption("Memeroo",
+											  size: 80,
+											  fontColor: .myPink,
+											  strokeColor: .black,
+											  strokeWidth: 1)
 	
 	var body: some View {
 		VStack {
 			
-			Text("Memeroo")
+			Text(memerooTitle.text)
 //				.font(.system(size: 30, weight: .regular, design: .serif))
-				.font(.custom("Chalkboard SE", size: 80))
+				.font(.custom("Chalkboard SE", size: memerooTitle.fontSize))
 				.foregroundColor(.myPink)
-				.addTextStroke(text: "Memeroo",
+				.addTextStroke(caption: memerooTitle,
 							   .black)
 			
 			Spacer()

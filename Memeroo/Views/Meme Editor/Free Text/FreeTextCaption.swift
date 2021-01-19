@@ -19,14 +19,14 @@ struct FreeTextCaption: View {
 	
     var body: some View {
 		Text(caption.text)
-			.font(.custom(meme.fontFamily,
-						  size: meme.fontSize))
-			.foregroundColor(meme.fontColor)
-			.addTextStroke(text: caption.text)
+			.font(.custom(caption.fontFamily,
+						  size: caption.fontSize))
+			.foregroundColor(caption.fontColor)
+			.addTextStroke(caption: caption)
 			.animation(nil)
 			.offset(offset + currentOffset)
 			.onAppear {
-				currIndex = meme.captions.firstIndex(of: caption) ?? 0
+				currIndex = meme.multiCaptions.firstIndex(of: caption) ?? 0
 			}
 			.onTapGesture {
 				viewRouter.currentCaptionEditingIndex = currIndex
@@ -39,14 +39,15 @@ struct FreeTextCaption: View {
 					.onEnded { _ in
 						self.offset += self.currentOffset
 						self.currentOffset = .zero
-						meme.captions[currIndex].offset = offset
+						meme.multiCaptions[currIndex].offset = offset
 					}
 			)
     }
 }
 
 struct FreeTextCaption_Previews: PreviewProvider {
-	@State static var caption: Caption = Caption(Constants.Text.defaultCaptionText)
+	@State static var caption: Caption = Caption(Constants.Text.defaultCaptionText,
+												 size: 54)
 	
     static var previews: some View {
 		FreeTextCaption(caption: caption,

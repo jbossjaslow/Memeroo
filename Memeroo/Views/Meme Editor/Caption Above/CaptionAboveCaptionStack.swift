@@ -17,13 +17,14 @@ struct CaptionAboveCaptionStack: View {
 				Spacer()
 			}
 			
-			Text(meme.captions.first?.text ?? Constants.Text.defaultCaptionText)
-				.font(.custom(meme.fontFamily,
-							  size: meme.fontSize))
-				.foregroundColor(meme.fontColor)
+			Text(meme.singleCaption.text)
+				.font(.custom(meme.singleCaption.fontFamily,
+							  size: meme.singleCaption.fontSize))
+				.foregroundColor(meme.singleCaption.fontColor)
 				.padding(.horizontal, 10)
 				.padding(.vertical, 15)
 				.multilineTextAlignment(meme.alignment)
+				.zIndex(1)
 			
 			if meme.alignment != .trailing {
 				Spacer()
@@ -33,13 +34,12 @@ struct CaptionAboveCaptionStack: View {
 		.animation(.easeInOut)
 		.onTapGesture {
 			withAnimation {
-				if viewRouter.currentTab == .caption,
-				   meme.captions.count == 1 {
+				if viewRouter.currentTab == .caption {
 					viewRouter.currentCaptionEditingIndex = 0
 				}
 			}
 		}
-		.background(meme.captionBackgroundColor)
+		.background(meme.singleCaption.backgroundColor)
     }
 }
 

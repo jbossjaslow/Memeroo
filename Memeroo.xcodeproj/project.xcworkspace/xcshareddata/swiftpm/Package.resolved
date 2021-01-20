@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "Introspect",
+        "repositoryURL": "https://github.com/siteline/SwiftUI-Introspect.git",
+        "state": {
+          "branch": null,
+          "revision": "36ecf80429d00a4cd1e81fbfe4655b1d99ebd651",
+          "version": "0.1.2"
+        }
+      },
+      {
         "package": "TOCropViewController",
         "repositoryURL": "https://github.com/TimOliver/TOCropViewController.git",
         "state": {

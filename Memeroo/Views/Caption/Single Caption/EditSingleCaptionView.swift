@@ -6,18 +6,19 @@
 //
 
 import SwiftUI
+import Introspect
 
 struct EditSingleCaptionView: View {
 	@EnvironmentObject var viewRouter: ViewRouter
 	@EnvironmentObject var meme: Meme
-
+	
 	@State var editingMode: CaptionEditingMode
 	@State private var currentText: String = ""
 	
 	var body: some View {
 		VStack(spacing: 0) {
 			Spacer()
-
+			
 			VStack {
 				TextEditor(text: $currentText)
 					.font(.custom(meme.singleCaption.fontFamily,
@@ -40,6 +41,7 @@ struct EditSingleCaptionView: View {
 								currentText = Constants.Text.defaultCaptionText
 						}
 					}
+					.addDoneButtonForTextEditor()
 				
 				SingleCaptionEditButtons(caption: $meme.singleCaption)
 				
@@ -49,9 +51,9 @@ struct EditSingleCaptionView: View {
 			.padding()
 			.background(
 				RoundedRectangle(cornerRadius: 10)
-							.fill(Color.gray)
+					.fill(Color.gray)
 			)
-
+			
 			Spacer()
 			
 			Spacer()
@@ -63,9 +65,9 @@ struct EditSingleCaptionView: View {
 }
 
 struct EditSingleCaptionView_Previews: PreviewProvider {
-    static var previews: some View {
-        EditSingleCaptionView(editingMode: .editingExisting)
+	static var previews: some View {
+		EditSingleCaptionView(editingMode: .editingExisting)
 			.environmentObject(ViewRouter())
 			.environmentObject(Meme().TestMemeFreeText())
-    }
+	}
 }

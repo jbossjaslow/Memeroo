@@ -25,7 +25,7 @@ struct EditMultiCaptionView: View {
 					.font(.custom(caption.fontFamily,
 								  size: caption.fontSize))
 					.foregroundColor(caption.fontColor)
-					.addTextStroke(caption: caption)
+//					.addTextStroke(caption: caption) //most likely doesn't work because it's a TextEditor, not a Text object
 					.lineLimit(7)
 					.frame(height: 200)
 					.unableToEndEditing()
@@ -42,6 +42,7 @@ struct EditMultiCaptionView: View {
 								currentText = Constants.Text.defaultCaptionText
 						}
 					}
+					.addDoneButtonForTextEditor()
 				
 				MultipleCaptionsEditButtons(caption: $caption)
 				

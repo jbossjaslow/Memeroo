@@ -68,6 +68,6 @@ struct EditSingleCaptionView_Previews: PreviewProvider {
 	static var previews: some View {
 		EditSingleCaptionView(editingMode: .editingExisting)
 			.environmentObject(ViewRouter())
-			.environmentObject(Meme().TestMemeFreeText())
+			.environmentObject(Meme().TestMemeFreeStyle())
 	}
 }

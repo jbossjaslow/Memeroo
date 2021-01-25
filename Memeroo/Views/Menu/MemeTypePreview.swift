@@ -12,7 +12,7 @@ struct MemeTypePreview: View {
 	@EnvironmentObject var meme: Meme
 	
 	@State var type: MemeType
-	@State private var previewMeme = Meme().TestMemeFreeText().setPreviewTestMemeCaptions()
+	@State private var previewMeme = Meme().TestMemeFreeStyle().setPreviewTestMemeCaptions()
 	
 	@State private var scaleAmount: CGFloat = 0.75
 	@State private var cornerRadius: CGFloat = 25
@@ -41,18 +41,18 @@ struct MemeTypePreview: View {
 //						.background(meme.captionBackgroundColor)
 //					}
 //					.padding()
-//				case .freeText:
+//				case .freeStyle:
 //					ZStack() {
 //						Image("TestImage")
 //							.resizable()
 //							.aspectRatio(contentMode: .fit)
 //						
-//						FreeTextCaption(caption: Caption("Top Text"),
+//						FreeStyleCaption(caption: Caption("Top Text"),
 //										offset: .init(width: 0,
 //													  height: -90))
 //							.environmentObject(previewMeme)
 //						
-//						FreeTextCaption(caption: Caption("Bottom Text"),
+//						FreeStyleCaption(caption: Caption("Bottom Text"),
 //										offset: .init(width: 0,
 //													  height: 90))
 //							.environmentObject(previewMeme)
@@ -85,7 +85,7 @@ struct MemeTypePreview: View {
 
 struct MemeTypePreview_Previews: PreviewProvider {
 	static var previews: some View {
-		MemeTypePreview(type: .freeText)
+		MemeTypePreview(type: .freeStyle)
 			.environmentObject(ViewRouter())
 			.environmentObject(Meme())
 	}

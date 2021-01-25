@@ -49,8 +49,8 @@
 		39362BC1258A6F32007053A0 /* MemeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39362BC0258A6F32007053A0 /* MemeType.swift */; };
 		39704C532586D1F400018324 /* SelectImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39704C522586D1F400018324 /* SelectImageView.swift */; };
 		397280AD258FA511006326F3 /* MemerooNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397280AC258FA511006326F3 /* MemerooNavBar.swift */; };
-		397280D825917D5E006326F3 /* FreeTextMemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397280D725917D5E006326F3 /* FreeTextMemeView.swift */; };
-		397280F225918CD5006326F3 /* FreeTextCaption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397280F125918CD5006326F3 /* FreeTextCaption.swift */; };
+		397280D825917D5E006326F3 /* FreeStyleMemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397280D725917D5E006326F3 /* FreeStyleMemeView.swift */; };
+		397280F225918CD5006326F3 /* FreeStyleCaption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397280F125918CD5006326F3 /* FreeStyleCaption.swift */; };
 		39882C79253922480072C2A5 /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39882C78253922480072C2A5 /* Meme.swift */; };
 		39959D292592604100F1A71F /* SubmenuButtonStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39959D282592604100F1A71F /* SubmenuButtonStack.swift */; };
 		39959D31259264AC00F1A71F /* MenuButtonStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39959D30259264AC00F1A71F /* MenuButtonStack.swift */; };
@@ -150,8 +150,8 @@
 		39362BC0258A6F32007053A0 /* MemeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeType.swift; sourceTree = "<group>"; };
 		39704C522586D1F400018324 /* SelectImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectImageView.swift; sourceTree = "<group>"; };
 		397280AC258FA511006326F3 /* MemerooNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemerooNavBar.swift; sourceTree = "<group>"; };
-		397280D725917D5E006326F3 /* FreeTextMemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeTextMemeView.swift; sourceTree = "<group>"; };
-		397280F125918CD5006326F3 /* FreeTextCaption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeTextCaption.swift; sourceTree = "<group>"; };
+		397280D725917D5E006326F3 /* FreeStyleMemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeStyleMemeView.swift; sourceTree = "<group>"; };
+		397280F125918CD5006326F3 /* FreeStyleCaption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeStyleCaption.swift; sourceTree = "<group>"; };
 		39882C78253922480072C2A5 /* Meme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
 		39959D282592604100F1A71F /* SubmenuButtonStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmenuButtonStack.swift; sourceTree = "<group>"; };
 		39959D30259264AC00F1A71F /* MenuButtonStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButtonStack.swift; sourceTree = "<group>"; };
@@ -315,7 +315,7 @@
 		397280AA258FA45B006326F3 /* Meme Editor */ = {
 			isa = PBXGroup;
 			children = (
-				397280D625917D4C006326F3 /* Free Text */,
+				397280D625917D4C006326F3 /* Free Style */,
 				397280C925917C55006326F3 /* Caption Above */,
 				393578262569775900743E71 /* FocusedImageViewer.swift */,
 				39704C522586D1F400018324 /* SelectImageView.swift */,
@@ -351,13 +351,13 @@
 			path = "Caption Above";
 			sourceTree = "<group>";
 		};
-		397280D625917D4C006326F3 /* Free Text */ = {
+		397280D625917D4C006326F3 /* Free Style */ = {
 			isa = PBXGroup;
 			children = (
-				397280D725917D5E006326F3 /* FreeTextMemeView.swift */,
-				397280F125918CD5006326F3 /* FreeTextCaption.swift */,
+				397280D725917D5E006326F3 /* FreeStyleMemeView.swift */,
+				397280F125918CD5006326F3 /* FreeStyleCaption.swift */,
 			);
-			path = "Free Text";
+			path = "Free Style";
 			sourceTree = "<group>";
 		};
 		39882C77253922220072C2A5 /* Classes */ = {
@@ -732,7 +732,7 @@
 				39E6218A259569C500C70023 /* ColorSelectorView.swift in Sources */,
 				39357890257019B100743E71 /* EditCaptionButtonsStyle.swift in Sources */,
 				39B751832548B67E0016714B /* ColorfulShareSheetStyle.swift in Sources */,
-				397280D825917D5E006326F3 /* FreeTextMemeView.swift in Sources */,
+				397280D825917D5E006326F3 /* FreeStyleMemeView.swift in Sources */,
 				39704C532586D1F400018324 /* SelectImageView.swift in Sources */,
 				39B751AA2548CFAA0016714B /* NeumorphicColorExtension.swift in Sources */,
 				39B9298225313E8500DFC401 /* Persistence.swift in Sources */,
@@ -751,7 +751,7 @@
 				3935785C256E0C8A00743E71 /* Fonts.swift in Sources */,
 				39B7518D2548B6F60016714B /* MemerooToggleStyle.swift in Sources */,
 				39E6217125941F1800C70023 /* AddTextStrokeExtension.swift in Sources */,
-				397280F225918CD5006326F3 /* FreeTextCaption.swift in Sources */,
+				397280F225918CD5006326F3 /* FreeStyleCaption.swift in Sources */,
 				39231ECA25B6610900DEF951 /* EditCaptionFontTypeStack.swift in Sources */,
 				39231EE025B6642C00DEF951 /* CaptionEditButtonsModifier.swift in Sources */,
 				399ED9272538E9C30089BD95 /* ImageCropper.swift in Sources */,

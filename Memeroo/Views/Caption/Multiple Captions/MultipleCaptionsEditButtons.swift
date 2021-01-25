@@ -30,6 +30,6 @@ struct MultipleCaptionsEditButtons_Previews: PreviewProvider {
     static var previews: some View {
         MultipleCaptionsEditButtons(caption: $caption)
 			.environmentObject(ViewRouter())
-			.environmentObject(Meme().TestMemeFreeText())
+			.environmentObject(Meme().TestMemeFreeStyle())
     }
 }

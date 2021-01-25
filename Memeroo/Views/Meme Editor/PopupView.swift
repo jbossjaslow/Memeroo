@@ -15,7 +15,7 @@ struct PopupView: View {
 		switch meme.memeType {
 			case .captionAbove:
 				return .editingExisting
-			case .freeText:
+			case .freeStyle:
 				if let index = viewRouter.currentCaptionEditingIndex,
 				   meme.multiCaptions.indices.contains(index) {
 					return .editingExisting
@@ -41,7 +41,7 @@ struct PopupView: View {
 				case .captionAbove:
 					EditSingleCaptionView(editingMode: captionEditingMode)
 						.zIndex(1) //necessary for animations on zstack
-				case .freeText:
+				case .freeStyle:
 					switch captionEditingMode {
 						case .editingExisting:
 							EditMultiCaptionView(caption: meme.multiCaptions[index],
@@ -65,6 +65,6 @@ struct PopupView_Previews: PreviewProvider {
 	static var previews: some View {
         PopupView()
 			.environmentObject(ViewRouter())
-			.environmentObject(Meme().TestMemeFreeText())
+			.environmentObject(Meme().TestMemeFreeStyle())
     }
 }

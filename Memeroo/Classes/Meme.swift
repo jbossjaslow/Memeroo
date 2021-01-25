@@ -29,10 +29,10 @@ class Meme: ObservableObject {
 				return CaptionAboveMemeView()
 					.environmentObject(self)
 					.asImage()
-			case .freeText:
+			case .freeStyle:
 				guard image != nil,
 					  !multiCaptions.isEmpty else { return nil }
-				return FreeTextMemeView()
+				return FreeStyleMemeView()
 					.environmentObject(self)
 					.asImage()
 			default:
@@ -46,7 +46,7 @@ class Meme: ObservableObject {
 		switch memeType {
 			case .captionAbove:
 				singleCaption = Caption.defaultCaption()
-			case .freeText:
+			case .freeStyle:
 				multiCaptions = []
 			default:
 				return
@@ -71,14 +71,14 @@ extension Meme {
 		return self
 	}
 	
-	func TestMemeFreeText() -> Self {
-		setup(type: .freeText)
+	func TestMemeFreeStyle() -> Self {
+		setup(type: .freeStyle)
 		multiCaptions = [Caption("Top text",
 								 fontColor: .white),
 						 Caption("Bottom text",
 								 fontColor: .white)]
 		image = UIImage(named: "TestImage")
-		memeType = .freeText
+		memeType = .freeStyle
 		return self
 	}
 	

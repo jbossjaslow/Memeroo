@@ -21,10 +21,10 @@ struct EditButtonStack: View {
 				case (.captionAbove, .background):
 					MenuButtonStack(buttonsToShow: [.chooseImage,
 													.cropImage])
-				case (.freeText, .background):
+				case (.freeStyle, .background):
 					MenuButtonStack(buttonsToShow: [.chooseImage,
 													.cropImage,])
-				case (.freeText, .caption):
+				case (.freeStyle, .caption):
 					MenuButtonStack(buttonsToShow: [.addCaption])
 				default:
 					EmptyView()

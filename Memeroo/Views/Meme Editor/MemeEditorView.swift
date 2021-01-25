@@ -23,8 +23,8 @@ struct MemeEditorView: View {
 				switch meme.memeType {
 					case .captionAbove:
 						CaptionAboveMemeView()
-					case .freeText:
-						FreeTextMemeView()
+					case .freeStyle:
+						FreeStyleMemeView()
 					default:
 //						Text("There is an error, please reload")
 						EmptyView()

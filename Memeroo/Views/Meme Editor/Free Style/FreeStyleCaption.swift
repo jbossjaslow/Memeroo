@@ -1,5 +1,5 @@
 //
-//  FreeTextCaption.swift
+//  FreeStyleCaption.swift
 //  Memeroo
 //
 //  Created by Josh Jaslow on 12/21/20.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct FreeTextCaption: View {
+struct FreeStyleCaption: View {
 	@EnvironmentObject var viewRouter: ViewRouter
 	@EnvironmentObject var meme: Meme
 	
@@ -46,14 +46,14 @@ struct FreeTextCaption: View {
     }
 }
 
-struct FreeTextCaption_Previews: PreviewProvider {
+struct FreeStyleCaption_Previews: PreviewProvider {
 	@State static var caption: Caption = Caption(Constants.Text.defaultCaptionText,
 												 size: 54)
 	
     static var previews: some View {
-		FreeTextCaption(caption: caption,
+		FreeStyleCaption(caption: caption,
 						offset: .zero)
 			.environmentObject(ViewRouter())
-			.environmentObject(Meme().TestMemeFreeText())
+			.environmentObject(Meme().TestMemeFreeStyle())
     }
 }

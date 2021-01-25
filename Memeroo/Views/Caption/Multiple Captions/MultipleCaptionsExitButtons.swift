@@ -18,7 +18,7 @@ struct MultipleCaptionsExitButtons: View {
 	
 	var body: some View {
 		HStack {
-			if editingMode == .editingExisting && meme.memeType == .freeText {
+			if editingMode == .editingExisting && meme.memeType == .freeStyle {
 				Button {
 					if let index = meme.multiCaptions.firstIndex(of: caption) {
 						meme.multiCaptions.remove(at: index)
@@ -75,7 +75,7 @@ struct EditMultipleCaptionsButtons_Previews: PreviewProvider {
 									currentText: $text,
 									editingMode: $editingMode)
 			.environmentObject(ViewRouter())
-			.environmentObject(Meme().TestMemeFreeText())
+			.environmentObject(Meme().TestMemeFreeStyle())
 		//			.singleColorBackground(color: Color.black.opacity(0.8))
 	}
 }

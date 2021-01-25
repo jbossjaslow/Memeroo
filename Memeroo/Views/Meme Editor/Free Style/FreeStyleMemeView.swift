@@ -1,5 +1,5 @@
 //
-//  FreeTextMemeEditorView.swift
+//  FreeStyleMemeEditorView.swift
 //  Memeroo
 //
 //  Created by Josh Jaslow on 12/21/20.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct FreeTextMemeView: View {
+struct FreeStyleMemeView: View {
 	@EnvironmentObject var viewRouter: ViewRouter
 	@EnvironmentObject var meme: Meme
 	
@@ -24,7 +24,7 @@ struct FreeTextMemeView: View {
 					.zIndex(0)
 				
 				ForEach(meme.multiCaptions, id: \.self) { caption in
-					FreeTextCaption(caption: caption,
+					FreeStyleCaption(caption: caption,
 									offset: caption.offset)
 						.zIndex(1)
 				}
@@ -35,10 +35,10 @@ struct FreeTextMemeView: View {
     }
 }
 
-struct FreeTextMemeEditorView_Previews: PreviewProvider {
+struct FreeStyleMemeEditorView_Previews: PreviewProvider {
     static var previews: some View {
-        FreeTextMemeView()
-			.environmentObject(Meme().TestMemeFreeText())
+        FreeStyleMemeView()
+			.environmentObject(Meme().TestMemeFreeStyle())
 			.environmentObject(ViewRouter())
     }
 }

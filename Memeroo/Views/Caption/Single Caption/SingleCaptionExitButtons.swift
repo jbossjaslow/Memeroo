@@ -51,6 +51,6 @@ struct EditSingleCaptionButton_Previews: PreviewProvider {
 		SingleCaptionExitButtons(currentText: $text,
 								 editingMode: $editingMode)
 			.environmentObject(ViewRouter())
-			.environmentObject(Meme().TestMemeFreeText())
+			.environmentObject(Meme().TestMemeFreeStyle())
     }
 }

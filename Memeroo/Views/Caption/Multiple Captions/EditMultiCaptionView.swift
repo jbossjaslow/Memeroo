@@ -76,6 +76,6 @@ struct EditMultiCaptionView_Previews: PreviewProvider {
 		EditMultiCaptionView(caption: Caption.defaultCaption(),
 							 editingMode: .editingExisting)
 			.environmentObject(ViewRouter())
-			.environmentObject(Meme().TestMemeFreeText())
+			.environmentObject(Meme().TestMemeFreeStyle())
     }
 }

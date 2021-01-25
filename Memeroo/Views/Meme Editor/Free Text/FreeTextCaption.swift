@@ -28,20 +28,21 @@ struct FreeTextCaption: View {
 			.onAppear {
 				currIndex = meme.multiCaptions.firstIndex(of: caption) ?? 0
 			}
-			.onTapGesture {
-				viewRouter.currentCaptionEditingIndex = currIndex
-			}
 			.gesture(
 				DragGesture()
 					.onChanged {
-						self.currentOffset = $0.translation
+						currentOffset = $0.translation
 					}
 					.onEnded { _ in
-						self.offset += self.currentOffset
-						self.currentOffset = .zero
+						offset += currentOffset
+						currentOffset = .zero
 						meme.multiCaptions[currIndex].offset = offset
 					}
 			)
+			.onTapGesture {
+				//having onTapGesture before the drag gesture caused there to be a delay before the drag movement showed
+				viewRouter.currentCaptionEditingIndex = currIndex
+			}
     }
 }
 
